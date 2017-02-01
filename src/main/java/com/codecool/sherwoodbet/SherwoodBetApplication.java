@@ -1,4 +1,4 @@
-package com.codecool;
+package com.codecool.sherwoodbet;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

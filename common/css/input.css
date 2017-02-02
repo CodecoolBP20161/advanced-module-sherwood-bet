@@ -1,0 +1,10 @@
+.sherwood-input {
+  padding: 5px;
+  border: 2px solid gold;
+  border-radius: 10px;
+}
+
+.sherwood-input:focus {
+  outline: none;
+  box-shadow: 0 0 19px gold;
+}

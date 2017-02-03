@@ -3,7 +3,7 @@ const Cookies = require('./cookies')
 
 const dataManager = (() => {
 
-  const URL = 'http://127.0.0.1:8000/'
+  const URL = 'http://127.0.0.1:8080/'
   const csrftoken = Cookies.get('csrftoken')
 
   const JSONtransfer = (req) => {

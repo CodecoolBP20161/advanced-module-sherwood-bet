@@ -1,7 +1,5 @@
 package com.codecool.sherwoodbet.Model;
 
-import org.hibernate.annotations.Table;
-
 import javax.persistence.*;
 
 /**
@@ -9,13 +7,12 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "users")
+@Table(name="users")
 public class User {
     private Long ID;
     private String name;
     private String password;
     private String email;
-    private String sessions;
 
 
     @Id
@@ -36,10 +33,6 @@ public class User {
         return email;
     }
 
-    public String getSessions() {
-        return sessions;
-    }
-
     public void setID(Long ID) {
         this.ID = ID;
     }
@@ -54,10 +47,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setSessions(String sessions) {
-        this.sessions = sessions;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.codecool.sherwoodbet.Controller;
 
 
+import com.codecool.sherwoodbet.Validate.UserValidate;
 import com.sun.xml.internal.bind.v2.TODO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,20 +22,27 @@ import java.util.Map;
 public class SiteController {
 
     private static final Logger log = LoggerFactory.getLogger(SiteController.class);
+    private UserValidate userValidate = new UserValidate();
 
     @RequestMapping("/")
     public String index (Model model){
         return "index";
     }
 
-    //TODO using validation class instead of creating here response hashmap
     @RequestMapping("/signup")
     @ResponseBody
-    public Map signup(@RequestBody() String JSON){
-        log.info(JSON);
+    public Map signup(@RequestBody Signup signupData){
+        String email = signupData.getEmail();
+        String userName = signupData.getUsername();
+        log.info(email + " " + userName);
         Map response = new HashMap<String, ArrayList>();
         ArrayList error = new ArrayList();
-        error.add("username");
+        if(!(userValidate.checkEmail(email) && userValidate.isValidEmail(email))) {
+            error.add("email");
+        }
+        if(!userValidate.checkUsername(userName)){
+            error.add("username");
+        }
         response.put("errors", error);
         log.info(response.toString());
         return response;

@@ -25,7 +25,7 @@ public class SiteController {
     private UserValidate userValidate = new UserValidate();
 
     @RequestMapping("/")
-    public String index (Model model){
+    public String index (){
         return "index";
     }
 

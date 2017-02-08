@@ -23,7 +23,11 @@ public class SherwoodBetApplication {
     public CommandLineRunner demo(UserRepository repository) {
         return (args) -> {
             // save a couple of customers
-            repository.save(new User());
+            repository.save(new User("2","3","3"));
+            repository.save(new User("568th","sef","3dffd"));
+            repository.save(new User("2wefw","btr","ter"));
+            repository.save(new User("2wefw4tg3","3sdvgdsge","334ge"));
+
         };
     }
 }

@@ -1,10 +1,12 @@
 package com.codecool.sherwoodbet.Controller;
 
 
+import com.codecool.sherwoodbet.Repository.UserRepository;
 import com.codecool.sherwoodbet.Validate.UserValidate;
 import com.sun.xml.internal.bind.v2.TODO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +24,9 @@ import java.util.Map;
 public class SiteController {
 
     private static final Logger log = LoggerFactory.getLogger(SiteController.class);
-    private UserValidate userValidate = new UserValidate();
+
+    @Autowired
+    private UserValidate userValidate;
 
     @RequestMapping("/")
     public String index (){

@@ -2,6 +2,7 @@ package com.codecool.sherwoodbet.Controller;
 
 
 import com.codecool.sherwoodbet.Repository.UserRepository;
+import com.codecool.sherwoodbet.Service.UserService;
 import com.codecool.sherwoodbet.Validate.UserValidate;
 import com.sun.xml.internal.bind.v2.TODO;
 import org.slf4j.Logger;
@@ -28,6 +29,9 @@ public class SiteController {
     @Autowired
     private UserValidate userValidate;
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/")
     public String index (){
         return "index";
@@ -38,6 +42,7 @@ public class SiteController {
     public Map signup(@RequestBody Signup signupData){
         String email = signupData.getEmail();
         String userName = signupData.getUsername();
+        String password = signupData.getPassword();
         log.info(email + " " + userName);
         Map response = new HashMap<String, ArrayList>();
         ArrayList error = new ArrayList();
@@ -49,6 +54,7 @@ public class SiteController {
         }
         response.put("errors", error);
         log.info(response.toString());
+        userService.saveUser(userName, password, email);
         return response;
     }
 }

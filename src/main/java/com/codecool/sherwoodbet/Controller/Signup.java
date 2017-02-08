@@ -10,6 +10,7 @@ public class Signup {
 
     private String username;
     private String email;
+    private String password;
 
     public String getUsername() {
         return username;
@@ -25,5 +26,9 @@ public class Signup {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

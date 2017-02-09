@@ -1,15 +1,12 @@
 package com.codecool.sherwoodbet.Controller;
 
 
-import com.codecool.sherwoodbet.Repository.UserRepository;
 import com.codecool.sherwoodbet.Service.UserService;
 import com.codecool.sherwoodbet.Validate.UserValidate;
-import com.sun.xml.internal.bind.v2.TODO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -52,9 +49,13 @@ public class SiteController {
         if(!userValidate.checkUsername(userName)){
             error.add("username");
         }
+        System.out.println(userValidate.checkUsername(userName));
         response.put("errors", error);
         log.info(response.toString());
-        userService.saveUser(userName, password, email);
+
+        //if there are errors not save into database
+        if(error.isEmpty())
+            userService.saveUser(userName, password, email);
         return response;
     }
 }

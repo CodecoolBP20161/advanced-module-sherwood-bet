@@ -1,7 +1,9 @@
 package com.codecool.sherwoodbet.Controller;
 
 
-import com.codecool.sherwoodbet.Service.UserService;
+import com.codecool.sherwoodbet.Services.Email_service.Controller.EmailAPIController;
+import com.codecool.sherwoodbet.Services.Email_service.Service.APIService;
+import com.codecool.sherwoodbet.Services.UserService;
 import com.codecool.sherwoodbet.Validate.UserValidate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +31,9 @@ public class SiteController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private EmailAPIController emailAPIController;
+
     @RequestMapping("/")
     public String index (){
         return "index";
@@ -49,13 +54,13 @@ public class SiteController {
         if(!userValidate.checkUsername(userName)){
             error.add("username");
         }
-        System.out.println(userValidate.checkUsername(userName));
         response.put("errors", error);
         log.info(response.toString());
-
-        //if there are errors not save into database
-        if(error.isEmpty())
+        //if there are not errors save into database and send a welcome email
+        if(error.isEmpty()) {
             userService.saveUser(userName, password, email);
+            emailAPIController.sendWelcomeEmail(email, userName);
+        }
         return response;
     }
 }

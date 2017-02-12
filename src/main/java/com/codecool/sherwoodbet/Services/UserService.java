@@ -1,4 +1,4 @@
-package com.codecool.sherwoodbet.Service;
+package com.codecool.sherwoodbet.Services;
 
 import com.codecool.sherwoodbet.Model.User;
 import com.codecool.sherwoodbet.Repository.UserRepository;

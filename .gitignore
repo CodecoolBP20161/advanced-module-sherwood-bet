@@ -14,7 +14,6 @@ target/
 ### IntelliJ IDEA ###
 .idea
 *.iws
-*.iml
 *.ipr
 
 ### NetBeans ###
@@ -28,4 +27,5 @@ nbdist/
 mvnw
 mvnw.cmd
 
-application.properties
+src/main/resources/application.properties
+src/test/resources/application.properties

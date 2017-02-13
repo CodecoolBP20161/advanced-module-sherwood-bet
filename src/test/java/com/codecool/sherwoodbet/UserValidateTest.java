@@ -1,7 +1,7 @@
 package com.codecool.sherwoodbet;
 
 import com.codecool.sherwoodbet.Repository.UserRepository;
-import com.codecool.sherwoodbet.Service.UserService;
+import com.codecool.sherwoodbet.Services.UserService;
 import com.codecool.sherwoodbet.Validate.UserValidate;
 import org.junit.After;
 import org.junit.Before;

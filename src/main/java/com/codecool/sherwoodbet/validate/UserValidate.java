@@ -1,8 +1,8 @@
-package com.codecool.sherwoodbet.Validate;
+package com.codecool.sherwoodbet.validate;
 
-import com.codecool.sherwoodbet.Controller.SiteController;
-import com.codecool.sherwoodbet.Model.User;
-import com.codecool.sherwoodbet.Repository.UserRepository;
+import com.codecool.sherwoodbet.controller.SiteController;
+import com.codecool.sherwoodbet.model.User;
+import com.codecool.sherwoodbet.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

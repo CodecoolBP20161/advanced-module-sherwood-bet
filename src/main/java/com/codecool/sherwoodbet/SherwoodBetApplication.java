@@ -10,6 +10,3 @@ public class SherwoodBetApplication {
         SpringApplication.run(SherwoodBetApplication.class, args);
     }
 }
-
-
-

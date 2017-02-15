@@ -1,6 +1,6 @@
-package com.codecool.sherwoodbet.Services.Email_service.Controller;
+package com.codecool.sherwoodbet.services.Email_service.Controller;
 
-import com.codecool.sherwoodbet.Services.Email_service.Service.APIService;
+import com.codecool.sherwoodbet.services.Email_service.Service.APIService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

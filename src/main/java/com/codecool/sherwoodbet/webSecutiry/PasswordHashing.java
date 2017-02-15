@@ -1,4 +1,4 @@
-package com.codecool.sherwoodbet.WebSecutiry;
+package com.codecool.sherwoodbet.webSecutiry;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

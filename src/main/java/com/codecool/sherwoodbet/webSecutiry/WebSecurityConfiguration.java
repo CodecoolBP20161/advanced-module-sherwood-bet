@@ -1,4 +1,4 @@
-package com.codecool.sherwoodbet.WebSecutiry;
+package com.codecool.sherwoodbet.webSecutiry;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

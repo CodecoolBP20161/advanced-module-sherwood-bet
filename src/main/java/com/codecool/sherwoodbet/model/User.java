@@ -1,4 +1,4 @@
-package com.codecool.sherwoodbet.Model;
+package com.codecool.sherwoodbet.model;
 
 import javax.persistence.*;
 

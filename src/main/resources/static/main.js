@@ -11416,7 +11416,7 @@
 	      var contentToUse = CONTENT_TYPES[typeof props.children] ? props.children : null;
 	      var childrenToUse = contentToUse != null ? null : props.children;
 	      if (contentToUse != null) {
-	        // TODO: Validate that text is allowed as a child of this node
+	        // TODO: validate that text is allowed as a child of this node
 	        ret = escapeTextContentForBrowser(contentToUse);
 	        if (process.env.NODE_ENV !== 'production') {
 	          setAndValidateContentChildDev.call(this, contentToUse);
@@ -11453,7 +11453,7 @@
 	    } else {
 	      var contentToUse = CONTENT_TYPES[typeof props.children] ? props.children : null;
 	      var childrenToUse = contentToUse != null ? null : props.children;
-	      // TODO: Validate that text is allowed as a child of this node
+	      // TODO: validate that text is allowed as a child of this node
 	      if (contentToUse != null) {
 	        // Avoid setting textContent when the text is empty. In IE11 setting
 	        // textContent on a text area will cause the placeholder to not

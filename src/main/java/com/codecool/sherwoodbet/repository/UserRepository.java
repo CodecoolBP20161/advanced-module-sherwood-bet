@@ -1,6 +1,6 @@
-package com.codecool.sherwoodbet.Repository;
+package com.codecool.sherwoodbet.repository;
 
-import com.codecool.sherwoodbet.Model.User;
+import com.codecool.sherwoodbet.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

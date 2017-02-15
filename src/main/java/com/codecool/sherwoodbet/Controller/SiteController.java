@@ -87,7 +87,7 @@ public class SiteController {
         Map response = new HashMap<String, Boolean>();
         String username = login.getUsername();
         String password = login.getPassword();
-        User user = userRepository.findByUserName(username);
+        User user = userRepository.findByName(username);
         Boolean equal = false;
         try{
             if(Objects.equals(user.getName(), username) && passwordHashing.matches(password, user.getPassword())){

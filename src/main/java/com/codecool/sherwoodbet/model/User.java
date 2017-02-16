@@ -5,7 +5,6 @@ import javax.persistence.*;
 /**
  * Created by patrik on 2017.02.02..
  */
-
 @Entity
 @Table(name="users")
 public class User {
@@ -16,9 +15,7 @@ public class User {
     @Column(unique = true)
     private String email;
 
-
-    public User() {
-    }
+    public User(){}
 
     public User(String name, String password, String email) {
         this.name = name;

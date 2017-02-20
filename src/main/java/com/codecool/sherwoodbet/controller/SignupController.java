@@ -1,13 +1,15 @@
 package com.codecool.sherwoodbet.controller;
 
 import com.codecool.sherwoodbet.model.Signup;
-import com.codecool.sherwoodbet.services.Email_service.Controller.EmailAPIController;
+import com.codecool.sherwoodbet.model.database.User;
+import com.codecool.sherwoodbet.repository.UserRepository;
+import com.codecool.sherwoodbet.services.email_service.Controller.EmailAPIController;
 import com.codecool.sherwoodbet.services.UserService;
+import com.codecool.sherwoodbet.services.security_service.SecurityService;
 import com.codecool.sherwoodbet.validate.UserValidate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +37,12 @@ public class SignupController {
     @Autowired
     private EmailAPIController emailAPIController;
 
+    @Autowired
+    private SecurityService securityService;
+
+    @Autowired
+    private UserRepository userRepository;
+
     @RequestMapping("/signup")
     @ResponseBody
     public Map signup(@RequestBody Signup signupData){
@@ -53,6 +61,12 @@ public class SignupController {
             userService.saveUser(userName, password, email);
             emailAPIController.sendWelcomeEmail(email, userName);
         }
+
+        User user = userRepository.findByName(userName);
+
+        securityService.autologin(user.getName(), user.getPassword());
+        System.out.println("www");
+
         return response;
     }
 

@@ -1,4 +1,4 @@
-package com.codecool.sherwoodbet.services.Email_service.Service;
+package com.codecool.sherwoodbet.services.email_service.Service;
 
 import java.util.Date;
 import java.util.Properties;

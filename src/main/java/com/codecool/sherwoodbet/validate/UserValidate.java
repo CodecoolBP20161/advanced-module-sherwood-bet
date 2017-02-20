@@ -1,7 +1,7 @@
 package com.codecool.sherwoodbet.validate;
 
 import com.codecool.sherwoodbet.controller.SiteController;
-import com.codecool.sherwoodbet.model.User;
+import com.codecool.sherwoodbet.model.database.User;
 import com.codecool.sherwoodbet.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,10 +22,6 @@ public class UserValidate {
 
     @Autowired
     private UserRepository userRepository;
-
-    public UserValidate() {
-    }
-
 
     public boolean checkUsername(String username) {
         for (User user : userRepository.findAll()) {

@@ -1,6 +1,9 @@
-package com.codecool.sherwoodbet.model;
+package com.codecool.sherwoodbet.model.database;
+
+import com.codecool.sherwoodbet.model.database.Role;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by patrik on 2017.02.02..
@@ -11,20 +14,22 @@ public class User {
     private Long ID;
     private String name;
     private String password;
+    private Role role;
 
     @Column(unique = true)
     private String email;
 
     public User(){}
 
-    public User(String name, String password, String email) {
+    public User(String name, String password, String email, Role role) {
         this.name = name;
         this.password = password;
         this.email = email;
+        this.role = role;
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getID() {
         return ID;
     }
@@ -57,4 +62,11 @@ public class User {
         this.email = email;
     }
 
+    @ManyToOne
+    @JoinColumn(name="role_id")
+    public Role getRole() { return role; }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

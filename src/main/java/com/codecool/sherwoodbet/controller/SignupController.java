@@ -64,9 +64,6 @@ public class SignupController {
 
         User user = userRepository.findByName(userName);
 
-        securityService.autologin(user.getName(), user.getPassword());
-        System.out.println("www");
-
         return response;
     }
 

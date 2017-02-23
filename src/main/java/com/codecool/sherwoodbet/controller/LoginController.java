@@ -39,6 +39,7 @@ public class LoginController {
     @Autowired
     private UserValidator userValidator;
 
+    @RequestMapping("/welcome")
     @ResponseBody
     public Map login() {
         Map response = new HashMap<String, Boolean>();

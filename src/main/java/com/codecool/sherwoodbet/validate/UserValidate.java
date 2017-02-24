@@ -21,16 +21,15 @@ public class UserValidate {
     private static final Logger log = LoggerFactory.getLogger(SiteController.class);
 
     @Autowired
-    private UserRepository userRepository;
+    public UserRepository userRepository;
 
-    public boolean checkUsername(String username) {
-        for (User user : userRepository.findAll()) {
-            if (user.getName().equals(username)) {
-                return false;
-            }
+    public boolean checkUsername(String userName) {
+        if(userRepository.findByName(userName) != null){
+            return false;
         }
         return true;
     }
+
     public boolean checkEmail(String email) {
             for (User user : userRepository.findAll()) {
                 if (user.getEmail().equals(email)) {
@@ -39,6 +38,7 @@ public class UserValidate {
             }
             return true;
     }
+
     public boolean isValidEmail(String email) {
         boolean result = true;
         try {

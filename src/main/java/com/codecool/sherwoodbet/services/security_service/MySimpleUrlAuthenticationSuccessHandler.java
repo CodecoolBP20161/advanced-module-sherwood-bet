@@ -18,6 +18,7 @@ import java.util.Collection;
 /**
  * Created by csyk on 2017.02.23..
  */
+//// TODO: 2017.02.24. should it use to redirect different users to different pages
 public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -55,19 +56,20 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         Collection<? extends GrantedAuthority> authorities
                 = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
+            if (grantedAuthority.getAuthority().equals("user")) {
                 isUser = true;
+                System.out.println(isUser);
                 break;
-            } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
+            } else if (grantedAuthority.getAuthority().equals("admin")) {
                 isAdmin = true;
                 break;
             }
         }
 
         if (isUser) {
-            return "/homepage.html";
+            return "/welcome";
         } else if (isAdmin) {
-            return "/console.html";
+            return "/admin";
         } else {
             throw new IllegalStateException();
         }

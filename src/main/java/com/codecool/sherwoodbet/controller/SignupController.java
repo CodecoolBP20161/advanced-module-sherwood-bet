@@ -38,9 +38,6 @@ public class SignupController {
     private EmailAPIController emailAPIController;
 
     @Autowired
-    private SecurityService securityService;
-
-    @Autowired
     private UserRepository userRepository;
 
     @RequestMapping("/signup")

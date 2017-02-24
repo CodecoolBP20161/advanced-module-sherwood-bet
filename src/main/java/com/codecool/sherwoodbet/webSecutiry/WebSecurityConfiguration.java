@@ -45,7 +45,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/signup").permitAll().anyRequest()
+                .antMatchers("/", "/signup", "/login").permitAll().anyRequest()
                 .authenticated()
                 .and()
                 .addFilterAt(new CustomPasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
@@ -55,10 +55,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
     }
 
-//    @Bean
-//    public MySavedRequestAwareAuthenticationSuccessHandler mySuccessHandler(){
-//        return new MySavedRequestAwareAuthenticationSuccessHandler();
-//    }
     @Bean
     public SimpleUrlAuthenticationFailureHandler myFailureHandler(){
         return new SimpleUrlAuthenticationFailureHandler();
@@ -69,12 +65,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new MySimpleUrlAuthenticationSuccessHandler();
     }
 
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
-//    }
-
-//    enable every javascript resources at static
+    //enable every javascript resources at static
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/*.js");

@@ -13,6 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -33,9 +35,6 @@ public class UserService {
     @Autowired
     PasswordHashing passwordHashing;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
     public void saveUser(String username, String rawPassword, String email){
         Role userRole = roleRepository.findByName("user");
 
@@ -48,17 +47,5 @@ public class UserService {
         return userRepository.findByName(name);
     }
 
-    public void login(HttpServletRequest request, User user) throws AuthenticationException {
-        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(user.getName(),
-                user.getPassword());
 
-        // Authenticate the user
-        Authentication authentication = authenticationManager.authenticate(authRequest);
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(authentication);
-
-        // Create a new session and add the security context.
-        HttpSession session = request.getSession(true);
-        session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-    }
 }

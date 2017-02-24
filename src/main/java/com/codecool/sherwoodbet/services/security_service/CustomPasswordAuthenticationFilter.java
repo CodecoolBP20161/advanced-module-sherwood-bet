@@ -21,7 +21,8 @@ import java.io.IOException;
 public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
         @Override
-        public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
+                throws AuthenticationException {
             try {
                 BufferedReader reader = request.getReader();
                 StringBuffer sb = new StringBuffer();
@@ -34,9 +35,9 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
                 if (parsedReq != null) {
                     ObjectMapper mapper = new ObjectMapper();
                     AuthReq authReq = mapper.readValue(parsedReq, AuthReq.class);
-                    UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(authReq.getUsername(), authReq.getPassword());
-                    LoginController loginController = new LoginController();
-                    loginController.login();
+                    UsernamePasswordAuthenticationToken token =
+                            new UsernamePasswordAuthenticationToken(authReq.getUsername(), authReq.getPassword());
+                    System.out.println(token.isAuthenticated());
                     return token;
                 }
             } catch (JsonParseException e) {

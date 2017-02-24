@@ -1,26 +1,16 @@
 package com.codecool.sherwoodbet.controller;
 
-import com.codecool.sherwoodbet.model.Login;
-import com.codecool.sherwoodbet.model.database.User;
 import com.codecool.sherwoodbet.repository.UserRepository;
-import com.codecool.sherwoodbet.services.security_service.UserValidator;
 import com.codecool.sherwoodbet.webSecutiry.PasswordHashing;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.sym.error;
 
 /**
  * Created by csyk on 2017.02.15..
@@ -35,9 +25,6 @@ public class LoginController {
 
     @Autowired
     private PasswordHashing passwordHashing;
-
-    @Autowired
-    private UserValidator userValidator;
 
     @RequestMapping("/welcome")
     @ResponseBody

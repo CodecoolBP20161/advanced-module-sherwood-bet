@@ -1,8 +1,10 @@
 package com.codecool.sherwoodbet.webSecutiry;
 
+import com.codecool.sherwoodbet.services.UserService;
 import com.codecool.sherwoodbet.services.security_service.CustomPasswordAuthenticationFilter;
-import com.codecool.sherwoodbet.services.security_service.MySavedRequestAwareAuthenticationSuccessHandler;
-import com.codecool.sherwoodbet.services.security_service.RestAuthenticationEntryPoint;
+//import com.codecool.sherwoodbet.services.security_service.MySavedRequestAwareAuthenticationSuccessHandler;
+import com.codecool.sherwoodbet.services.security_service.MySimpleUrlAuthenticationSuccessHandler;
+import com.codecool.sherwoodbet.services.security_service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,14 +25,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Autowired
-    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
-
-    @Autowired
-    private MySavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -38,13 +32,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    protected void configureGlobal(AuthenticationManagerBuilder auth)
-            throws Exception {
+    UserDetailsService userDetailsService;
 
-        auth.inMemoryAuthentication()
-                .withUser("temporary").password("temporary").roles("ADMIN")
-                .and()
-                .withUser("Csyk01").password("Bali01").roles("USER");
+    @Autowired
+    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 
     /*override the configure method and permit all user to see the login and registration page
@@ -63,13 +55,18 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
     }
 
-    @Bean
-    public MySavedRequestAwareAuthenticationSuccessHandler mySuccessHandler(){
-        return new MySavedRequestAwareAuthenticationSuccessHandler();
-    }
+//    @Bean
+//    public MySavedRequestAwareAuthenticationSuccessHandler mySuccessHandler(){
+//        return new MySavedRequestAwareAuthenticationSuccessHandler();
+//    }
     @Bean
     public SimpleUrlAuthenticationFailureHandler myFailureHandler(){
         return new SimpleUrlAuthenticationFailureHandler();
+    }
+
+    @Bean
+    public MySimpleUrlAuthenticationSuccessHandler mySimpleUrlAuthenticationSuccessHandler(){
+        return new MySimpleUrlAuthenticationSuccessHandler();
     }
 
 //    @Autowired

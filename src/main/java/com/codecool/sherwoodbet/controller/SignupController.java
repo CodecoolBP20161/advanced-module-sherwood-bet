@@ -7,6 +7,7 @@ import com.codecool.sherwoodbet.validate.UserValidate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +20,7 @@ import java.util.Map;
 /**
  * Created by csyk on 2017.02.21..
  */
+@Controller
 public class SignupController {
 
     private static final Logger log = LoggerFactory.getLogger(SiteController.class);
@@ -40,8 +42,8 @@ public class SignupController {
         String password = signupData.getPassword();
         log.info("e-mail: " + email + " " + "username: " + userName);
 
-        List error = validation(email, userName, password);
         Map<String, List> response = new HashMap<>();
+        List error = validation(email, userName, password);
 
         response.put("errors", error);
         log.info(response.toString());

@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 /**
  * Created by patrik on 2017.02.03..
  */
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -17,10 +16,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     /*override the configure method and permit all user to see the login and registration page
     and to log out.*/
     //TODO delete csrf disable when in .js configured properly csrf token
+    // TODO: 2017.02.25. /bet/** and /game route permite for loged in users
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/signup", "/bet/**").permitAll().anyRequest()
+                .antMatchers("/", "/signup", "/bet/**", "/game").permitAll().anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()

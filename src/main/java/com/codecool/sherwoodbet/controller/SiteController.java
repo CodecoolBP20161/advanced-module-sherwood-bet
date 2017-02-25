@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SiteController {
 
     @RequestMapping("/")
-    public String index (){
+    public String index() {
         return "index";
+    }
+
+    @RequestMapping("/game")
+    public String game() {
+        return "game";
     }
 }

@@ -1,4 +1,4 @@
-package com.codecool.sherwoodbet.Controller;
+package com.codecool.sherwoodbet.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

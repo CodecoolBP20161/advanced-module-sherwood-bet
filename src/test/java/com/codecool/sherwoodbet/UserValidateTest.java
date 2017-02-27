@@ -1,8 +1,8 @@
 package com.codecool.sherwoodbet;
 
-import com.codecool.sherwoodbet.Repository.UserRepository;
-import com.codecool.sherwoodbet.Services.UserService;
-import com.codecool.sherwoodbet.Validate.UserValidate;
+import com.codecool.sherwoodbet.repository.UserRepository;
+import com.codecool.sherwoodbet.services.UserService;
+import com.codecool.sherwoodbet.validate.UserValidate;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,8 +36,6 @@ public class UserValidateTest {
     UserRepository testDatabase;
     private String username = "kissbela";
     private String email = "kissbela@bela.com";
-    private String falseName = "13@hu";
-    private String falseMail = "jkhk";
 
     @Before
     public void before() {
@@ -88,7 +86,7 @@ public class UserValidateTest {
     @Test
     public void isInvalidEmailTest() {
         boolean answer = false;
-        boolean val = validate.isValidEmail(falseMail);
+        boolean val = validate.isValidEmail("dfghjk");
         assertEquals(answer, val);
     }
 }

@@ -1,8 +1,8 @@
-package com.codecool.sherwoodbet.Services;
+package com.codecool.sherwoodbet.services;
 
-import com.codecool.sherwoodbet.Model.User;
-import com.codecool.sherwoodbet.Repository.UserRepository;
-import com.codecool.sherwoodbet.WebSecutiry.PasswordHashing;
+import com.codecool.sherwoodbet.model.User;
+import com.codecool.sherwoodbet.repository.UserRepository;
+import com.codecool.sherwoodbet.webSecutiry.PasswordHashing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

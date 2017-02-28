@@ -58,7 +58,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         for (GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("user")) {
                 isUser = true;
-                System.out.println(isUser);
+                System.out.println("ssss" + isUser);
                 break;
             } else if (grantedAuthority.getAuthority().equals("admin")) {
                 isAdmin = true;

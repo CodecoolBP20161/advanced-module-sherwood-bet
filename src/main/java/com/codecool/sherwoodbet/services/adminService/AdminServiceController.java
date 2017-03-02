@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.StreamUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,7 +27,6 @@ public class AdminServiceController {
     public String collectUsers(Model model){
 
         ArrayList<ArrayList<String>> listOfObjectsElements = new ArrayList();
-        System.out.println("lofasz");
 
         for(User user: userRepository.findAll()){
             ArrayList<String> listOfValue = new ArrayList();
@@ -41,11 +37,14 @@ public class AdminServiceController {
             listOfObjectsElements.add(listOfValue);
         }
 
+        String url = "user/add";
+
 
 
         userRepository.findOne(1l);
         model.addAttribute("fields",userRepository.findOne(1l).collectFields());
         model.addAttribute("objectsValues", listOfObjectsElements);
+        model.addAttribute("url", url);
         return "admin";
     }
 
@@ -57,7 +56,24 @@ public class AdminServiceController {
         return "redirect:/admin/users";
     }
 
+    @RequestMapping("/user/add")
+    public String addUser(@RequestParam(value = "ID") String ID, @RequestParam(value = "Name") String name,@RequestParam(value = "Password") String password,@RequestParam(value = "Email") String email){
+
+        System.out.println("adddoljaaa");
+        User user = new User(name, password, email);
+        userRepository.save(user);
 
 
 
-}
+        return "redirect:/admin/users";
+    }
+//
+//    @RequestMapping("/user/edit")
+//    public String editUser()
+
+
+
+
+
+
+    }

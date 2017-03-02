@@ -38,6 +38,9 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
 
             ObjectMapper mapper = new ObjectMapper();
             Login authReq = mapper.readValue(line, Login.class);
+//            System.out.println(authReq.getUsername());
+//            authReq.setRole(authReq.getUsername());
+//            System.out.println(authReq.getRole());
 
             List<GrantedAuthority> grantedAuths = new ArrayList<>();
             grantedAuths.add(new SimpleGrantedAuthority("user"));
@@ -57,13 +60,13 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
         return null;
     }
 
-    @Data
-    public class AuthReq {
-        String username;
-        String password;
 
-        @Autowired
-        UserDetailsServiceImpl userDetailsServiceImpl;
+    public class AuthReq {
+        private UserDetailsServiceImpl userDetailsService = new UserDetailsServiceImpl();
+
+        private String username;
+        private String password;
+        private String role;
 
         public String getUsername() {
             return username;
@@ -73,8 +76,20 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
             return password;
         }
 
-//        public String getRole(){
-//            return userDetailsServiceImpl.userRepository.findByName(username).getRole().getName();
-//        }
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public void setRole() {
+            this.role = userDetailsService.userRepository.findByName(username).getRole().getName();
+        }
+
+        public String getRole() {
+            return role;
+        }
     }
 }

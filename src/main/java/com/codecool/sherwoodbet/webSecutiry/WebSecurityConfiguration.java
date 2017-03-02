@@ -45,7 +45,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/signup", "/login", "/welcome").permitAll().anyRequest()
                 .authenticated()
                 .and()
-                .addFilter(new CustomPasswordAuthenticationFilter())
+                //when I use this filter redirecting "/" route and wont use mySuccessHandler why??????
+//                .addFilter(new CustomPasswordAuthenticationFilter())
                 .formLogin()
                 .loginProcessingUrl("/login").successHandler(mySimpleUrlAuthenticationSuccessHandler())
                 .failureHandler(myFailureHandler())

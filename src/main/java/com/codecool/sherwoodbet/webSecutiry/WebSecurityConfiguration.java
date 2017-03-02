@@ -1,6 +1,7 @@
 package com.codecool.sherwoodbet.webSecutiry;
 
 //import com.codecool.sherwoodbet.services.security_service.MySavedRequestAwareAuthenticationSuccessHandler;
+import com.codecool.sherwoodbet.services.security_service.CustomPasswordAuthenticationFilter;
 import com.codecool.sherwoodbet.services.security_service.MySimpleUrlAuthenticationSuccessHandler;
         import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -44,6 +45,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/signup", "/login", "/welcome").permitAll().anyRequest()
                 .authenticated()
                 .and()
+                .addFilter(new CustomPasswordAuthenticationFilter())
                 .formLogin()
                 .loginProcessingUrl("/login").successHandler(mySimpleUrlAuthenticationSuccessHandler())
                 .failureHandler(myFailureHandler())

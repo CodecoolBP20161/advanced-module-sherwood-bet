@@ -18,13 +18,7 @@ public class SiteController {
 //    if session exists redirect to index2.html
 // TODO: 2017.02.24. answer frontend that succes or failure the login process
     @RequestMapping("/")
-    public String index(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if(session == null){
-            return "index";
-        }
-        else{
-            return "index2";
-        }
+    public String index() {
+        return "index";
     }
 }

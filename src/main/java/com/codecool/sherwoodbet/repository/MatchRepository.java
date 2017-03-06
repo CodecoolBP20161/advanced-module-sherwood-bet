@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created by patrik on 2017.02.02..
+ * Created by csyk on 2017.03.02..
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface MatchRepository extends JpaRepository<User, Long> {
 }

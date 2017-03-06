@@ -1,4 +1,4 @@
-package com.codecool.sherwoodbet.model;
+package com.codecool.sherwoodbet.model.database;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 @Entity
 @Table(name="users")
 public class User {
+
     private Long ID;
     private String name;
     private String password;
@@ -28,33 +29,33 @@ public class User {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getID() {
         return ID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public void setID(Long ID) {
         this.ID = ID;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {

@@ -18,38 +18,19 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
-public class AdminServiceController {
+public class UserAdminController {
 
     @Autowired
     UserRepository userRepository;
 
     @RequestMapping("/users")
     public String collectUsers(Model model){
-
-        ArrayList<ArrayList<String>> listOfObjectsElements = new ArrayList();
-
-        for(User user: userRepository.findAll()){
-            ArrayList<String> listOfValue = new ArrayList();
-            listOfValue.add(user.getID().toString());
-            listOfValue.add(user.getName());
-            listOfValue.add(user.getPassword());
-            listOfValue.add(user.getEmail());
-            listOfObjectsElements.add(listOfValue);
-        }
-
-        String url = "user/add";
-
-
-
-        userRepository.findOne(1l);
-        model.addAttribute("fields",userRepository.findOne(1l).collectFields());
-        model.addAttribute("objectsValues", listOfObjectsElements);
-        model.addAttribute("url", url);
-        return "admin";
+        model.addAttribute("users", userRepository.findAll());
+        return "userAdmin";
     }
 
 
-    @RequestMapping("/removefromDB/{values_id}")
+    @RequestMapping("/user/delete/{values_id}")
     public String removeFromDB(@PathVariable Integer values_id){
         System.out.println("toroljeeee");
         userRepository.delete(Long.valueOf(values_id));
@@ -57,19 +38,29 @@ public class AdminServiceController {
     }
 
     @RequestMapping("/user/add")
-    public String addUser(@RequestParam(value = "ID") String ID, @RequestParam(value = "Name") String name,@RequestParam(value = "Password") String password,@RequestParam(value = "Email") String email){
+    public String addUser(@RequestParam(value = "ID") String ID, @RequestParam(value = "name") String name,@RequestParam(value = "password") String password,@RequestParam(value = "email") String email){
 
         System.out.println("adddoljaaa");
         User user = new User(name, password, email);
         userRepository.save(user);
-
-
-
         return "redirect:/admin/users";
     }
-//
-//    @RequestMapping("/user/edit")
-//    public String editUser()
+
+    @RequestMapping("/user/edit/{values_id}")
+    public String editUser(@PathVariable Integer values_id, @RequestParam(value = "Name") String name,@RequestParam(value = "Password") String password,@RequestParam(value = "Email") String email){
+
+        User user = userRepository.findOne(Long.valueOf(values_id));
+
+        System.out.println("editaljaaaa");
+        System.out.println(values_id);
+
+            user.setID(Long.valueOf(values_id));
+            user.setName(name);
+            user.setEmail(email);
+            user.setPassword(password);
+        System.out.println("editke kesz");
+        return "redirect:/admin/users";
+    }
 
 
 

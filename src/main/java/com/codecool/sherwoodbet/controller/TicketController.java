@@ -84,6 +84,8 @@ public class TicketController {
     @RequestMapping("/bet/api/get_ticket")
     @ResponseBody
     public Map getTicket(@RequestParam int ticket) {
+        creatingDatas();
+
         return inticket;
     }
 }

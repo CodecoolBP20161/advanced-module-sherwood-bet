@@ -8,7 +8,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "ticket")
-class Ticket {
+public class Ticket {
 
     private Long ID;
     private String description;
@@ -20,9 +20,10 @@ class Ticket {
     public Ticket() {
     }
 
-    public Ticket(String description, Date deadline) {
+    public Ticket(String description, Date deadline, String title) {
         this.description = description;
         this.deadline = deadline;
+        this.title = title;
     }
 
     @Id
@@ -49,5 +50,13 @@ class Ticket {
 
     public void setDeadline(Date deadline) {
         this.deadline = deadline;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

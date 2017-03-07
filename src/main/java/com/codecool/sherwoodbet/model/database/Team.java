@@ -8,7 +8,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "team")
-class Team {
+public class Team {
 
     private Long ID;
     private String stadium;

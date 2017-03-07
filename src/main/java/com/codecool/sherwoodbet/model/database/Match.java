@@ -9,7 +9,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "match")
-class Match {
+public class Match {
 
     private Long ID;
     private Team homeTeam;

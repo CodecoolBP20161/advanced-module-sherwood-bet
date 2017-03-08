@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"></meta>
+    <title>Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Sacramento" rel="stylesheet"></link>
+
+    <!--TODO use this when in .js configured properly csrf token-->
+    <!--<meta name="_csrf" content="${_csrf.token}"/>-->
+    <!--&lt;!&ndash; default header name is X-CSRF-TOKEN &ndash;&gt;-->
+    <!--<meta name="_csrf_header" content="${_csrf.headerName}"/>-->
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="/resources/demos/style.css"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+</head>
+
+<body>
+
+<a href="/admin/users" class="btn btn-default">Users</a>
+<a href="/admin/teams" class="btn btn-default">Teams</a>
+<a href="/admin/matches" class="btn btn-default">Matches</a>
+
+<table class="table table-stripped floatedTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Home Team</th>
+        <th>Away Team</th>
+        <th>Venue</th>
+        <th>League</th>
+        <th>Round</th>
+        <th>Link</th>
+        <th>Deadline</th>
+        <th>Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="match, iterStat : ${matches}">
+        <td th:id="'currentMatchId-' + ${match.getID()}" th:text="${match.getID()}">ID</td>
+        <td th:id="'currentMatchHomeTeam-' + ${match.getID()}" th:text="${match.getHomeTeam().getShortName()}">Home Team</td>
+        <td th:id="'currentMatchAwayTeam-' + ${match.getID()}" th:text="${match.getAwayTeam().getShortName()}">Away Team</td>
+        <td th:id="'currentMatchVenue-' + ${match.getID()}" th:text="${match.getVenue()}">Venue</td>
+        <td th:id="'currentMatchLeague-' + ${match.getID()}" th:text="${match.getLeague()}">League</td>
+        <td th:id="'currentMatchRound-' + ${match.getID()}" th:text="${match.getRound()}">Round</td>
+        <td th:id="'currentMatchLink-' + ${match.getID()}" th:text="${match.getLink()}">Link</td>
+        <td th:id="'currentMatchDeadLine-' + ${match.getID()}" th:text="${match.getDeadLine()}">Deadline</td>
+        <td th:id="'currentMatchResult-' + ${match.getID()}" th:text="${match.getResult()}">Result</td>
+
+        <td><!-- Button trigger modal -->
+            <button type="button" th:id="'editstart-' + ${match.getID()}" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button>
+        </td>
+        <td><a href="#" class="btn btn-danger" th:href="'/admin/match/delete/' + ${match.getID()}">Delete</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="#" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Add a new element</a>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form th:action="'/admin/match/edit'" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Home Team</th>
+                            <th>Away Team</th>
+                            <th>Venue</th>
+                            <th>League</th>
+                            <th>Round</th>
+                            <th>Link</th>
+                            <th>Deadline</th>
+                            <th>Result</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><input id="editId" style="width: 50px" name="ID"/></td>
+                            <td><input id="editHomeTeam" style="width: 100px" name="homeTeam"/></td>
+                            <td><input id="editAwayTeam" style="width: 100px" name="awayTeam"/></td>
+                            <td><input id="editVenue" style="width: 100px" name="venue"/></td>
+                            <td><input id="editLeague" style="width: 100px" name="league"/></td>
+                            <td><input id="editRound" style="width: 50px" name="round"/></td>
+                            <td><input id="editLink" style="width: 100px" name="link"/></td>
+                            <td><input id="editDeadLine" style="width: 170px" name="deadLine"/></td>
+                            <td>
+                                <select name="result" id="editResult">
+                                    <option value="home">Home</option>
+                                    <option value="draw">Draw</option>
+                                    <option value="away">Away</option>
+                                </select>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal2 -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form th:action="'/admin/match/add'" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel2">New</h4>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Home Team</th>
+                            <th>Away Team</th>
+                            <th>Venue</th>
+                            <th>League</th>
+                            <th>Round</th>
+                            <th>Link</th>
+                            <th>Deadline</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <select name="homeTeam">
+                                    <option th:each="team, iterStat : ${teams}"  th:text="${team.getShortName()}" th:value="${team.getID()}">Team</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="awayTeam">
+                                    <option th:each="team, iterStat : ${teams}"  th:text="${team.getShortName()}" th:value="${team.getID()}">Team</option>
+                                </select>
+                            </td>
+                            <td><input style="width: 100px" placeholder="Venue" name="venue"/></td>
+                            <td><input style="width: 100px" placeholder="League" name="league"/></td>
+                            <td><input style="width: 100px" placeholder="Round" name="round"/></td>
+                            <td><input style="width: 100px" placeholder="Link" name="link"/></td>
+                            <td><input style="width: 130px" id="datepicker" placeholder="yyyy/mm/dd/hh/mm" name="deadLine"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit"  class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/admin/match.js}"></script>
+
+
+</body>
+</html>

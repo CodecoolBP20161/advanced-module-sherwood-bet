@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class User {
 
     private Long ID;
+    @Column(unique = true)
     private String name;
     private String password;
 

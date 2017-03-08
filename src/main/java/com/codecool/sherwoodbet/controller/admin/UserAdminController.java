@@ -1,6 +1,8 @@
-package com.codecool.sherwoodbet.services.adminService;
+package com.codecool.sherwoodbet.controller.admin;
 
-import com.codecool.sherwoodbet.model.User;
+import com.codecool.sherwoodbet.model.database.Team;
+import com.codecool.sherwoodbet.model.database.User;
+import com.codecool.sherwoodbet.repository.TeamRepository;
 import com.codecool.sherwoodbet.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.StreamUtils;
@@ -26,7 +28,7 @@ public class UserAdminController {
     @RequestMapping("/users")
     public String collectUsers(Model model){
         model.addAttribute("users", userRepository.findAll());
-        return "userAdmin";
+        return "admin/userAdmin";
     }
 
 
@@ -38,7 +40,7 @@ public class UserAdminController {
     }
 
     @RequestMapping("/user/add")
-    public String addUser(@RequestParam(value = "ID") String ID, @RequestParam(value = "name") String name,@RequestParam(value = "password") String password,@RequestParam(value = "email") String email){
+    public String addUser(@RequestParam(value = "name") String name,@RequestParam(value = "password") String password,@RequestParam(value = "email") String email){
 
         System.out.println("adddoljaaa");
         User user = new User(name, password, email);
@@ -46,18 +48,16 @@ public class UserAdminController {
         return "redirect:/admin/users";
     }
 
-    @RequestMapping("/user/edit/{values_id}")
-    public String editUser(@PathVariable Integer values_id, @RequestParam(value = "Name") String name,@RequestParam(value = "Password") String password,@RequestParam(value = "Email") String email){
+    @RequestMapping("/user/edit")
+    public String editUser(@RequestParam(value = "ID") String ID,@RequestParam(value = "name") String name,@RequestParam(value = "password") String password,@RequestParam(value = "email") String email){
 
-        User user = userRepository.findOne(Long.valueOf(values_id));
+        User user = userRepository.findOne(Long.valueOf(ID));
 
         System.out.println("editaljaaaa");
-        System.out.println(values_id);
-
-            user.setID(Long.valueOf(values_id));
-            user.setName(name);
-            user.setEmail(email);
-            user.setPassword(password);
+        user.setName(name);
+        user.setEmail(email);
+        user.setPassword(password);
+        userRepository.save(user);
         System.out.println("editke kesz");
         return "redirect:/admin/users";
     }

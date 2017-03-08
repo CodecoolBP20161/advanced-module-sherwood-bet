@@ -8,7 +8,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "team")
-class Team {
+public class Team {
 
     private Long ID;
     private String stadium;
@@ -16,7 +16,7 @@ class Team {
     private Set<Match> homeMatches;
 
     @Column(unique = true)
-    private String short_name;
+    private String shortName;
 
     @Column(unique = true)
     private String name;
@@ -24,18 +24,18 @@ class Team {
     public Team() {
     }
 
-    public Team(String stadium, String short_name, String name) {
+    public Team(String stadium, String shortName, String name) {
         this.stadium = stadium;
-        this.short_name = short_name;
+        this.shortName = shortName;
         this.name = name;
     }
 
-    public String getShort_name() {
-        return short_name;
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setShort_name(String short_name) {
-        this.short_name = short_name;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
     public String getName() {

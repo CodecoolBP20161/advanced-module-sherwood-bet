@@ -2,16 +2,6 @@
  * Created by patrik on 2017.03.03..
  */
 
-
-
-var userDetails = {
-    id:"",
-    userName:"",
-    password:"",
-    email:""
-};
-
-
 document.body.addEventListener("click", function(){
     var targetId = event.target.id;
     var id = targetId.split("-")[1];

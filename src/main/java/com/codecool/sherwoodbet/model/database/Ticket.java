@@ -8,7 +8,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "ticket")
-class Ticket {
+public class Ticket {
 
     private Long ID;
     private String description;

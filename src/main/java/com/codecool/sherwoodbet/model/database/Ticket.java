@@ -2,6 +2,7 @@ package com.codecool.sherwoodbet.model.database;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by csyk on 2017.03.03..
@@ -13,6 +14,8 @@ public class Ticket {
     private Long ID;
     private String description;
     private Date deadline;
+    private boolean playable;
+    private Set<Bet> userTicket;
 
     @Column(unique = true)
     private String title;
@@ -58,5 +61,22 @@ public class Ticket {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public boolean isPlayable() {
+        return playable;
+    }
+
+    public void setPlayable(boolean playable) {
+        this.playable = playable;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userTicket")
+    public Set<Bet> getUserTicket() {
+        return userTicket;
+    }
+
+    public void setUserTicket(Set<Bet> userTicket) {
+        this.userTicket = userTicket;
     }
 }

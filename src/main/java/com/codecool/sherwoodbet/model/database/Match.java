@@ -21,6 +21,7 @@ public class Match {
     private Date deadLine;
     private String result;
     private Set<Ticket> tickets;
+    private Set<Bet> matches;
 
     public Match() {
     }
@@ -116,5 +117,14 @@ public class Match {
 
     public void setTickets(Set<Ticket> tickets) {
         this.tickets = tickets;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "match")
+    public Set<Bet> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(Set<Bet> matches) {
+        this.matches = matches;
     }
 }

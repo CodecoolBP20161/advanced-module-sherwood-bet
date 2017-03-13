@@ -18,6 +18,12 @@
     <!--<meta name="_csrf" content="${_csrf.token}"/>-->
     <!--&lt;!&ndash; default header name is X-CSRF-TOKEN &ndash;&gt;-->
     <!--<meta name="_csrf_header" content="${_csrf.headerName}"/>-->
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="/resources/demos/style.css"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
 
 <body>
@@ -26,6 +32,7 @@
 <a href="/admin/teams" class="btn btn-default">Teams</a>
 <a href="/admin/matches" class="btn btn-default">Matches</a>
 <a href="/admin/tickets" class="btn btn-default">Tickets</a>
+<a href="/admin/bets" class="btn btn-default">Bets</a>
 
 <table class="table table-stripped floatedTable">
     <thead>
@@ -38,15 +45,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="team, iterStat : ${teams}">
-        <td th:id="'currentTeamId-' + ${team.getID()}" th:text="${team.getID()}">ID</td>
-        <td th:id="'currentTeamStadium-' + ${team.getID()}" th:text="${team.getStadium()}">Stadium</td>
-        <td th:id="'currentTeamShortName-' + ${team.getID()}" th:text="${team.getShortName()}">Short Name</td>
-        <td th:id="'currentTeamName-' + ${team.getID()}" th:text="${team.getName()}">Name</td>
+    <tr th:each="ticket, iterStat : ${tickets}">
+        <td th:id="'currentTicketId-' + ${ticket.getID()}" th:text="${ticket.getID()}">ID</td>
+        <td th:id="'currentTicketDeadline-' + ${ticket.getID()}" th:text="${ticket.getDeadline()}">Deadline</td>
+        <td th:id="'currentTicketDescription-' + ${ticket.getID()}" th:text="${ticket.getDescription()}">Description</td>
+        <td th:id="'currentTicketPlayable-' + ${ticket.getID()}" th:text="${ticket.isPlayable()}">Playable</td>
+        <td th:id="'currentTicketTitle-' + ${ticket.getID()}" th:text="${ticket.getTitle()}">Title</td>
         <td><!-- Button trigger modal -->
-            <button type="button" th:id="'editstart-' + ${team.getID()}" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button>
+            <button type="button" th:id="'editstart-' + ${ticket.getID()}" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button>
         </td>
-        <td><a href="#" class="btn btn-danger" th:href="'/admin/team/delete/' + ${team.getID()}">Delete</a></td>
+        <td><a href="#" class="btn btn-danger" th:href="'/admin/ticket/delete/' + ${ticket.getID()}">Delete</a></td>
     </tr>
     </tbody>
 </table>
@@ -59,7 +67,7 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form th:action="'/admin/team/edit'" method="post">
+            <form th:action="'/admin/ticket/edit'" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Modal title</h4>
@@ -69,17 +77,17 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Stadium</th>
-                            <th>Short Name</th>
-                            <th>Name</th>
+                            <th>Deadline</th>
+                            <th>Description</th>
+                            <th>Title</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td><input id="editId" style="width: 140px" name="ID"/></td>
-                            <td><input id="editStadium" style="width: 140px" name="stadium"/></td>
-                            <td><input id="editShortName" style="width: 140px" name="shortName"/></td>
-                            <td><input id="editName" style="width: 140px" name="name"/></td>
+                            <td><input id="editId" style="width: 140px" name="id"/></td>
+                            <td><input id="editDeadline" style="width: 140px" name="deadline"/></td>
+                            <td><input id="editDescription" style="width: 140px" name="description"/></td>
+                            <td><input id="editTitle" style="width: 140px" name="title"/></td>
                         </tr>
                         </tbody>
                     </table>
@@ -98,7 +106,7 @@
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
-            <form th:action="'/admin/team/add'" method="post">
+            <form th:action="'/admin/ticket/add'" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel2">New</h4>
@@ -107,16 +115,17 @@
                     <table>
                         <thead>
                         <tr>
-                            <th>Stadium</th>
-                            <th>Short Name</th>
-                            <th>Name</th>
+                            <th>Deadline</th>
+                            <th>Description</th>
+                            <th>Title</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td><input style="width: 140px" placeholder="Stadium" name="stadium"/></td>
-                            <td><input style="width: 140px" placeholder="Short Name" name="shortName"/></td>
-                            <td><input style="width: 140px" placeholder="Name" name="name"/></td>
+                            <td><input style="width: 140px" id="datepicker" placeholder="yyyy/mm/dd/hh/mm" name="deadline"/></td>
+                            <td><input style="width: 140px" placeholder="Description" name="description"/></td>
+                            <td><input style="width: 140px" placeholder="Title" name="title"/></td>
+
                         </tr>
                         </tbody>
                     </table>
@@ -131,7 +140,7 @@
 </div>
 
 
-<script th:src="@{/admin/team.js}"></script>
+<script th:src="@{/admin/ticket.js}"></script>
 
 
 </body>

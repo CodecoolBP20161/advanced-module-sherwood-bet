@@ -1,6 +1,7 @@
 package com.codecool.sherwoodbet.controller.admin;
 
 import com.codecool.sherwoodbet.model.database.Team;
+import com.codecool.sherwoodbet.model.database.Ticket;
 import com.codecool.sherwoodbet.repository.TeamRepository;
 import com.codecool.sherwoodbet.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by patrik on 2017.03.08..
@@ -26,30 +31,36 @@ public class TicketAdminController {
         return "admin/ticketAdmin";
     }
 
-//    @RequestMapping("/team/add")
-//    public String addUser(@RequestParam(value = "stadium") String stadium, @RequestParam(value = "shortName") String shortName, @RequestParam(value = "name") String name){
-//
-//        System.out.println("adddoljaaa");
-//        Team team = new Team(stadium, shortName, name);
-//        teamRepository.save(team);
-//        return "redirect:/admin/teams";
-//    }
-//
-//    @RequestMapping("/team/delete/{values_id}")
-//    public String removeFromDB(@PathVariable Integer values_id){
-//        teamRepository.delete(Long.valueOf(values_id));
-//        return "redirect:/admin/teams";
-//    }
-//
-//    @RequestMapping("/team/edit")
-//    public String editUser(@RequestParam(value = "ID") String ID,@RequestParam(value = "stadium") String stadium,@RequestParam(value = "shortName") String shortName,@RequestParam(value = "name") String name){
-//
-//        Team team = teamRepository.findOne(Long.valueOf(ID));
-//        team.setStadium(stadium);
-//        team.setShortName(shortName);
-//        team.setName(name);
-//        teamRepository.save(team);
-//        return "redirect:/admin/teams";
-//    }
+    @RequestMapping("/ticket/add")
+    public String addUser(@RequestParam(value = "deadline") String deadLine,
+                          @RequestParam(value = "title") String title,
+                          @RequestParam(value = "description") String description) throws ParseException {
 
+        System.out.println("adddoljaaa");
+        SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy/hh/mm");
+        Date date = format.parse(deadLine);
+        Ticket ticket = new Ticket(description, date, title);
+        ticket.setPlayable(true);
+        ticketRepository.save(ticket);
+        return "redirect:/admin/tickets";
+    }
+
+    @RequestMapping("/ticket/delete/{values_id}")
+    public String removeFromDB(@PathVariable Integer values_id){
+        ticketRepository.delete(Long.valueOf(values_id));
+        return "redirect:/admin/tickets";
+    }
+
+    @RequestMapping("/ticket/edit")
+    public String editUser(@RequestParam(value = "id") String ID,
+                           @RequestParam(value = "deadline") String deadLine,
+                           @RequestParam(value = "title") String title,
+                           @RequestParam(value = "description") String description) throws ParseException {
+
+        Ticket ticket = ticketRepository.findOne(Long.valueOf(ID));
+        ticket.setTitle(title);
+        ticket.setDescription(description);
+        ticketRepository.save(ticket);
+        return "redirect:/admin/tickets";
+    }
 }

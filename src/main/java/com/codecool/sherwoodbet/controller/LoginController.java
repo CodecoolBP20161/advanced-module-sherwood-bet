@@ -20,32 +20,12 @@ public class LoginController {
 
     private static final Logger log = LoggerFactory.getLogger(SiteController.class);
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private PasswordHashing passwordHashing;
-
     @RequestMapping("/welcome")
     @ResponseBody
     public Map login() {
         Map response = new HashMap<String, Boolean>();
-//        String username = login.getUsername();
-//        String password = login.getPassword();
-//        log.info(username + password);
-//        User user = userRepository.findByName(username);
-
-
-        Boolean equal = true;
-//        try {
-//            if (Objects.equals(user.getName(), username) && passwordHashing.matches(password, user.getPassword())) {
-//                equal = true;
-//            }
-//        } catch (NullPointerException e) {
-//            log.info("user not exists");
-//        }
-        response.put("login_successful", equal);
-        System.out.println(response.toString());
+        response.put("login_successful", true);
+        log.info(response.toString());
         return response;
     }
 }

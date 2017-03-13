@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmailAPIController {
 
-    private static final Logger logger = LoggerFactory.getLogger(EmailAPIController.class);
     private final APIService apiService;
 
     public EmailAPIController(){

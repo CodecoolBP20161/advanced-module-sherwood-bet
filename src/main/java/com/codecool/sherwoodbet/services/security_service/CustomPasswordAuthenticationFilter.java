@@ -43,7 +43,7 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
 
             UsernamePasswordAuthenticationToken token =
                     new UsernamePasswordAuthenticationToken(authReq.getUsername(), authReq.getPassword());
-            System.out.println("token is authenticated: " + token.isAuthenticated());
+            logger.info("token is authenticated: " + token.isAuthenticated());
             return token;
 
         } catch (JsonParseException e) {

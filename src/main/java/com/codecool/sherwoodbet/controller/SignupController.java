@@ -52,7 +52,7 @@ public class SignupController {
 
         response.put("errors", error);
         log.info(response.toString());
-        //if there are not errors save into database and send a welcome email
+
         if(error.isEmpty()) {
             userService.saveUser(userName, password, email);
             emailAPIController.sendWelcomeEmail(email, userName);

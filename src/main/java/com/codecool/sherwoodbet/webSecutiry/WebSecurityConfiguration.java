@@ -34,7 +34,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     /*override the configure method and permit all user to see the login and registration page
     and to log out.*/
     //TODO delete csrf disable when in .js configured properly csrf token
-    // TODO: 2017.03.13. create myFailureHandler 
+    // TODO: 2017.03.13. create myFailureHandler
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -46,6 +46,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .failureHandler(myFailureHandler())
                 .and()
                 .logout()
+                .deleteCookies()
+                .logoutUrl("/logout")
                 .permitAll();
         http
                 .csrf().disable();

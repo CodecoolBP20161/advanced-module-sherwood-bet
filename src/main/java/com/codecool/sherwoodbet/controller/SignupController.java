@@ -19,9 +19,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by csyk on 2017.02.15..
- */
 @Controller
 public class SignupController {
 
@@ -36,41 +33,36 @@ public class SignupController {
     @Autowired
     private EmailAPIController emailAPIController;
 
-    @Autowired
-    private UserRepository userRepository;
-
     @RequestMapping("/signup")
     @ResponseBody
-    public Map signup(@RequestBody Signup signupData){
+    public Map signup(@RequestBody Signup signupData) {
+
         String email = signupData.getEmail();
         String userName = signupData.getUsername();
         String password = signupData.getPassword();
         log.info("e-mail: " + email + " " + "username: " + userName);
 
-        List error = validation(email, userName, password);
         Map<String, List> response = new HashMap<>();
+        List error = validation(email, userName, password);
 
         response.put("errors", error);
         log.info(response.toString());
-
-        if(error.isEmpty()) {
+        //if there are not errors save into database and send a welcome email
+        if (error.isEmpty()) {
             userService.saveUser(userName, password, email);
             emailAPIController.sendWelcomeEmail(email, userName);
         }
-
-        User user = userRepository.findByName(userName);
-
         return response;
     }
 
-    private List validation(String email, String userName, String password){
+    private List validation(String email, String userName, String password) {
         ArrayList<String> error = new ArrayList<>();
-        if(!(userValidate.checkEmail(email) && userValidate.isValidEmail(email))) {
+        if (!(userValidate.checkEmail(email) && userValidate.isValidEmail(email))) {
             error.add("email");
         }
-        if(!userValidate.checkUsername(userName)){
+        if (!userValidate.checkUsername(userName)) {
             error.add("username");
         }
-        return  error;
+        return error;
     }
 }

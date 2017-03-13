@@ -5,7 +5,6 @@ import com.codecool.sherwoodbet.services.security_service.MySimpleUrlAuthenticat
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -18,7 +17,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 /**
  * Created by patrik on 2017.02.03..
  */
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -38,7 +36,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/signup", "/login", "/welcome").permitAll().anyRequest()
+                .antMatchers("/", "/signup", "/login", "/welcome", "/bet/**", "/game").permitAll().anyRequest()
                 .authenticated()
                 .and()
                 .addFilterBefore(new CustomPasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

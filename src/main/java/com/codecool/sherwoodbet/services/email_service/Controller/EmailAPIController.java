@@ -23,5 +23,4 @@ public class EmailAPIController {
 
         apiService.sendEmail(to, subject, text);
     }
-
 }

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class SiteController {
 
-
     // TODO: check cookies authentication
     @RequestMapping("/")
     public String index(HttpServletRequest request) {

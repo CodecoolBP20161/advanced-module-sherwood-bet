@@ -3,9 +3,8 @@ package com.codecool.sherwoodbet.controller;
 import com.codecool.sherwoodbet.model.Signup;
 import com.codecool.sherwoodbet.model.database.User;
 import com.codecool.sherwoodbet.repository.UserRepository;
-import com.codecool.sherwoodbet.services.email_service.Controller.EmailAPIController;
 import com.codecool.sherwoodbet.services.UserService;
-import com.codecool.sherwoodbet.services.security_service.SecurityService;
+import com.codecool.sherwoodbet.services.email_service.Controller.EmailAPIController;
 import com.codecool.sherwoodbet.validate.UserValidate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,7 +48,7 @@ public class SignupController {
         log.info("e-mail: " + email + " " + "username: " + userName);
 
         List error = validation(email, userName, password);
-        Map response = new HashMap<String, ArrayList>();
+        Map<String, List> response = new HashMap<>();
 
         response.put("errors", error);
         log.info(response.toString());
@@ -65,7 +64,7 @@ public class SignupController {
     }
 
     private List validation(String email, String userName, String password){
-        ArrayList error = new ArrayList();
+        ArrayList<String> error = new ArrayList<>();
         if(!(userValidate.checkEmail(email) && userValidate.isValidEmail(email))) {
             error.add("email");
         }

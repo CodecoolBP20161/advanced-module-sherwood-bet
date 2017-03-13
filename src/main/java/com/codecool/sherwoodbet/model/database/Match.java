@@ -20,7 +20,6 @@ public class Match {
     private String link;
     private Date deadLine;
     private String result;
-    private Set<Ticket> tickets;
     private Set<Bet> matches;
 
     public Match() {
@@ -106,17 +105,6 @@ public class Match {
 
     public void setAwayTeam(Team awayTeam) {
         this.awayTeam = awayTeam;
-    }
-
-    @ManyToMany
-    @JoinTable(name = "match_of_ticket", joinColumns = {@JoinColumn(name = "ticket_id")},
-            inverseJoinColumns = {@JoinColumn(name = "match_id")})
-    public Set<Ticket> getTickets() {
-        return tickets;
-    }
-
-    public void setTickets(Set<Ticket> tickets) {
-        this.tickets = tickets;
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "match")

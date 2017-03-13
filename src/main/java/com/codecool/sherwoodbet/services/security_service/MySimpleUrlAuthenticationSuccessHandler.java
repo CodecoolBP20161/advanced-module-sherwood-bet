@@ -8,6 +8,8 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +20,8 @@ import java.util.Collection;
 /**
  * Created by csyk on 2017.02.23..
  */
-//// TODO: 2017.02.24. should it use to redirect different users to different pages
+// TODO: 2017.02.24. should it use to redirect different users to different pages
+
 public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -58,7 +61,6 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         for (GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("user")) {
                 isUser = true;
-                System.out.println("ssss" + isUser);
                 break;
             } else if (grantedAuthority.getAuthority().equals("admin")) {
                 isAdmin = true;
@@ -86,6 +88,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
     public void setRedirectStrategy(RedirectStrategy redirectStrategy) {
         this.redirectStrategy = redirectStrategy;
     }
+
     protected RedirectStrategy getRedirectStrategy() {
         return redirectStrategy;
     }

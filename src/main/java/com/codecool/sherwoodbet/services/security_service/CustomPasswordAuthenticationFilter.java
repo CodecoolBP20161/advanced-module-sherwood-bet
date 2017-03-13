@@ -6,13 +6,20 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.util.Assert;
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
@@ -23,24 +30,28 @@ import java.util.List;
 /**
  * Created by csyk on 2017.02.20..
  */
-// TODO: 2017.02.24. should add SimpleGrantedAuthority user's role as a parameter outside from this class 
+// TODO: 2017.02.24. should add SimpleGrantedAuthority user's role as a parameter outside from this class
+
 public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
+    private MySimpleUrlAuthenticationSuccessHandler mySimpleUrlAuthenticationSuccessHandler = new MySimpleUrlAuthenticationSuccessHandler();
+
+    public CustomPasswordAuthenticationFilter(){
+        super();
+        setAuthenticationSuccessHandler(mySimpleUrlAuthenticationSuccessHandler);
+    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException {
         try {
             BufferedReader reader = request.getReader();
-            StringBuffer sb = new StringBuffer();
             String line;
             line = reader.readLine();
             System.out.println(" 1 " + line);
 
             ObjectMapper mapper = new ObjectMapper();
             Login authReq = mapper.readValue(line, Login.class);
-//            System.out.println(authReq.getUsername());
-//            authReq.setRole(authReq.getUsername());
-//            System.out.println(authReq.getRole());
 
             List<GrantedAuthority> grantedAuths = new ArrayList<>();
             grantedAuths.add(new SimpleGrantedAuthority("user"));
@@ -58,38 +69,5 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
             e.printStackTrace();
         }
         return null;
-    }
-
-
-    public class AuthReq {
-        private UserDetailsServiceImpl userDetailsService = new UserDetailsServiceImpl();
-
-        private String username;
-        private String password;
-        private String role;
-
-        public String getUsername() {
-            return username;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public void setRole() {
-            this.role = userDetailsService.userRepository.findByName(username).getRole().getName();
-        }
-
-        public String getRole() {
-            return role;
-        }
     }
 }

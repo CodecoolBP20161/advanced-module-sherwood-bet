@@ -16,6 +16,8 @@ public class Ticket {
     private Date deadline;
     private boolean playable;
     private Set<Bet> userTicket;
+    private Set<Match> matches;
+
 
     @Column(unique = true)
     private String title;
@@ -78,5 +80,16 @@ public class Ticket {
 
     public void setUserTicket(Set<Bet> userTicket) {
         this.userTicket = userTicket;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "match_of_ticket", joinColumns = {@JoinColumn(name = "ticket_id")},
+            inverseJoinColumns = {@JoinColumn(name = "match_id")})
+    public Set<Match> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(Set<Match> matches) {
+        this.matches = matches;
     }
 }

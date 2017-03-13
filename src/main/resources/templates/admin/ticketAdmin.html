@@ -28,26 +28,27 @@
 <a href="/admin/tickets" class="btn btn-default">Tickets</a>
 
 <table class="table table-stripped floatedTable">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Password</th>
-            <th>Email</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="user, iterStat : ${users}">
-            <td th:id="'currentUserId-' + ${user.getID()}" th:text="${user.getID()}">ID</td>
-            <td th:id="'currentUserName-' + ${user.getID()}" th:text="${user.getName()}">Name</td>
-            <td th:id="'currentUserPassword-' + ${user.getID()}" th:text="${user.getPassword()}">Password</td>
-            <td th:id="'currentUserEmail-' + ${user.getID()}" th:text="${user.getEmail()}">Email</td>
-            <td><!-- Button trigger modal -->
-                <button type="button" th:id="'editstart-' + ${user.getID()}" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button>
-            </td>
-            <td><a href="#" class="btn btn-danger" th:href="'/admin/user/delete/' + ${user.getID()}">Delete</a></td>
-        </tr>
-        </tbody>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Deadline</th>
+        <th>Description</th>
+        <th>Playable</th>
+        <th>Title</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="team, iterStat : ${teams}">
+        <td th:id="'currentTeamId-' + ${team.getID()}" th:text="${team.getID()}">ID</td>
+        <td th:id="'currentTeamStadium-' + ${team.getID()}" th:text="${team.getStadium()}">Stadium</td>
+        <td th:id="'currentTeamShortName-' + ${team.getID()}" th:text="${team.getShortName()}">Short Name</td>
+        <td th:id="'currentTeamName-' + ${team.getID()}" th:text="${team.getName()}">Name</td>
+        <td><!-- Button trigger modal -->
+            <button type="button" th:id="'editstart-' + ${team.getID()}" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button>
+        </td>
+        <td><a href="#" class="btn btn-danger" th:href="'/admin/team/delete/' + ${team.getID()}">Delete</a></td>
+    </tr>
+    </tbody>
 </table>
 
 <a href="#" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Add a new element</a>
@@ -58,7 +59,7 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <form th:action="'/admin/user/edit'" method="post">
+            <form th:action="'/admin/team/edit'" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Modal title</h4>
@@ -68,17 +69,17 @@
                         <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Stadium</th>
+                            <th>Short Name</th>
                             <th>Name</th>
-                            <th>Password</th>
-                            <th>Email</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <td><input id="editId" style="width: 140px" name="ID"/></td>
+                            <td><input id="editStadium" style="width: 140px" name="stadium"/></td>
+                            <td><input id="editShortName" style="width: 140px" name="shortName"/></td>
                             <td><input id="editName" style="width: 140px" name="name"/></td>
-                            <td><input id="editPassword" style="width: 140px" name="password"/></td>
-                            <td><input id="editEmail" style="width: 140px" name="email"/></td>
                         </tr>
                         </tbody>
                     </table>
@@ -97,7 +98,7 @@
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
-            <form th:action="'/admin/user/add'" method="post">
+            <form th:action="'/admin/team/add'" method="post">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel2">New</h4>
@@ -106,16 +107,16 @@
                     <table>
                         <thead>
                         <tr>
+                            <th>Stadium</th>
+                            <th>Short Name</th>
                             <th>Name</th>
-                            <th>Password</th>
-                            <th>Email</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
+                            <td><input style="width: 140px" placeholder="Stadium" name="stadium"/></td>
+                            <td><input style="width: 140px" placeholder="Short Name" name="shortName"/></td>
                             <td><input style="width: 140px" placeholder="Name" name="name"/></td>
-                            <td><input style="width: 140px" placeholder="Password" name="password"/></td>
-                            <td><input style="width: 140px" placeholder="Email" name="email"/></td>
                         </tr>
                         </tbody>
                     </table>
@@ -130,7 +131,7 @@
 </div>
 
 
-<script th:src="@{/admin/alluser.js}"></script>
+<script th:src="@{/admin/team.js}"></script>
 
 
 </body>

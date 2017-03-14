@@ -54,18 +54,18 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _core = __webpack_require__(238);
+	var _core = __webpack_require__(292);
 
 	var _core2 = _interopRequireDefault(_core);
 
-	var _view = __webpack_require__(244);
+	var _view = __webpack_require__(294);
 
 	var _view2 = _interopRequireDefault(_view);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	__webpack_require__(211);
-	__webpack_require__(257);
+	__webpack_require__(305);
 
 	var app = document.getElementById('app');
 
@@ -23305,7 +23305,61 @@
 /* 235 */,
 /* 236 */,
 /* 237 */,
-/* 238 */
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23320,17 +23374,9 @@
 
 	var _datamanager2 = _interopRequireDefault(_datamanager);
 
-	var _state_tree = __webpack_require__(239);
+	var _state_tree = __webpack_require__(293);
 
 	var _state_tree2 = _interopRequireDefault(_state_tree);
-
-	var _response_reducers = __webpack_require__(240);
-
-	var _select_reducers = __webpack_require__(241);
-
-	var _game_reducers = __webpack_require__(242);
-
-	var _controller_reducers = __webpack_require__(243);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23345,82 +23391,26 @@
 	    var current = state;
 	    var nextState = void 0;
 	    switch (action.type) {
-	      case "SESSION_DATA_ARRIVED":
-	        nextState = (0, _response_reducers.arrivedSessionReducer)(current, action);
-	        return nextState;
-	      case "NEW_TICKET_REQUESTED":
-	        nextState = (0, _controller_reducers.restartReducer)(current, action);
-	        return nextState;
-	      case "NEW_TICKET_CONFIRMED":
-	        nextState = (0, _controller_reducers.restartConfirmReducer)(current, action);
-	        return nextState;
-	      case "RESET_CONFIRMED":
-	        nextState = (0, _select_reducers.resetConfirmReducer)(current, action);
-	        return nextState;
-	      case "OFFER_REQUESTED":
-	        nextState = (0, _response_reducers.requestedOfferReducer)(current, action);
-	        return nextState;
-	      case "OFFER_ARRIVED":
-	        nextState = (0, _response_reducers.arrivedOfferReducer)(current, action);
-	        return nextState;
-	      case "NEW_STEP_REQUESTED":
-	        nextState = (0, _select_reducers.newStepReducer)(current, action);
-	        return nextState;
-	      case "NEXT_MATCH_REQUESTED":
-	        nextState = (0, _select_reducers.nextMatchReducer)(current, action);
-	        return nextState;
-	      case "NEXT_TICKET_REQUESTED":
-	        nextState = (0, _select_reducers.newTicketReducer)(current, action);
-	        return nextState;
-	      case "CATEGORY_SET":
-	        nextState = (0, _select_reducers.newCategoryReducer)(current, action);
-	        return nextState;
-	      case "TICKET_ARRIVED":
-	        nextState = (0, _response_reducers.arrivedTicketReducer)(current, action);
-	        return nextState;
-	      case "OUT_CHOSEN":
-	        nextState = (0, _game_reducers.outSelectedReducer)(current, action);
-	        return nextState;
-	      case "PERCENT_MODIFIED":
-	        nextState = (0, _game_reducers.percentModifyReducer)(current, action);
-	        return nextState;
-	      case "PERCENT_ADDED":
-	        if (action.number == 1) {
-	          nextState = (0, _game_reducers.percentModifyReducer)(current, action);
-	        } else {
-	          nextState = current;
-	          nextState = (0, _game_reducers.percentModifyReducer)(nextState, action);
-	          nextState = (0, _game_reducers.percentModifyReducer)(nextState, action);
-	          nextState = (0, _game_reducers.percentModifyReducer)(nextState, action);
-	          nextState = (0, _game_reducers.percentModifyReducer)(nextState, action);
-	          nextState = (0, _game_reducers.percentModifyReducer)(nextState, action);
-	          nextState = (0, _game_reducers.percentModifyReducer)(nextState, action);
-	          nextState = (0, _game_reducers.percentModifyReducer)(nextState, action);
-	          nextState = (0, _game_reducers.percentModifyReducer)(nextState, action);
-	          nextState = (0, _game_reducers.percentModifyReducer)(nextState, action);
-	          nextState = (0, _game_reducers.percentModifyReducer)(nextState, action);
-	        }
-	        return nextState;
-	      case "MATCH_SELECTED":
-	        nextState = (0, _select_reducers.newMatchReducer)(current, action);
-	        return nextState;
-	      case "ERRORS_NO_LONGER_RELEVANT":
-	        nextState = (0, _game_reducers.noErrorReducer)(current, action);
-	        return nextState;
-	      case "FINALIZATION_REQUESTED":
-	        nextState = (0, _game_reducers.finalizationReducer)(current, action);
-	        return nextState;
 	      case "MODAL_OPENED":
-	        nextState = (0, _controller_reducers.modalOpenReducer)(current, action);
+	        nextState = current;
+	        nextState.state.view = action.modal;
 	        return nextState;
 	      case "MODAL_CLOSED":
-	        nextState = (0, _controller_reducers.modalCloseReducer)(current, action);
+	        nextState = current;
+	        nextState.state.view = "base";
 	        return nextState;
-	      case "BACK_TO_GENERATOR":
-	        nextState = (0, _controller_reducers.notConfirmedTicketReducer)(current, action);
+	      case "LOGOUT_RESPONSE_ARRIVED":
+	        nextState = current;
+	        location.reload();
 	        return nextState;
-	      case "BET_SUCCESSFULLY_PLACED":
-	        nextState = (0, _response_reducers.ConfirmResponseReducer)(current, action);
+	      case "LOGOUT_REQUESTED":
+	        nextState = current;
+	        return nextState;
+	      case "SESSION_DATA_ARRIVED":
+	        nextState = current;
+	        nextState.data.user.username = action.data.username;
+	        nextState.data.user.rank = action.data.rank;
+	        nextState.data.user.balance = action.data.balance.toFixed(1);
 	        return nextState;
 	      default:
 	        nextState = current;
@@ -23438,7 +23428,7 @@
 	exports.default = core;
 
 /***/ },
-/* 239 */
+/* 293 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -23448,74 +23438,13 @@
 	});
 	var stateTree = {
 	  state: {
-	    offer: {
-	      present: false,
-	      isBeingFetched: false,
-	      currentlyFetched: null,
-	      watched: false,
-	      currentIndex: 0
-	    },
-	    ticket: {
-	      present: false,
-	      isBeingFetched: false,
-	      currentlyFetched: null,
-	      chosen: false,
-	      currentIndex: 0,
-	      errors: []
-	    },
-	    view: {
-	      controller: "main selector",
-	      modal: null
-	    },
-	    accountError: false,
-	    category: null,
-	    mode: null,
-	    generator: {
-	      out: null,
-	      home: 0,
-	      draw: 0,
-	      away: 0
-	    },
-	    tutorialState: "second"
+	    view: "base"
 	  },
 	  data: {
 	    user: {
 	      username: "",
 	      balance: "",
 	      rank: ""
-	    },
-	    offer: {
-	      tickets: [{
-	        title: "",
-	        intro: "",
-	        deadline: "",
-	        ticket_id: "",
-	        matches: [""]
-	      }]
-	    },
-	    ticket: {
-	      title: "",
-	      deadline: "",
-	      ticket_id: "",
-	      playable: "",
-	      intro: "",
-	      matches: [{
-	        id: "",
-	        match: "",
-	        venue: "",
-	        tournament: "",
-	        round_number: "",
-	        more_info: "",
-	        match_date: "",
-	        bet: {
-	          home: 0,
-	          draw: 0,
-	          away: 0,
-	          id: 1,
-	          match: 1,
-	          user_ticket: 1
-	        }
-	      }]
 	    }
 	  }
 	};
@@ -23523,422 +23452,7 @@
 	exports.default = stateTree;
 
 /***/ },
-/* 240 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var arrivedSessionReducer = exports.arrivedSessionReducer = function arrivedSessionReducer(current, action) {
-	  var nextState = current;
-	  nextState.data.user.username = action.data.username;
-	  nextState.data.user.rank = action.data.rank;
-	  nextState.data.user.balance = action.data.balance.toFixed(1);
-	  nextState.data.user.game_money = action.data.game_money.toFixed(1);
-	  return nextState;
-	};
-
-	var requestedOfferReducer = exports.requestedOfferReducer = function requestedOfferReducer(current, action) {
-	  var nextState = current;
-	  nextState = current;
-	  nextState.state.offer.watched = true;
-	  nextState.state.offer.isBeingFetched = true;
-	  nextState.state.view.controller = "offer";
-	  nextState.state.category = 10;
-	  return nextState;
-	};
-
-	var arrivedOfferReducer = exports.arrivedOfferReducer = function arrivedOfferReducer(current, action) {
-	  var nextState = current;
-	  nextState.state.mode = action.mode;
-	  nextState.data.offer.tickets = action.data.tickets.sort(function (obj1, obj2) {
-	    return obj1.ticket_id > obj2.ticket_id;
-	  });
-	  nextState.state.offer.isBeingFetched = false;
-	  nextState.state.offer.present = true;
-	  nextState.state.offer.isBeingFetched = false;
-	  return nextState;
-	};
-
-	var requestedTicketReducer = exports.requestedTicketReducer = function requestedTicketReducer(current, action) {
-	  var nextState = current;
-	  nextState.state.ticket.present = false;
-	  nextState.state.ticket.isBeingFetched = true;
-	  nextState.state.ticket.chosen = true;
-	  nextState.state.view.controller = "generator";
-	  return nextState;
-	};
-
-	var arrivedTicketReducer = exports.arrivedTicketReducer = function arrivedTicketReducer(current, action) {
-	  var nextState = current;
-	  if (action.data.error) {
-	    nextState.state.accountError = true;
-	    return nextState;
-	  } else {
-	    nextState.state.accountError = false;
-	  }
-	  nextState.data.ticket = action.data;
-	  nextState.state.ticket.isBeingFetched = false;
-	  nextState.state.ticket.present = true;
-	  nextState.state.ticket.chosen = true;
-	  nextState.state.view.controller = "generator";
-	  nextState.state.ticket.currentIndex = 0;
-	  nextState.data.ticket.category = nextState.state.category;
-	  var currentBet = nextState.data.ticket.matches[nextState.state.ticket.currentIndex].bet;
-	  nextState.state.generator = makeStateAware(currentBet);
-	  nextState.state.ticket.errors = [0, 1, 2, 3, 4, 5, 6];
-	  return nextState;
-	};
-
-	var ConfirmResponseReducer = exports.ConfirmResponseReducer = function ConfirmResponseReducer(current, action) {
-	  var nextState = current;
-	  nextState.state.view.controller = "success";
-	  return nextState;
-	};
-
-	var makeStateAware = function makeStateAware(bet) {
-	  var newGenerator = {
-	    home: bet.home,
-	    draw: bet.draw,
-	    away: bet.away,
-	    out: bet.out
-	  };
-	  return newGenerator;
-	};
-
-/***/ },
-/* 241 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var newTicketReducer = exports.newTicketReducer = function newTicketReducer(current, action) {
-	  var nextState = current;
-	  var numberOfTickets = nextState.data.offer.tickets.length;
-	  var currentIndex = nextState.state.offer.currentIndex;
-	  var direction = action.next;
-	  if (direction == "next") {
-	    currentIndex = numberOfTickets > currentIndex + 1 ? currentIndex + 1 : currentIndex;
-	  }
-	  if (direction == "previous") {
-	    currentIndex = currentIndex > 0 ? currentIndex - 1 : currentIndex;
-	  }
-	  nextState.state.offer.currentIndex = currentIndex;
-	  return nextState;
-	};
-
-	var newCategoryReducer = exports.newCategoryReducer = function newCategoryReducer(current, action) {
-	  var nextState = current;
-	  nextState.state.category = action.category;
-	  return nextState;
-	};
-
-	var nextMatchReducer = exports.nextMatchReducer = function nextMatchReducer(current, action) {
-	  var nextState = current;
-	  var index = nextState.state.ticket.currentIndex;
-	  var matchNumber = nextState.data.ticket.matches.length;
-	  if (action.next == "next") {
-	    if (index + 1 == matchNumber) {
-	      nextState.state.ticket.currentIndex = 0;
-	    } else {
-	      nextState.state.ticket.currentIndex += 1;
-	    }
-	  }
-	  if (action.next == "previous") {
-	    if (index == 0) {
-	      nextState.state.ticket.currentIndex = matchNumber - 1;
-	    } else {
-	      nextState.state.ticket.currentIndex -= 1;
-	    }
-	  }
-	  var currentBet = nextState.data.ticket.matches[nextState.state.ticket.currentIndex].bet;
-	  nextState.state.generator = makeStateAware(currentBet);
-	  return nextState;
-	};
-
-	var newMatchReducer = exports.newMatchReducer = function newMatchReducer(current, action) {
-	  var nextState = current;
-	  nextState.state.ticket.currentIndex = action.index;
-	  var currentBet = nextState.data.ticket.matches[action.index].bet;
-	  nextState.state.generator = makeStateAware(currentBet);
-	  return nextState;
-	};
-
-	var newStepReducer = exports.newStepReducer = function newStepReducer(current, action) {
-	  var nextState = current;
-	  nextState.state.tutorialStep += 1;
-	  if (nextState.state.tutorialStep == 14) {
-	    nextState.state.tutorialStep = 13;
-	    nextState.state.view.controller = "generator";
-	  }
-	  return nextState;
-	};
-
-	var resetConfirmReducer = exports.resetConfirmReducer = function resetConfirmReducer(current, action) {
-	  var nextState = current;
-	  nextState.state.view.modal = null;
-	  var all_matches = nextState.data.ticket.matches;
-	  nextState.data.ticket.matches = all_matches.map(function (match) {
-	    match.bet.home = 0;
-	    match.bet.draw = 0;
-	    match.bet.away = 0;
-	    match.bet.out = null;
-	    return match;
-	  });
-	  var currentBet = nextState.data.ticket.matches[nextState.state.ticket.currentIndex].bet;
-	  nextState.state.generator = makeStateAware(currentBet);
-	  return nextState;
-	};
-
-	var makeStateAware = function makeStateAware(bet) {
-	  var newGenerator = {
-	    home: bet.home,
-	    draw: bet.draw,
-	    away: bet.away,
-	    out: bet.out
-	  };
-	  return newGenerator;
-	};
-
-/***/ },
-/* 242 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var outSelectedReducer = exports.outSelectedReducer = function outSelectedReducer(current, action) {
-	  var nextState = current;
-	  var generator = nextState.state.generator;
-	  generator.out = action.out;
-	  generator["home"] = 0;
-	  generator["draw"] = 0;
-	  generator["away"] = 0;
-	  generator[action.out] = 100;
-
-	  var betData = nextState.data.ticket.matches[nextState.state.ticket.currentIndex].bet;
-	  var newbet = makeDataAware(generator, betData);
-
-	  nextState.data.ticket.matches[nextState.state.ticket.currentIndex].bet = newbet;
-	  return nextState;
-	};
-
-	var noErrorReducer = exports.noErrorReducer = function noErrorReducer(current, action) {
-	  var nextState = current;
-	  nextState.state.ticket.errors = [];
-	  return nextState;
-	};
-
-	var finalizationReducer = exports.finalizationReducer = function finalizationReducer(current, action) {
-	  var nextState = current;
-	  var matches = nextState.data.ticket.matches;
-	  var errors = checkBets(matches);
-	  nextState.state.ticket.errors = errors;
-	  nextState.state.view.controller = errors.length == 0 ? "confirm" : "generator";
-	  return nextState;
-	};
-
-	// uses methods written in this module
-	var percentModifyReducer = exports.percentModifyReducer = function percentModifyReducer(current, action) {
-
-	  // initializing variables
-	  var nextState = current;
-	  var generator = nextState.state.generator;
-	  var direction = action.direction;
-	  var scrolledName = action.bar;
-
-	  var chosen = generator.out;
-	  var scrolled = { name: scrolledName, value: generator[scrolledName] };
-	  var higher = getHigher(generator, scrolledName);
-	  var lower = getLower(generator, scrolledName, higher.name);
-	  var chosenOutWasScrolled = chosen == scrolled.name;
-
-	  // generator logic
-
-	  // raise
-	  if (direction == "up") {
-	    if (chosenOutWasScrolled && scrolled.value < 100) {
-	      scrolled.value += 1;
-	      if (lower.value == 0) {
-	        higher.value -= 1;
-	      } else {
-	        higher.value -= 0.5;
-	        lower.value -= 0.5;
-	      }
-	    }
-	    if (!chosenOutWasScrolled && lower.value > 0 && higher.value > scrolled.value) {
-	      if (Number.isInteger(scrolled.value)) {
-	        scrolled.value += 1;
-	        lower.value -= 1;
-	      } else {
-	        scrolled.value += 0.5;
-	        lower.value -= 0.5;
-	      }
-	    }
-	  }
-
-	  // decrease
-	  if (direction == "down") {
-	    if (chosenOutWasScrolled && scrolled.value > higher.value + 1) {
-	      scrolled.value -= 1;
-	      higher.value += 0.5;
-	      lower.value += 0.5;
-	    }
-	    if (!chosenOutWasScrolled && scrolled.value > 0 && lower.value < higher.value) {
-	      if (Number.isInteger(scrolled.value)) {
-	        scrolled.value -= 1;
-	        lower.value += 1;
-	      } else {
-	        scrolled.value -= 0.5;
-	        lower.value += 0.5;
-	      }
-	    }
-	  }
-
-	  // update generator
-	  generator[scrolled.name] = scrolled.value;
-	  generator[higher.name] = higher.value;
-	  generator[lower.name] = lower.value;
-	  nextState.state.generator = generator;
-
-	  // update bet based on generator
-	  var betData = nextState.data.ticket.matches[nextState.state.ticket.currentIndex].bet;
-	  var newbet = makeDataAware(generator, betData);
-	  nextState.data.ticket.matches[nextState.state.ticket.currentIndex].bet = newbet;
-
-	  return nextState;
-	};
-
-	// methods used to cleanse the percentModifyReducer reducer
-	var getHigher = function getHigher(generator, scrolledName) {
-	  var chosenOutWasScrolled = scrolledName == generator.out;
-	  switch (scrolledName) {
-	    case "home":
-	      if (chosenOutWasScrolled) {
-	        return generator.draw <= generator.away ? { name: "away", value: generator.away } : { name: "draw", value: generator.draw };
-	      } else {
-	        return generator.out == "draw" ? { name: "draw", value: generator.draw } : { name: "away", value: generator.away };
-	      }
-	    case "draw":
-	      if (chosenOutWasScrolled) {
-	        return generator.home <= generator.away ? { name: "away", value: generator.away } : { name: "home", value: generator.home };
-	      } else {
-	        return generator.out == "home" ? { name: "home", value: generator.home } : { name: "away", value: generator.away };
-	      }
-	    case "away":
-	      if (chosenOutWasScrolled) {
-	        return generator.home <= generator.draw ? { name: "draw", value: generator.draw } : { name: "home", value: generator.home };
-	      } else {
-	        return generator.out == "home" ? { name: "home", value: generator.home } : { name: "draw", value: generator.draw };
-	      }
-	    default:
-	      return null;
-	  }
-	};
-
-	var getLower = function getLower(generator, scrolledName, higher) {
-	  var otherTwo = [scrolledName, higher];
-	  if (!otherTwo.includes("home")) {
-	    return { name: "home", value: generator.home };
-	  }
-	  if (!otherTwo.includes("draw")) {
-	    return { name: "draw", value: generator.draw };
-	  }
-	  if (!otherTwo.includes("away")) {
-	    return { name: "away", value: generator.away };
-	  }
-	};
-
-	var makeDataAware = function makeDataAware(generator, currentBet) {
-	  var newBet = currentBet;
-	  newBet.out = generator.out;
-	  newBet.home = Math.ceil(generator.home);
-	  newBet.draw = generator.out == "away" ? Math.floor(generator.draw) : Math.ceil(generator.draw);
-	  newBet.away = Math.floor(generator.away);
-	  return newBet;
-	};
-
-	var checkBets = function checkBets(matches) {
-	  return matches.map(function (match, index) {
-	    return match.bet.home + match.bet.draw + match.bet.away == 100 ? null : index;
-	  }).filter(function (item) {
-	    return item != null;
-	  });
-	};
-
-/***/ },
-/* 243 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var restartReducer = exports.restartReducer = function restartReducer(current, action) {
-	  var nextState = current;
-	  var currentView = nextState.state.view.controller;
-	  if (currentView == "offer" || currentView == "success") {
-	    nextState.state.offer.present = false;
-	    nextState.state.offer.watched = false;
-	    nextState.state.ticket.present = false;
-	    nextState.state.ticket.chosen = false;
-	    nextState.state.view.controller = "main selector";
-	    nextState.state.view.modal = null;
-	    nextState.state.category = null;
-	  }
-	  if (currentView == "generator" || currentView == "confirm") {
-	    nextState.state.view.modal = "confirmNew";
-	  }
-	  return nextState;
-	};
-
-	var modalOpenReducer = exports.modalOpenReducer = function modalOpenReducer(current, action) {
-	  var nextState = current;
-	  var chosenModal = action.modal;
-	  var controller = nextState.state.view.controller;
-	  if (chosenModal == "confirmReset" && controller == "generator") {
-	    nextState.state.view.modal = chosenModal;
-	  }
-	  if (chosenModal == "tutorialModal") {
-	    nextState.state.view.modal = chosenModal;
-	  }
-	  return nextState;
-	};
-
-	var modalCloseReducer = exports.modalCloseReducer = function modalCloseReducer(current, action) {
-	  var nextState = current;
-	  nextState.state.view.modal = null;
-	  return nextState;
-	};
-
-	var notConfirmedTicketReducer = exports.notConfirmedTicketReducer = function notConfirmedTicketReducer(current, action) {
-	  var nextState = current;
-	  nextState.state.view.controller = "generator";
-	  return nextState;
-	};
-
-	var restartConfirmReducer = exports.restartConfirmReducer = function restartConfirmReducer(current, action) {
-	  var nextState = current;
-	  nextState.state.offer.present = false;
-	  nextState.state.offer.watched = false;
-	  nextState.state.ticket.present = false;
-	  nextState.state.view.controller = "main selector";
-	  nextState.state.view.modal = null;
-	  nextState.state.ticket.chosen = false;
-	  nextState.state.category = null;
-	  return nextState;
-	};
-
-/***/ },
-/* 244 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23957,53 +23471,45 @@
 
 	var _view_dependencies2 = _interopRequireDefault(_view_dependencies);
 
-	var _component = __webpack_require__(245);
+	var _component = __webpack_require__(295);
 
 	var _component2 = _interopRequireDefault(_component);
 
-	var _component3 = __webpack_require__(246);
+	var _component3 = __webpack_require__(296);
 
 	var _component4 = _interopRequireDefault(_component3);
 
-	var _component5 = __webpack_require__(247);
+	var _component5 = __webpack_require__(297);
 
 	var _component6 = _interopRequireDefault(_component5);
 
-	var _component7 = __webpack_require__(248);
+	var _component7 = __webpack_require__(298);
 
 	var _component8 = _interopRequireDefault(_component7);
 
-	var _component9 = __webpack_require__(249);
+	var _component9 = __webpack_require__(299);
 
 	var _component10 = _interopRequireDefault(_component9);
 
-	var _component11 = __webpack_require__(250);
+	var _component11 = __webpack_require__(300);
 
 	var _component12 = _interopRequireDefault(_component11);
 
-	var _component13 = __webpack_require__(251);
+	var _component13 = __webpack_require__(301);
 
 	var _component14 = _interopRequireDefault(_component13);
 
-	var _component15 = __webpack_require__(252);
+	var _component15 = __webpack_require__(302);
 
 	var _component16 = _interopRequireDefault(_component15);
 
-	var _component17 = __webpack_require__(253);
+	var _component17 = __webpack_require__(303);
 
 	var _component18 = _interopRequireDefault(_component17);
 
-	var _component19 = __webpack_require__(254);
+	var _component19 = __webpack_require__(304);
 
 	var _component20 = _interopRequireDefault(_component19);
-
-	var _component21 = __webpack_require__(256);
-
-	var _component22 = _interopRequireDefault(_component21);
-
-	var _component23 = __webpack_require__(317);
-
-	var _component24 = _interopRequireDefault(_component23);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24030,45 +23536,27 @@
 	      var state = this.props.model.state;
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'home-background' },
 	        _react2.default.createElement(_view_dependencies2.default, null),
 	        _react2.default.createElement(_component2.default, null),
-	        _react2.default.createElement(_component4.default, {
-	          controller: controller,
+	        _react2.default.createElement(_component18.default, {
 	          user: data.user,
-	          state: state }),
+	          controller: controller }),
+	        _react2.default.createElement(_component4.default, {
+	          controller: controller }),
 	        _react2.default.createElement(_component6.default, {
-	          controller: controller,
-	          data: data,
-	          state: state }),
-	        state.view.controller == "main selector" ? _react2.default.createElement(_component8.default, {
-	          controller: controller }) : null,
-	        state.view.controller == "offer" ? _react2.default.createElement(_component10.default, {
-	          data: data,
-	          state: state,
-	          controller: controller }) : null,
-	        state.view.controller == "tutorial" ? _react2.default.createElement(_component12.default, {
-	          data: data,
-	          state: state,
-	          controller: controller }) : null,
-	        state.view.controller == "generator" ? _react2.default.createElement(_component14.default, {
-	          data: data,
-	          state: state,
-	          controller: controller }) : null,
-	        state.view.controller == "confirm" ? _react2.default.createElement(_component16.default, {
-	          data: data,
-	          state: state,
-	          controller: controller }) : null,
-	        state.view.controller == "success" ? _react2.default.createElement(_component18.default, {
-	          data: data,
-	          state: state,
-	          controller: controller }) : null,
-	        state.view.modal == "confirmNew" ? _react2.default.createElement(_component20.default, {
-	          controller: controller }) : null,
-	        state.view.modal == "confirmReset" ? _react2.default.createElement(_component22.default, {
-	          controller: controller }) : null,
-	        state.view.modal == "tutorialModal" ? _react2.default.createElement(_component24.default, {
-	          state: state.tutorialState,
+	          controller: controller }),
+	        _react2.default.createElement(_component16.default, {
+	          controller: controller }),
+	        _react2.default.createElement(_component10.default, {
+	          controller: controller }),
+	        _react2.default.createElement(_component12.default, {
+	          controller: controller }),
+	        _react2.default.createElement(_component14.default, {
+	          controller: controller }),
+	        _react2.default.createElement(_component8.default, {
+	          controller: controller }),
+	        state.view == "logout" ? _react2.default.createElement(_component20.default, {
 	          controller: controller }) : null
 	      );
 	    }
@@ -24080,7 +23568,7 @@
 	exports.default = View;
 
 /***/ },
-/* 245 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -24102,7 +23590,584 @@
 	exports.default = Background;
 
 /***/ },
-/* 246 */
+/* 296 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _container = __webpack_require__(208);
+
+	var _container2 = _interopRequireDefault(_container);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var GameController = function (_Container) {
+	  _inherits(GameController, _Container);
+
+	  function GameController() {
+	    _classCallCheck(this, GameController);
+
+	    return _possibleConstructorReturn(this, (GameController.__proto__ || Object.getPrototypeOf(GameController)).apply(this, arguments));
+	  }
+
+	  _createClass(GameController, [{
+	    key: 'startPlaying',
+	    value: function startPlaying() {
+	      window.open("bet");
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: "wall-game-controller-container flying" },
+	        _react2.default.createElement(
+	          'div',
+	          { className: "wall-game-controller-title-container" },
+	          _react2.default.createElement(
+	            'h3',
+	            { className: "wall-game-controller-title" },
+	            'The Game'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: "wall-game-controller-text-container" },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Playable tickets:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Prize pool:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Players:'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: "wall-game-controller-button-container" },
+	          _react2.default.createElement(
+	            'button',
+	            {
+	              onClick: function onClick() {
+	                return _this2.startPlaying();
+	              },
+	              className: "sherwood-button game-button" },
+	            'Play now'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return GameController;
+	}(_container2.default);
+
+	exports.default = GameController;
+
+/***/ },
+/* 297 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _container = __webpack_require__(208);
+
+	var _container2 = _interopRequireDefault(_container);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TicketController = function (_Container) {
+	  _inherits(TicketController, _Container);
+
+	  function TicketController() {
+	    _classCallCheck(this, TicketController);
+
+	    return _possibleConstructorReturn(this, (TicketController.__proto__ || Object.getPrototypeOf(TicketController)).apply(this, arguments));
+	  }
+
+	  _createClass(TicketController, [{
+	    key: 'getArchive',
+	    value: function getArchive() {
+	      window.open("archive");
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: "wall-ticket-controller-container hoverable flying" },
+	        _react2.default.createElement(
+	          'div',
+	          { className: "wall-ticket-controller-title-container" },
+	          _react2.default.createElement(
+	            'h3',
+	            { className: "wall-ticket-controller-title" },
+	            'My tickets'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: "wall-ticket-controller-text-container" },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Won:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Lost:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'Archive:'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'In play:'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: "wall-ticket-controller-button-container" },
+	          _react2.default.createElement(
+	            'button',
+	            {
+	              onClick: function onClick() {
+	                return _this2.getArchive();
+	              },
+	              className: "sherwood-button ticket-button" },
+	            'Check them'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return TicketController;
+	}(_container2.default);
+
+	exports.default = TicketController;
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _container = __webpack_require__(208);
+
+	var _container2 = _interopRequireDefault(_container);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var InfoControler = function (_Container) {
+	  _inherits(InfoControler, _Container);
+
+	  function InfoControler() {
+	    _classCallCheck(this, InfoControler);
+
+	    return _possibleConstructorReturn(this, (InfoControler.__proto__ || Object.getPrototypeOf(InfoControler)).apply(this, arguments));
+	  }
+
+	  _createClass(InfoControler, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: "wall-info-controller-container flying hoverable" },
+	        _react2.default.createElement(
+	          'div',
+	          { className: "wall-info-controller-text-container" },
+	          _react2.default.createElement(
+	            'p',
+	            { className: "wall-info-controller-text" },
+	            'Learn more about the site. Watch tutorials, check out best practices read about our apps and features. Even tough the core game is pretty easy and strightforward, there is still a lot to cover.'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: "wall-info-controller-button-container" },
+	          _react2.default.createElement(
+	            'button',
+	            { className: "sherwood-button" },
+	            'About us'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return InfoControler;
+	}(_container2.default);
+
+	exports.default = InfoControler;
+
+/***/ },
+/* 299 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _container = __webpack_require__(208);
+
+	var _container2 = _interopRequireDefault(_container);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var WallController = function (_Container) {
+	  _inherits(WallController, _Container);
+
+	  function WallController() {
+	    _classCallCheck(this, WallController);
+
+	    return _possibleConstructorReturn(this, (WallController.__proto__ || Object.getPrototypeOf(WallController)).apply(this, arguments));
+	  }
+
+	  _createClass(WallController, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: "wall-controller-container flying hoverable" },
+	        _react2.default.createElement(
+	          'div',
+	          { className: "wall-controller-button-container" },
+	          _react2.default.createElement(
+	            'button',
+	            { className: "sherwood-button search-button" },
+	            'All news'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { className: "sherwood-button search-button" },
+	            'My wall'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { className: "sherwood-button search-button" },
+	            'Matches'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { className: "sherwood-button search-button" },
+	            'Annoucements'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { className: "sherwood-button search-button" },
+	            'detailed search'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return WallController;
+	}(_container2.default);
+
+	exports.default = WallController;
+
+/***/ },
+/* 300 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _container = __webpack_require__(208);
+
+	var _container2 = _interopRequireDefault(_container);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Stories = function (_Container) {
+	  _inherits(Stories, _Container);
+
+	  function Stories() {
+	    _classCallCheck(this, Stories);
+
+	    return _possibleConstructorReturn(this, (Stories.__proto__ || Object.getPrototypeOf(Stories)).apply(this, arguments));
+	  }
+
+	  _createClass(Stories, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement('div', null);
+	    }
+	  }]);
+
+	  return Stories;
+	}(_container2.default);
+
+	exports.default = Stories;
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _container = __webpack_require__(208);
+
+	var _container2 = _interopRequireDefault(_container);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var CommunityController = function (_Container) {
+	  _inherits(CommunityController, _Container);
+
+	  function CommunityController() {
+	    _classCallCheck(this, CommunityController);
+
+	    return _possibleConstructorReturn(this, (CommunityController.__proto__ || Object.getPrototypeOf(CommunityController)).apply(this, arguments));
+	  }
+
+	  _createClass(CommunityController, [{
+	    key: 'getCommunity',
+	    value: function getCommunity() {
+	      window.open("community");
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: "wall-community-controller-container flying hoverable" },
+	        _react2.default.createElement(
+	          'div',
+	          { className: "wall-community-controller-title-container" },
+	          _react2.default.createElement(
+	            'h2',
+	            { className: "wall-community-controller-title" },
+	            'The SherwoodBET community'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: "wall-community-controller-text-container" },
+	          _react2.default.createElement(
+	            'p',
+	            { className: "wall-community-controller-text" },
+	            'Tell us your opinion, make friendships and contribute to the site. This site is made for all of you - make an effort to form it to your liking.'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: "wall-community-controller-text" },
+	            'Open the community application, and check out our various features that make you feel home here, at SherwoodBET.'
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: "wall-community-controller-text" },
+	            'This feature is not at all needed. You can play as much as you want and win so much more than ever before. You can, however, take it all to the next level.'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: "wall-community-controller-button-container" },
+	          _react2.default.createElement(
+	            'button',
+	            {
+	              onClick: function onClick() {
+	                return _this2.getCommunity();
+	              },
+	              className: "sherwood-button community-button" },
+	            'Enter'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return CommunityController;
+	}(_container2.default);
+
+	exports.default = CommunityController;
+
+/***/ },
+/* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _container = __webpack_require__(208);
+
+	var _container2 = _interopRequireDefault(_container);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var License = function (_Container) {
+	  _inherits(License, _Container);
+
+	  function License() {
+	    _classCallCheck(this, License);
+
+	    return _possibleConstructorReturn(this, (License.__proto__ || Object.getPrototypeOf(License)).apply(this, arguments));
+	  }
+
+	  _createClass(License, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: "wall-license-container hoverable flying" },
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Gibraltar, whatever license, 2017'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'London, some other license, 2017'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Malta, some audited, 2017'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'SherwoodBET | All rights reserved | 2017'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return License;
+	}(_container2.default);
+
+	exports.default = License;
+
+/***/ },
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24139,19 +24204,9 @@
 	  }
 
 	  _createClass(Navbar, [{
-	    key: 'newTicket',
-	    value: function newTicket() {
-	      this.dispatch({ type: "NEW_TICKET_REQUESTED" });
-	    }
-	  }, {
-	    key: 'reset',
-	    value: function reset() {
-	      this.dispatch({ type: "MODAL_OPENED", modal: "confirmReset" });
-	    }
-	  }, {
-	    key: 'openTutorial',
-	    value: function openTutorial() {
-	      this.dispatch({ type: "MODAL_OPENED", modal: "tutorialModal" });
+	    key: 'startLogout',
+	    value: function startLogout() {
+	      this.dispatch({ type: "MODAL_OPENED", modal: "logout" });
 	    }
 	  }, {
 	    key: 'componentDidMount',
@@ -24169,7 +24224,6 @@
 	      var _this2 = this;
 
 	      var user = this.props.user;
-	      var mode = this.props.state.mode;
 	      return _react2.default.createElement(
 	        'div',
 	        { className: "wall-navbar" },
@@ -24197,17 +24251,8 @@
 	            _react2.default.createElement(
 	              'span',
 	              { className: "navbar-user-detail" },
-	              mode == "pro" ? _react2.default.createElement(
-	                'span',
-	                null,
-	                user.balance,
-	                '$'
-	              ) : mode == "free" ? _react2.default.createElement(
-	                'span',
-	                null,
-	                user.game_money,
-	                ' SC'
-	              ) : null
+	              user.balance,
+	              ' \u20AC'
 	            ),
 	            _react2.default.createElement(
 	              'span',
@@ -24221,24 +24266,32 @@
 	          { className: "wall-navbar-button-container" },
 	          _react2.default.createElement(
 	            'button',
-	            { className: "sherwood-button navbar-button", onClick: function onClick() {
-	                return _this2.openTutorial();
-	              } },
-	            'Tutorial'
+	            { className: "sherwood-button navbar-button" },
+	            'Settings'
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { className: "sherwood-button navbar-button", onClick: function onClick() {
-	                return _this2.reset();
-	              } },
-	            'Reset'
+	            { className: "sherwood-button navbar-button" },
+	            'Rank'
 	          ),
 	          _react2.default.createElement(
 	            'button',
-	            { className: "sherwood-button navbar-button", onClick: function onClick() {
-	                return _this2.newTicket();
-	              } },
-	            'New ticket'
+	            { className: "sherwood-button navbar-button" },
+	            'Account'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { className: "sherwood-button navbar-button" },
+	            'Profile'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            {
+	              onClick: function onClick() {
+	                return _this2.startLogout();
+	              },
+	              className: "sherwood-button navbar-button" },
+	            'Logout'
 	          )
 	        )
 	      );
@@ -24251,7 +24304,7 @@
 	exports.default = Navbar;
 
 /***/ },
-/* 247 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24278,2144 +24331,118 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Ticket = function (_Container) {
-	  _inherits(Ticket, _Container);
+	var LogoutModal = function (_Container) {
+	  _inherits(LogoutModal, _Container);
 
-	  function Ticket() {
-	    _classCallCheck(this, Ticket);
+	  function LogoutModal() {
+	    _classCallCheck(this, LogoutModal);
 
-	    return _possibleConstructorReturn(this, (Ticket.__proto__ || Object.getPrototypeOf(Ticket)).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (LogoutModal.__proto__ || Object.getPrototypeOf(LogoutModal)).apply(this, arguments));
 	  }
 
-	  _createClass(Ticket, [{
-	    key: 'chooseMatch',
-	    value: function chooseMatch(index) {
-	      this.dispatch({ type: "MATCH_SELECTED", index: index });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
+	  _createClass(LogoutModal, [{
+	    key: 'closeModal',
+	    value: function closeModal() {
 	      var _this2 = this;
 
-	      var state = this.props.state;
-	      var data = this.props.data;
-	      var tickets = data.offer.tickets;
-	      var ticketIndex = state.offer.currentIndex;
-	      var ticket = data.ticket;
-	      var matchIndex = state.ticket.currentIndex;
-	      var errors = state.ticket.errors;
-	      return _react2.default.createElement(
-	        'div',
-	        { className: "ticket-container flying" },
-	        _react2.default.createElement(
-	          'div',
-	          { className: "ticket" },
-	          state.ticket.chosen ? _react2.default.createElement(FullTicket, {
-	            errors: errors,
-	            chooseMatch: function chooseMatch(index) {
-	              return _this2.chooseMatch(index);
-	            },
-	            index: matchIndex,
-	            ticket: ticket }) : state.offer.watched ? _react2.default.createElement(OfferedTicket, {
-	            index: ticketIndex,
-	            tickets: tickets }) : _react2.default.createElement(NoTicketSign, null)
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Ticket;
-	}(_container2.default);
-
-	exports.default = Ticket;
-
-
-	var FullTicket = function FullTicket(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "ticket-matches-container" },
-	    _react2.default.createElement(
-	      'h4',
-	      { className: "full-ticket-number" },
-	      '#',
-	      props.ticket.ticket_id
-	    ),
-	    props.ticket.matches.map(function (match, index) {
-	      return _react2.default.createElement(
-	        'div',
-	        {
-	          key: match.bet.id,
-	          className: props.errors.includes(index) ? "ticket-match-table flying match-flash" : "ticket-match-table flying",
-	          id: "one-table-" + index,
-	          style: index == props.index ? { "fontWeight": "bold", "boxShadow": "0 0 10px black" } : { "fontWeight": "normal" },
-	          onClick: function onClick() {
-	            return props.chooseMatch(index);
-	          } },
-	        _react2.default.createElement(
-	          'p',
-	          { className: "ticket-match-table-name" },
-	          match.match
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          { className: "ticket-match-table-numbers" },
-	          _react2.default.createElement(
-	            'span',
-	            null,
-	            match.bet.home
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            null,
-	            match.bet.draw
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            null,
-	            match.bet.away
-	          )
-	        )
-	      );
-	    })
-	  );
-	};
-
-	var OfferedTicket = function OfferedTicket(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "offer-matches-container" },
-	    _react2.default.createElement(
-	      'h4',
-	      { className: "offer-ticket-number" },
-	      '#',
-	      props.tickets[props.index].ticket_id
-	    ),
-	    props.tickets[props.index].matches.map(function (match, index) {
-	      return _react2.default.createElement(
-	        'p',
-	        { className: "offer-match one-match-" + index, key: match + props.tickets[props.index].ticket_id },
-	        match
-	      );
-	    })
-	  );
-	};
-
-	var NoTicketSign = function NoTicketSign(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "no-ticket-sign-container" },
-	    _react2.default.createElement(
-	      'div',
-	      { className: "no-ticket-sign-icon-container" },
-	      _react2.default.createElement(
-	        'i',
-	        { className: "material-icons md-192" },
-	        'error'
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: "no-ticket-sign-text-container" },
-	      _react2.default.createElement(
-	        'p',
-	        { className: "no-ticket-sign-text" },
-	        'No ticket selected'
-	      )
-	    )
-	  );
-	};
-
-/***/ },
-/* 248 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _container = __webpack_require__(208);
-
-	var _container2 = _interopRequireDefault(_container);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var MainSelector = function (_Container) {
-	  _inherits(MainSelector, _Container);
-
-	  function MainSelector() {
-	    _classCallCheck(this, MainSelector);
-
-	    return _possibleConstructorReturn(this, (MainSelector.__proto__ || Object.getPrototypeOf(MainSelector)).apply(this, arguments));
-	  }
-
-	  _createClass(MainSelector, [{
-	    key: 'getTickets',
-	    value: function getTickets(category) {
-	      var _this2 = this;
-
-	      var request = {
-	        method: "GET",
-	        destination: "bet/api/playable_tickets?mode=" + category,
-	        action: { type: "OFFER_ARRIVED", mode: category }
-	      };
-	      this.container.classList.add('main-selector-disappear');
-	      setTimeout(function () {
-	        _this2.JSONtransfer(request);
-	        _this2.dispatch({ type: "OFFER_REQUESTED" });
-	      }, 400);
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.container = document.getElementById("main-selector");
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this3 = this;
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: "game-main-selector-container flying", id: "main-selector" },
-	        _react2.default.createElement(
-	          'div',
-	          { className: "main-selector-text" },
-	          _react2.default.createElement(Title, null),
-	          _react2.default.createElement(Tutorial, null)
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: "game-main-selector-choices-container" },
-	          _react2.default.createElement(Choice, {
-	            tickets: "0",
-	            players: "0",
-	            prize: "0",
-	            title: "Professional",
-	            isDisabled: true,
-	            action: function action() {
-	              return _this3.getTickets("pro");
-	            } }),
-	          _react2.default.createElement(Choice, {
-	            tickets: "0",
-	            players: "0",
-	            prize: "0",
-	            title: "Lotto",
-	            isDisabled: true,
-	            action: function action() {
-	              return _this3.getTickets("lotto");
-	            } }),
-	          _react2.default.createElement(Choice, {
-	            tickets: "5",
-	            players: "5281",
-	            prize: "100.000$",
-	            title: "Free",
-	            isDisabled: false,
-	            action: function action() {
-	              return _this3.getTickets("free");
-	            } })
-	        )
-	      );
-	    }
-	  }]);
-
-	  return MainSelector;
-	}(_container2.default);
-
-	exports.default = MainSelector;
-
-
-	var Title = function Title(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "game-main-selector-title-container" },
-	    _react2.default.createElement(
-	      'h1',
-	      { className: "game-main-selector-title" },
-	      'Play for real, or play for free'
-	    )
-	  );
-	};
-
-	var Tutorial = function Tutorial(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "game-main-selector-tutorial-container" },
-	    _react2.default.createElement(
-	      'p',
-	      { className: "game-main-selector-tutorial" },
-	      '1. Choose the level: professional, lotto or free'
-	    ),
-	    _react2.default.createElement(
-	      'p',
-	      { className: "game-main-selector-tutorial" },
-	      '2. Choose a ticket - we will show you a lot'
-	    ),
-	    _react2.default.createElement(
-	      'p',
-	      { className: "game-main-selector-tutorial" },
-	      '3. Fill the ticket - you can find a 2 minutes long tutorial on the page'
-	    )
-	  );
-	};
-
-	var Choice = function Choice(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "game-main-selector-choice" },
-	    _react2.default.createElement(
-	      'div',
-	      { className: "main-selector-choice-container" },
-	      _react2.default.createElement(ChoiceTitle, { title: props.title }),
-	      _react2.default.createElement(ChoiceInfo, { tickets: props.tickets, players: props.players, prize: props.prize }),
-	      _react2.default.createElement(ChoiceController, { isDisabled: props.isDisabled, action: props.action })
-	    )
-	  );
-	};
-
-	var ChoiceTitle = function ChoiceTitle(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "game-main-selector-choice-title-container" },
-	    _react2.default.createElement(
-	      'h4',
-	      { className: "game-main-selector-choice-title" },
-	      props.title
-	    )
-	  );
-	};
-
-	var ChoiceInfo = function ChoiceInfo(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "game-main-selector-choice-details-container" },
-	    _react2.default.createElement(
-	      'p',
-	      { className: "game-main-selector-choice-detail" },
-	      'Tickets: ',
-	      _react2.default.createElement(
-	        'span',
-	        { className: "float-right" },
-	        props.tickets
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'p',
-	      { className: "game-main-selector-choice-detail" },
-	      'Players: ',
-	      _react2.default.createElement(
-	        'span',
-	        { className: "float-right" },
-	        props.players
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'p',
-	      { className: "game-main-selector-choice-detail" },
-	      'Prize pool: ',
-	      _react2.default.createElement(
-	        'span',
-	        { className: "float-right" },
-	        props.prize
-	      )
-	    )
-	  );
-	};
-
-	var ChoiceController = function ChoiceController(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "game-main-selector-choice-button-container" },
-	    _react2.default.createElement(
-	      'button',
-	      {
-	        onClick: props.action,
-	        className: "sherwood-button",
-	        disabled: props.isDisabled,
-	        id: props.isDisabled ? "disabled" : null },
-	      'Show me the tickets'
-	    )
-	  );
-	};
-
-/***/ },
-/* 249 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _container = __webpack_require__(208);
-
-	var _container2 = _interopRequireDefault(_container);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Offer = function (_Container) {
-	  _inherits(Offer, _Container);
-
-	  function Offer() {
-	    _classCallCheck(this, Offer);
-
-	    return _possibleConstructorReturn(this, (Offer.__proto__ || Object.getPrototypeOf(Offer)).apply(this, arguments));
-	  }
-
-	  _createClass(Offer, [{
-	    key: 'getNextTicket',
-	    value: function getNextTicket(direction) {
-	      this.dispatch({ type: "NEXT_TICKET_REQUESTED", next: direction });
-	    }
-	  }, {
-	    key: 'setCategory',
-	    value: function setCategory(category) {
-	      this.dispatch({ type: "CATEGORY_SET", category: category });
-	    }
-	  }, {
-	    key: 'chooseTicket',
-	    value: function chooseTicket(id, category, mode) {
-	      var request = {
-	        method: "GET",
-	        destination: "bet/api/get_ticket?ticket=" + id + "&category=" + category + "&mode=" + mode,
-	        action: { type: "TICKET_ARRIVED" }
-	      };
-	      this.JSONtransfer(request);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      var state = this.props.state;
-	      var data = this.props.data;
-	      var tickets = data.offer.tickets;
-	      var index = state.offer.currentIndex;
-	      var currentID = tickets[index].ticket_id;
-	      var category = state.category;
-	      var mode = state.mode;
-	      var error = state.accountError;
-	      return _react2.default.createElement(
-	        'div',
-	        { className: "game-offer-container flying" },
-	        _react2.default.createElement(
-	          'div',
-	          { className: "game-offer-details-container" },
-	          _react2.default.createElement(
-	            'div',
-	            { className: "offer-title-container" },
-	            _react2.default.createElement(
-	              'h2',
-	              { className: "offer-title" },
-	              tickets[index].title
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: "offer-intro-container" },
-	            _react2.default.createElement(
-	              'p',
-	              { className: "offer-intro" },
-	              tickets[index].intro
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: "offer-deadline-container" },
-	            _react2.default.createElement(
-	              'p',
-	              { className: "offer-deadline" },
-	              tickets[index].deadline
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: "offer-controller" },
-	            _react2.default.createElement(
-	              'button',
-	              { className: "sherwood-button offer-button", onClick: function onClick() {
-	                  return _this2.getNextTicket("previous");
-	                } },
-	              'Previous'
-	            ),
-	            _react2.default.createElement(
-	              'button',
-	              { className: "sherwood-button offer-button", onClick: function onClick() {
-	                  return _this2.getNextTicket("next");
-	                } },
-	              'Next'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: "game-offer-category-container" },
-	          _react2.default.createElement(
-	            'p',
-	            { className: "offer-error-place" },
-	            error ? _react2.default.createElement(
-	              'span',
-	              { className: 'offer-error' },
-	              'Not enough money'
-	            ) : _react2.default.createElement('span', null)
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            {
-	              className: "sherwood-button category-button " + (category == "1" ? "active-button" : null),
-	              onClick: function onClick() {
-	                return _this2.setCategory("1");
-	              } },
-	            'Beginner: 1',
-	            mode == "free" ? _react2.default.createElement(
-	              'span',
-	              null,
-	              '\xA0Sherwood coin'
-	            ) : _react2.default.createElement(
-	              'span',
-	              null,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            {
-	              className: "sherwood-button category-button " + (category == "10" ? "active-button" : null),
-	              onClick: function onClick() {
-	                return _this2.setCategory("10");
-	              } },
-	            'Hardcore: 10',
-	            mode == "free" ? _react2.default.createElement(
-	              'span',
-	              null,
-	              '\xA0Sherwood coin'
-	            ) : _react2.default.createElement(
-	              'span',
-	              null,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            {
-	              className: "sherwood-button category-button " + (category == "100" ? "active-button" : null),
-	              onClick: function onClick() {
-	                return _this2.setCategory("100");
-	              } },
-	            'Kamikaze: 100',
-	            mode == "free" ? _react2.default.createElement(
-	              'span',
-	              null,
-	              '\xA0Sherwood coin'
-	            ) : _react2.default.createElement(
-	              'span',
-	              null,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            {
-	              onClick: function onClick() {
-	                return _this2.chooseTicket(currentID, category, mode);
-	              },
-	              className: "sherwood-button category-button",
-	              id: "select-ticket" },
-	            'Select ticket'
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Offer;
-	}(_container2.default);
-
-	exports.default = Offer;
-
-/***/ },
-/* 250 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _container = __webpack_require__(208);
-
-	var _container2 = _interopRequireDefault(_container);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Tutorial = function (_Container) {
-	  _inherits(Tutorial, _Container);
-
-	  function Tutorial() {
-	    _classCallCheck(this, Tutorial);
-
-	    return _possibleConstructorReturn(this, (Tutorial.__proto__ || Object.getPrototypeOf(Tutorial)).apply(this, arguments));
-	  }
-
-	  _createClass(Tutorial, [{
-	    key: 'newStep',
-	    value: function newStep() {
-	      this.dispatch({ type: "NEW_STEP_REQUESTED" });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      var step = this.props.state.tutorialStep;
-	      return _react2.default.createElement(
-	        'div',
-	        { className: "game-tutorial-container" },
-	        step > 0 ? _react2.default.createElement(Step, {
-	          text: "You will complete a tutorial in a few steps.",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "Ok" }) : null,
-	        step > 1 ? _react2.default.createElement(Step, {
-	          text: "Your goal is to fill your ticket with your bets.",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "All right" }) : null,
-	        step > 2 ? _react2.default.createElement(Step, {
-	          text: "Let's see an example: You saw a match, Barca-Alaves",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "Let's see..." }) : null,
-	        step > 3 ? _react2.default.createElement(Step, {
-	          text: "You used to say in regular betting: 'Barca will win.'",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "Sure..." }) : null,
-	        step > 4 ? _react2.default.createElement(Step, {
-	          text: "In other words you said: '100% that Barca will win.'",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "What is the point?" }) : null,
-	        step > 5 ? _react2.default.createElement(Step, {
-	          text: "From now on, you CAN say something else:",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "Don't tease me..." }) : null,
-	        step > 6 ? _react2.default.createElement(Step, {
-	          text: "'60% that Barca will win. I give 35% for draw and 5% for Alaves...'",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "Why is that good?" }) : null,
-	        step > 7 ? _react2.default.createElement(Step, {
-	          text: "When the match is over, you get 60 points if Barca wins.",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "And if they don't?" }) : null,
-	        step > 8 ? _react2.default.createElement(Step, {
-	          text: "Well, you get 35 points if it's a draw, or 5 points if Alaves wins.",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "What do these points mean?" }) : null,
-	        step > 9 ? _react2.default.createElement(Step, {
-	          text: "You will be ranked based on that.",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "How?" }) : null,
-	        step > 10 ? _react2.default.createElement(Step, {
-	          text: "You will get points for all of your bets on this ticket.",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "What is gonna happen with them?" }) : null,
-	        step > 11 ? _react2.default.createElement(Step, {
-	          text: "They'll be MULTIPLIED by each other. You'll get a large number.",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "What happens with that number?" }) : null,
-	        step > 12 ? _react2.default.createElement(Step, {
-	          text: "For every ticket the largest number wins.",
-	          action: function action() {
-	            return _this2.newStep();
-	          }, button: "All right... Let's try it!" }) : null
-	      );
-	    }
-	  }]);
-
-	  return Tutorial;
-	}(_container2.default);
-
-	exports.default = Tutorial;
-
-
-	var Step = function Step(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "step-flex" },
-	    _react2.default.createElement(
-	      'div',
-	      { className: "step-text-container" },
-	      _react2.default.createElement(
-	        'p',
-	        { className: "step-text" },
-	        props.text
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: "step-controller" },
-	      _react2.default.createElement(
-	        'button',
-	        { className: "sherwood-button step-button", onClick: props.action },
-	        props.button
-	      )
-	    )
-	  );
-	};
-
-/***/ },
-/* 251 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _container = __webpack_require__(208);
-
-	var _container2 = _interopRequireDefault(_container);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Generator = function (_Container) {
-	  _inherits(Generator, _Container);
-
-	  function Generator() {
-	    _classCallCheck(this, Generator);
-
-	    return _possibleConstructorReturn(this, (Generator.__proto__ || Object.getPrototypeOf(Generator)).apply(this, arguments));
-	  }
-
-	  _createClass(Generator, [{
-	    key: 'chooseOut',
-	    value: function chooseOut(out) {
-	      this.dispatch({ type: "OUT_CHOSEN", out: out });
-	    }
-	  }, {
-	    key: 'modifyPercent',
-	    value: function modifyPercent(event, bar) {
-	      var direction = event.deltaY < 0 ? "up" : "down";
-	      this.dispatch({ type: "PERCENT_MODIFIED", bar: bar, direction: direction });
-	    }
-	  }, {
-	    key: 'requestOtherMatch',
-	    value: function requestOtherMatch(next) {
-	      this.dispatch({ type: "NEXT_MATCH_REQUESTED", next: next });
-	    }
-	  }, {
-	    key: 'requestProceed',
-	    value: function requestProceed() {
-	      var _this2 = this;
-
-	      this.dispatch({ type: "FINALIZATION_REQUESTED" });
-	      setTimeout(function () {
-	        _this2.dispatch({ type: "ERRORS_NO_LONGER_RELEVANT" });
-	      }, 700);
-	    }
-	  }, {
-	    key: 'addPercent',
-	    value: function addPercent(number, bar) {
-	      var direction = void 0;
-	      if (number == 1 || number == 10) {
-	        direction = "up";
-	      }
-	      if (number == -1 || number == -10) {
-	        direction = "down";
-	      }
-	      this.dispatch({ type: "PERCENT_ADDED", bar: bar, direction: direction, number: Math.abs(number) });
-	    }
-	  }, {
-	    key: 'newExp',
-	    value: function newExp(direction) {
-	      this.dispatch({ type: "NEXT_EXP_STEP", direction: direction });
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var _this3 = this;
-
-	      setTimeout(function () {
-	        _this3.dispatch({ type: "ERRORS_NO_LONGER_RELEVANT" });
-	      }, 700);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this4 = this;
-
-	      var data = this.props.data;
-	      var state = this.props.state;
-	      var index = state.ticket.currentIndex;
-	      var matches = data.ticket.matches;
-	      var match = matches[index];
-	      var generator = state.generator;
-	      return _react2.default.createElement(
-	        'div',
-	        { className: "game-generator-container flying" },
-	        _react2.default.createElement(
-	          'div',
-	          { className: "upper-flex" },
-	          _react2.default.createElement(
-	            'div',
-	            { className: "generator-match-info-container" },
-	            _react2.default.createElement(MatchInfo, {
-	              previous: function previous() {
-	                return _this4.requestOtherMatch("previous");
-	              },
-	              next: function next() {
-	                return _this4.requestOtherMatch("next");
-	              },
-	              match: match })
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: "generator-playground-container" },
-	            _react2.default.createElement(
-	              'div',
-	              { className: "generator-bars" },
-	              _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: "generator-flex" },
-	                  _react2.default.createElement(FullBar, {
-	                    match: match.match,
-	                    chooseOut: function chooseOut() {
-	                      return _this4.chooseOut("home");
-	                    },
-	                    modifyPercent: function modifyPercent(event, bar) {
-	                      return _this4.modifyPercent(event, bar);
-	                    },
-	                    addPercent: function addPercent(number, bar) {
-	                      return _this4.addPercent(number, bar);
-	                    },
-	                    number: "1",
-	                    barID: "bar-1",
-	                    percent: generator.home,
-	                    out: generator.out,
-	                    name: "home" }),
-	                  _react2.default.createElement(FullBar, {
-	                    match: match.match,
-	                    chooseOut: function chooseOut() {
-	                      return _this4.chooseOut("draw");
-	                    },
-	                    modifyPercent: function modifyPercent(event, bar) {
-	                      return _this4.modifyPercent(event, bar);
-	                    },
-	                    addPercent: function addPercent(number, bar) {
-	                      return _this4.addPercent(number, bar);
-	                    },
-	                    number: "X",
-	                    barID: "bar-X",
-	                    percent: generator.draw,
-	                    out: generator.out,
-	                    name: "draw" }),
-	                  _react2.default.createElement(FullBar, {
-	                    match: match.match,
-	                    chooseOut: function chooseOut() {
-	                      return _this4.chooseOut("away");
-	                    },
-	                    modifyPercent: function modifyPercent(number, bar) {
-	                      return _this4.modifyPercent(number, bar);
-	                    },
-	                    addPercent: function addPercent(number, bar) {
-	                      return _this4.addPercent(number, bar);
-	                    },
-	                    number: "2",
-	                    barID: "bar-2",
-	                    percent: generator.away,
-	                    out: generator.out,
-	                    name: "away" })
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: "generator-title-container" },
-	                  _react2.default.createElement(GeneratorTitle, null)
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: "generator-controller" },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: "generator-confirm-button-container" },
-	                  _react2.default.createElement(
-	                    'button',
-	                    { className: "sherwood-button generator-confirm-button", onClick: function onClick() {
-	                        return _this4.requestProceed();
-	                      } },
-	                    'Continue to finalize ticket'
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Generator;
-	}(_container2.default);
-
-	exports.default = Generator;
-
-
-	var FullBar = function FullBar(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "full-bar", id: props.barID },
-	    _react2.default.createElement(
-	      'button',
-	      {
-	        className: "sherwood-button choice-button " + (props.name == props.out ? "active-choice" : null),
-	        onClick: props.chooseOut },
-	      props.number
-	    ),
-	    props.percent == 0 ? _react2.default.createElement(Placeholder, null) : _react2.default.createElement(
-	      'div',
-	      { className: "bar-container", onWheel: function onWheel(event) {
-	          return props.modifyPercent(event, props.name);
-	        }, key: props.match },
-	      _react2.default.createElement(
-	        'div',
-	        { className: "bar-fill", style: { height: (100 - props.percent).toString() + "%" } },
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: function onClick() {
-	              return props.addPercent(10, props.name);
-	            }, className: "generator-percent-button" },
-	          '+10'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: function onClick() {
-	              return props.addPercent(1, props.name);
-	            }, className: "generator-percent-button" },
-	          '+1'
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'bar-percent' },
-	          parseInt(props.percent),
-	          '%'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: function onClick() {
-	              return props.addPercent(-1, props.name);
-	            }, className: "generator-percent-button" },
-	          '-1'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: function onClick() {
-	              return props.addPercent(-10, props.name);
-	            }, className: "generator-percent-button" },
-	          '-10'
-	        )
-	      )
-	    )
-	  );
-	};
-
-	var Placeholder = function Placeholder() {
-	  return _react2.default.createElement('div', { className: "bar-container-placeholder" });
-	};
-
-	var Inf = function Inf() {
-	  return _react2.default.createElement(
-	    'span',
-	    null,
-	    '\u221E'
-	  );
-	};
-
-	var GeneratorTitle = function GeneratorTitle() {
-	  return _react2.default.createElement(
-	    'h4',
-	    { className: "generator-title" },
-	    'SherwoodBET odds generator'
-	  );
-	};
-
-	var MatchInfo = function MatchInfo(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "generator-match-info", key: props.match.match },
-	    _react2.default.createElement(
-	      'div',
-	      { className: "generator-info-container" },
-	      _react2.default.createElement(
-	        'h4',
-	        null,
-	        props.match.match
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        _react2.default.createElement(
-	          'span',
-	          { className: "generator-odds" },
-	          props.match.bet.home == 0 ? _react2.default.createElement(Inf, null) : (100 / props.match.bet.home).toFixed(2),
-	          'x'
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { className: "generator-odds" },
-	          props.match.bet.draw == 0 ? _react2.default.createElement(Inf, null) : (100 / props.match.bet.draw).toFixed(2),
-	          'x'
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { className: "generator-odds" },
-	          props.match.bet.away == 0 ? _react2.default.createElement(Inf, null) : (100 / props.match.bet.away).toFixed(2),
-	          'x'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        props.match.tournament,
-	        '\xA0-\xA0',
-	        props.match.round_number
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        props.match.venue
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        props.match.match_date
-	      ),
-	      _react2.default.createElement(
-	        'p',
-	        null,
-	        props.match.more_info
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'button',
-	      { className: "generator-preview-button", onClick: function onClick() {
-	          return window.open("https://www.whoscored.com/Matches/1152955/Preview/Europe-UEFA-Champions-League-2016-2017-Barcelona-Paris-Saint-Germain");
-	        } },
-	      '\xA0>\xA0Preview\xA0<\xA0'
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: "generator-match-button-container" },
-	      _react2.default.createElement(
-	        'button',
-	        { className: "generator-match-button", onClick: props.previous },
-	        _react2.default.createElement(
-	          'i',
-	          { className: 'material-icons md-20' },
-	          'fast_rewind'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'button',
-	        { className: "generator-match-button", onClick: props.next },
-	        _react2.default.createElement(
-	          'i',
-	          { className: 'material-icons md-20' },
-	          'fast_forward'
-	        )
-	      )
-	    )
-	  );
-	};
-
-/***/ },
-/* 252 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _container = __webpack_require__(208);
-
-	var _container2 = _interopRequireDefault(_container);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Confirm = function (_Container) {
-	  _inherits(Confirm, _Container);
-
-	  function Confirm() {
-	    _classCallCheck(this, Confirm);
-
-	    return _possibleConstructorReturn(this, (Confirm.__proto__ || Object.getPrototypeOf(Confirm)).apply(this, arguments));
-	  }
-
-	  _createClass(Confirm, [{
-	    key: 'back',
-	    value: function back() {
-	      var _this2 = this;
-
-	      setTimeout(function () {
-	        _this2.dispatch({ type: "BACK_TO_GENERATOR" });
-	      }, 400);
-	    }
-	  }, {
-	    key: 'confirm',
-	    value: function confirm() {
-	      var data = this.props.data.ticket;
-	      var request = {
-	        method: "POST",
-	        destination: "bet/api/bet",
-	        data: data,
-	        action: { type: "BET_SUCCESSFULLY_PLACED" }
-	      };
-	      this.JSONtransfer(request);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this3 = this;
-
-	      var data = this.props.data;
-	      var state = this.props.state;
-	      var category = data.ticket.category;
-	      var mode = state.mode;
-	      return _react2.default.createElement(
-	        'div',
-	        { className: "game-confirm-container flying" },
-	        _react2.default.createElement(
-	          'div',
-	          { className: "game-confirm-full-explanation" },
-	          _react2.default.createElement(Title, { category: category, mode: mode }),
-	          _react2.default.createElement(Explanation, { category: category, mode: mode })
-	        ),
-	        _react2.default.createElement(Controller, { back: function back() {
-	            return _this3.back();
-	          }, confirm: function confirm() {
-	            return _this3.confirm();
-	          } })
-	      );
-	    }
-	  }]);
-
-	  return Confirm;
-	}(_container2.default);
-
-	exports.default = Confirm;
-
-
-	var Title = function Title(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "confirm-title-container" },
-	    _react2.default.createElement(
-	      'h2',
-	      { className: "finalize-title" },
-	      'Pay off for your ',
-	      _react2.default.createElement(
-	        'span',
-	        { className: "confirm-bet-size" },
-	        props.category,
-	        '\xA0',
-	        props.mode == "free" ? _react2.default.createElement(
-	          'span',
-	          null,
-	          'Sherwood coin'
-	        ) : _react2.default.createElement(
-	          'span',
-	          null,
-	          'Euros'
-	        )
-	      ),
-	      ' - it ALL stays among you:'
-	    )
-	  );
-	};
-
-	var Explanation = function Explanation(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "confirm-explanation-container" },
-	    _react2.default.createElement(
-	      'div',
-	      { className: "full-table" },
-	      _react2.default.createElement(
-	        'p',
-	        { className: "confirm-table-title" },
-	        'Top'
-	      ),
-	      _react2.default.createElement(
-	        'table',
-	        { className: "flying" },
-	        _react2.default.createElement(
-	          'tbody',
-	          null,
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '5%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '2x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 2,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '10%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '1.9x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 1.9,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '15%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '1.8x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 1.8,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '20%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '1.7x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 1.7,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '25%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '1.6x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 1.6,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '30%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '1.5x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 1.5,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '35%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '1.4x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 1.4,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '40%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '1.3x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 1.3,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '45%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '1.2x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 1.2,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '50%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '1.1x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              (props.category * 1.1).toFixed(1),
-	              '\u20AC'
-	            )
-	          )
-	        )
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: "full-table" },
-	      _react2.default.createElement(
-	        'p',
-	        { className: "confirm-table-title" },
-	        'Bottom'
-	      ),
-	      _react2.default.createElement(
-	        'table',
-	        { className: "flying" },
-	        _react2.default.createElement(
-	          'tbody',
-	          null,
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '5%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '0x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 0,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '10%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '0.1x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 0.1,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '15%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '0.2x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 0.2,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '20%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '0.3x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 0.3,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '25%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '0.4x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 0.4,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '30%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '0.5x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 0.5,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '35%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '0.6x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 0.6,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '40%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '0.7x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 0.7,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '45%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '0.8x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 0.8,
-	              '\u20AC'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '50%'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              null,
-	              '0.9x'
-	            ),
-	            _react2.default.createElement(
-	              'td',
-	              { className: "confirm-amount" },
-	              props.category * 0.9,
-	              '\u20AC'
-	            )
-	          )
-	        )
-	      )
-	    )
-	  );
-	};
-
-	var Controller = function Controller(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "confirm-controller-container" },
-	    _react2.default.createElement(
-	      'button',
-	      { className: "sherwood-button confirm-controller-button", onClick: props.back },
-	      'Back to generator'
-	    ),
-	    _react2.default.createElement(
-	      'button',
-	      { className: "sherwood-button confirm-controller-button", onClick: props.confirm },
-	      'Confirm and play'
-	    )
-	  );
-	};
-
-/***/ },
-/* 253 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _container = __webpack_require__(208);
-
-	var _container2 = _interopRequireDefault(_container);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Success = function (_Container) {
-	  _inherits(Success, _Container);
-
-	  function Success() {
-	    _classCallCheck(this, Success);
-
-	    return _possibleConstructorReturn(this, (Success.__proto__ || Object.getPrototypeOf(Success)).apply(this, arguments));
-	  }
-
-	  _createClass(Success, [{
-	    key: 'newTicket',
-	    value: function newTicket() {
-	      this.dispatch({ type: "NEW_TICKET_REQUESTED" });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      return _react2.default.createElement(
-	        'div',
-	        { className: "game-success-container" },
-	        _react2.default.createElement(
-	          'div',
-	          { className: "game-success-details" },
-	          _react2.default.createElement(
-	            'h2',
-	            { className: "game-success-title" },
-	            'Your bet is placed.'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: "game-success-text" },
-	            'Congratulations!'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: "game-success-text" },
-	            'Stay tuned for the results!'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: "game-success-text" },
-	            'You can play an other ticket now.'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: "game-success-controller" },
-	          _react2.default.createElement(
-	            'button',
-	            { className: "sherwood-button success-button", onClick: function onClick() {
-	                return _this2.newTicket();
-	              } },
-	            'New ticket'
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Success;
-	}(_container2.default);
-
-	exports.default = Success;
-
-/***/ },
-/* 254 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _sherwood_modal = __webpack_require__(255);
-
-	var _sherwood_modal2 = _interopRequireDefault(_sherwood_modal);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ConfirmNewModal = function (_Modal) {
-	  _inherits(ConfirmNewModal, _Modal);
-
-	  function ConfirmNewModal() {
-	    _classCallCheck(this, ConfirmNewModal);
-
-	    return _possibleConstructorReturn(this, (ConfirmNewModal.__proto__ || Object.getPrototypeOf(ConfirmNewModal)).apply(this, arguments));
-	  }
-
-	  _createClass(ConfirmNewModal, [{
-	    key: 'confirmNew',
-	    value: function confirmNew() {
-	      var _this2 = this;
-
-	      this.modal.classList.add('sherwood-modal-leave');
-	      this.background.classList.add('sherwood-modal-background-leave');
-	      setTimeout(function () {
-	        _this2.dispatch({ type: "NEW_TICKET_CONFIRMED" });
-	      }, 500);
-	    }
-	  }, {
-	    key: 'content',
-	    value: function content() {
-	      var _this3 = this;
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(Title, null),
-	        _react2.default.createElement(Text, null),
-	        _react2.default.createElement(Controller, { back: function back() {
-	            return _this3.close();
-	          }, 'new': function _new() {
-	            return _this3.confirmNew();
-	          } })
-	      );
-	    }
-	  }]);
-
-	  return ConfirmNewModal;
-	}(_sherwood_modal2.default);
-
-	exports.default = ConfirmNewModal;
-
-
-	var Title = function Title() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "confirm-new-title-container" },
-	    _react2.default.createElement(
-	      'h2',
-	      { className: "confirm-new-title" },
-	      'Beware!'
-	    )
-	  );
-	};
-
-	var Text = function Text() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "confirm-new-text-container" },
-	    _react2.default.createElement(
-	      'p',
-	      { className: "confirm-new-text" },
-	      'You are about to lose your work.'
-	    ),
-	    _react2.default.createElement(
-	      'p',
-	      { className: "confirm-new-text" },
-	      'Are you sure you want to start a new ticket now?'
-	    )
-	  );
-	};
-
-	var Controller = function Controller(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "confirm-new-controller-container" },
-	    _react2.default.createElement(
-	      'button',
-	      { className: "sherwood-button confirm-new-button", onClick: props.back },
-	      'No'
-	    ),
-	    _react2.default.createElement(
-	      'button',
-	      { className: "sherwood-button confirm-new-button", onClick: props.new },
-	      'Yes'
-	    )
-	  );
-	};
-
-/***/ },
-/* 255 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _container = __webpack_require__(208);
-
-	var _container2 = _interopRequireDefault(_container);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Modal = function (_Container) {
-	  _inherits(Modal, _Container);
-
-	  function Modal(props) {
-	    _classCallCheck(this, Modal);
-
-	    return _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, props));
-	  }
-
-	  _createClass(Modal, [{
-	    key: 'content',
-	    value: function content() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        'Empty modal'
-	      );
-	    }
-	  }, {
-	    key: 'setStyle',
-	    value: function setStyle() {
-	      return {
-	        width: "40%",
-	        left: "30%",
-	        top: "10vh"
-	      };
-	    }
-	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.modalContent = this.content(this.props);
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.modal = document.getElementById("sherwood-modal");
-	      this.background = document.getElementById("sherwood-modal-background");
-	    }
-	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-	      this.modalContent = this.content(nextProps);
-	    }
-	  }, {
-	    key: 'close',
-	    value: function close() {
-	      var _this2 = this;
-
-	      this.modal.classList.add('sherwood-modal-leave');
-	      this.background.classList.add('sherwood-modal-background-leave');
+	      this.modal.classList.add('logout-modal-flyaway');
+	      this.background.classList.add('logout-modal-background-disappear');
 	      setTimeout(function () {
 	        _this2.dispatch({ type: "MODAL_CLOSED" });
-	      }, 500);
+	      }, 400);
+	    }
+	  }, {
+	    key: 'logout',
+	    value: function logout() {
+	      var request = {
+	        destination: "logout",
+	        method: "GET",
+	        action: { type: "LOGOUT_RESPONSE_ARRIVED" }
+	      };
+	      this.JSONtransfer(request);
+	      this.dispatch({ type: "LOGOUT_REQUESTED" });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.modal = document.getElementById('logout-modal');
+	      this.background = document.getElementById('logout-modal-background');
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { id: "sherwood-modal", className: "sherwood-modal", style: this.setStyle() },
-	          _react2.default.createElement(
-	            'div',
-	            {
-	              id: "sherwood-modal-content-container",
-	              className: "sherwood-modal-content-container" },
-	            this.modalContent
-	          )
-	        ),
-	        _react2.default.createElement('div', { id: "sherwood-modal-background", className: "sherwood-modal-background" })
-	      );
-	    }
-	  }]);
-
-	  return Modal;
-	}(_container2.default);
-
-	exports.default = Modal;
-
-/***/ },
-/* 256 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _sherwood_modal = __webpack_require__(255);
-
-	var _sherwood_modal2 = _interopRequireDefault(_sherwood_modal);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ConfirmResetModal = function (_Modal) {
-	  _inherits(ConfirmResetModal, _Modal);
-
-	  function ConfirmResetModal() {
-	    _classCallCheck(this, ConfirmResetModal);
-
-	    return _possibleConstructorReturn(this, (ConfirmResetModal.__proto__ || Object.getPrototypeOf(ConfirmResetModal)).apply(this, arguments));
-	  }
-
-	  _createClass(ConfirmResetModal, [{
-	    key: 'reset',
-	    value: function reset() {
-	      var _this2 = this;
-
-	      this.modal.classList.add('sherwood-modal-leave');
-	      this.background.classList.add('sherwood-modal-background-leave');
-	      setTimeout(function () {
-	        _this2.dispatch({ type: "RESET_CONFIRMED" });
-	      }, 500);
-	    }
-	  }, {
-	    key: 'content',
-	    value: function content() {
 	      var _this3 = this;
 
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(Title, null),
-	        _react2.default.createElement(Text, null),
-	        _react2.default.createElement(Controller, { back: function back() {
-	            return _this3.close();
-	          }, reset: function reset() {
-	            return _this3.reset();
-	          } })
+	        _react2.default.createElement('div', { className: "logout-modal-background", id: "logout-modal-background" }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: "logout-modal flying", id: "logout-modal" },
+	          _react2.default.createElement(
+	            'div',
+	            { className: "logout-modal-title-container" },
+	            _react2.default.createElement(
+	              'h2',
+	              { className: "logout-modal-title" },
+	              'Logout'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: "logout-modal-text-container" },
+	            _react2.default.createElement(
+	              'p',
+	              { className: "logout-modal-text" },
+	              'You are about to log out from your profile.'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: "logout-modal-text" },
+	              'Are you sure?'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: "logout-modal-button-container" },
+	            _react2.default.createElement(
+	              'button',
+	              {
+	                onClick: function onClick() {
+	                  return _this3.closeModal();
+	                },
+	                className: "sherwood-button logout-button" },
+	              'No'
+	            ),
+	            _react2.default.createElement(
+	              'button',
+	              {
+	                onClick: function onClick() {
+	                  return _this3.logout();
+	                },
+	                className: "sherwood-button logout-button" },
+	              'Yes'
+	            )
+	          )
+	        )
 	      );
 	    }
 	  }]);
 
-	  return ConfirmResetModal;
-	}(_sherwood_modal2.default);
+	  return LogoutModal;
+	}(_container2.default);
 
-	exports.default = ConfirmResetModal;
-
-
-	var Title = function Title() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "confirm-reset-title-container" },
-	    _react2.default.createElement(
-	      'h2',
-	      { className: "confirm-reset-title" },
-	      'Beware!'
-	    )
-	  );
-	};
-
-	var Text = function Text() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "confirm-reset-text-container" },
-	    _react2.default.createElement(
-	      'p',
-	      { className: "confirm-reset-text" },
-	      'You are about to lose your work.'
-	    ),
-	    _react2.default.createElement(
-	      'p',
-	      { className: "confirm-reset-text" },
-	      'Are you sure you want to reset the oddses?'
-	    )
-	  );
-	};
-
-	var Controller = function Controller(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: "confirm-reset-controller-container" },
-	    _react2.default.createElement(
-	      'button',
-	      { className: "sherwood-button confirm-reset-button", onClick: props.back },
-	      'No'
-	    ),
-	    _react2.default.createElement(
-	      'button',
-	      { className: "sherwood-button confirm-reset-button", onClick: props.reset },
-	      'Yes'
-	    )
-	  );
-	};
+	exports.default = LogoutModal;
 
 /***/ },
-/* 257 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(258);
+	var content = __webpack_require__(306);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(221)(content, {});
@@ -26435,23 +24462,21 @@
 	}
 
 /***/ },
-/* 258 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(213)();
 	// imports
-	exports.i(__webpack_require__(259), "");
-	exports.i(__webpack_require__(260), "");
-	exports.i(__webpack_require__(261), "");
-	exports.i(__webpack_require__(262), "");
-	exports.i(__webpack_require__(263), "");
-	exports.i(__webpack_require__(264), "");
-	exports.i(__webpack_require__(265), "");
-	exports.i(__webpack_require__(266), "");
-	exports.i(__webpack_require__(267), "");
-	exports.i(__webpack_require__(268), "");
-	exports.i(__webpack_require__(269), "");
-	exports.i(__webpack_require__(270), "");
+	exports.i(__webpack_require__(307), "");
+	exports.i(__webpack_require__(308), "");
+	exports.i(__webpack_require__(309), "");
+	exports.i(__webpack_require__(310), "");
+	exports.i(__webpack_require__(311), "");
+	exports.i(__webpack_require__(312), "");
+	exports.i(__webpack_require__(313), "");
+	exports.i(__webpack_require__(314), "");
+	exports.i(__webpack_require__(315), "");
+	exports.i(__webpack_require__(316), "");
 
 	// module
 	exports.push([module.id, "\n", ""]);
@@ -26460,7 +24485,7 @@
 
 
 /***/ },
-/* 259 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(213)();
@@ -26468,13 +24493,13 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  padding: 0;\n  margin: 0;\n}\n\n.home-background {\n  position: fixed;\n  margin: 0;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: green;\n}\n\n.home-background::after {\n  opacity: 0.55;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  content: \"\";\n  position: absolute;\n  background: url(\"/static/forest.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n", ""]);
+	exports.push([module.id, "\nbody {\n  padding: 0;\n  margin: 0;\n}\n\n.home-background {\n  position: relative;\n  margin: 0;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  background-color: green;\n}\n\n.home-background::after {\n  opacity: 0.25;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  content: \"\";\n  position: absolute;\n  background: url(\"/static/forest.jpg\");\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 260 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(213)();
@@ -26482,13 +24507,13 @@
 
 
 	// module
-	exports.push([module.id, ".wall-navbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  background-color: beige;\n  z-index: 2;\n  display: flex;\n}\n\n.wall-navbar-logo {\n  margin: 10px;\n  padding: 10px;\n  font-family: 'Bangers', cursive;\n  color: gold;\n  font-size: 2em;\n}\n\n#bet {\n  color: green;\n}\n\n.wall-navbar-button-container {\n  margin: 20px;\n  margin-left: 190px;\n}\n\n@media screen and (max-width: 1366px) {\n    .wall-navbar-button-container {\n        margin-left: 210px;\n    }\n}\n\n@media screen and (max-width: 1300px) {\n    .wall-navbar-button-container {\n        margin-left: 180px;\n    }\n}\n\n@media screen and (max-width: 1250px) {\n    .wall-navbar-button-container {\n        margin-left: 160px;\n    }\n}\n\n@media screen and (max-width: 1200px) {\n    .wall-navbar-button-container {\n        margin-left: 140px;\n    }\n}\n\n@media screen and (max-width: 1160px) {\n    .wall-navbar-button-container {\n        margin-left: 120px;\n    }\n}\n\n@media screen and (max-width: 1120px) {\n    .wall-navbar-button-container {\n        margin-left: 100px;\n    }\n}\n\n@media screen and (max-width: 1080px) {\n    .wall-navbar-button-container {\n        margin-left: 80px;\n    }\n}\n\n@media screen and (max-width: 1040px) {\n    .wall-navbar-button-container {\n        margin-left: 60px;\n    }\n}\n\n@media screen and (max-width: 1004px) {\n    .wall-navbar-button-container {\n        margin-left: 40px;\n    }\n}\n\n.navbar-button {\n  margin: 0 7px;\n  width: 105px;\n}\n\n.navbar-user-details-container {\n  border: 1px solid green;\n  border-radius: 3px;\n  text-align: center;\n  margin: 20px;\n  background-color: gold;\n  width: 325px;\n}\n\n@media screen and (max-width: 1366px) {\n    .navbar-user-details-container {\n        margin-left: 140px;\n    }\n}\n\n@media screen and (max-width: 1250px) {\n    .navbar-user-details-container {\n        margin-left: 120px;\n    }\n}\n\n@media screen and (max-width: 1200px) {\n    .navbar-user-details-container {\n        margin-left: 100px;\n    }\n}\n\n@media screen and (max-width: 1160px) {\n    .navbar-user-details-container {\n        margin-left: 80px;\n    }\n}\n\n@media screen and (max-width: 1120px) {\n    .navbar-user-details-container {\n        margin-left: 60px;\n    }\n}\n\n@media screen and (max-width: 1080px) {\n    .navbar-user-details-container {\n        margin-left: 40px;\n    }\n}\n\n@media screen and (max-width: 1040px) {\n    .navbar-user-details-container {\n        margin-left: 20px;\n    }\n}\n\n@media screen and (max-width: 1004px) {\n    .navbar-user-details-container {\n        margin-left: 10px;\n    }\n}\n\n.navbar-user-details {\n  font-family: 'Montserrat', cursive;\n  font-size: 0.8em;\n  margin: 10px;\n}\n\n.navbar-user-detail {\n  margin: 10px;\n}\n", ""]);
+	exports.push([module.id, ".wall-community-controller-container {\n  position: fixed;\n  top: 15vh;\n  left: 68%;\n  width: 30%;\n  z-index: 2;\n  background-color: beige;\n}\n\n.wall-community-controller-title-container {\n  margin: 20px;\n  text-align: center;\n}\n\n.wall-community-controller-title {\n  font-family: 'Bangers', cursive;\n  color: green;\n}\n\n.wall-community-controller-text-container {\n  margin: 20px;\n  text-align: justify;\n}\n\n.wall-community-controller-text {\n  font-family: 'Montserrat', cursive;\n  font-size: 0.7em;\n}\n\n.wall-community-controller-button-container {\n  margin: 20px;\n  text-align: center;\n}\n\n.community-button {\n  font-size: 1.2em;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 261 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(213)();
@@ -26496,13 +24521,13 @@
 
 
 	// module
-	exports.push([module.id, ".ticket-container {\n  position: fixed;\n  top: 22vh;\n  height: 407px;\n  width: 261px;\n  left: 91px;\n  background-color: #999;\n  border: 1px solid #999;\n  border-radius: 3px;\n  z-index: 2;\n  animation: ticketPlaceAppear 1.5s ease forwards;\n  animation-delay: 0.3s;\n  opacity: 0;\n}\n\n@media screen and (max-width: 1366px) {\n    .ticket-container {\n        left: 91px;\n    }\n}\n\n@media screen and (max-width: 1250px) {\n    .ticket-container {\n        left: 78px;\n    }\n}\n\n@media screen and (max-width: 1200px) {\n    .ticket-container {\n        left: 65px;\n    }\n}\n\n@media screen and (max-width: 1160px) {\n    .ticket-container {\n        left: 52px;\n    }\n}\n\n@media screen and (max-width: 1120px) {\n    .ticket-container {\n        left: 39px;\n    }\n}\n\n@media screen and (max-width: 1080px) {\n    .ticket-container {\n        left: 26px;\n    }\n}\n\n@media screen and (max-width: 1040px) {\n    .ticket-container {\n        left: 13px;\n    }\n}\n\n@media screen and (max-width: 1004px) {\n    .ticket-container {\n        left: 0;\n    }\n}\n\n@keyframes ticketPlaceAppear {\n  0% {opacity: 0}\n  100% {opacity: 1}\n}\n\n.ticket {\n  position: relative;\n  margin: 0;\n  background-color: gold  ;\n  border: 1px solid #999;\n  border-radius: 3px;\n  height: 100%;\n  z-index: 3;\n}\n\n.ticket::after {\n  content: \"\";\n  background: url(\"/static/wood.jpg\");\n  opacity: 0.25;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  position: absolute;\n}\n\n.no-ticket-sign-container {\n  text-align: center;\n  margin: 10px;\n  color: green;\n}\n\n.no-ticket-sign-icon-container {\n  opacity: 0.4;\n  margin-top: 70px;\n}\n\n.material-icons.md-192 {\n  font-size: 192px;\n}\n\n.no-ticket-sign-text-container {\n  margin-top: 0;\n  font-family: 'Bangers', cursive;\n}\n\n.offer-matches-container {\n  margin: 20px;\n  text-align: center;\n}\n\n.offer-ticket-number {\n  font-family: 'Montserrat', cursive;\n  font-weight: bold;\n  letter-spacing: 1px;\n  margin-bottom: 50px;\n  text-align: center;\n}\n\n.offer-match {\n  font-family: \"Montserrat\", cursive;\n  opacity: 0;\n}\n\n.one-match-0 {\n  opacity: 0;\n  transform-origin: top;\n  animation: rollin 0.5s ease forwards;\n}\n\n.one-match-1 {\n  opacity: 0;\n  transform-origin: top;\n  animation: rollin 0.5s ease forwards;\n  animation-delay: 0.05s;\n}\n\n.one-match-2 {\n  opacity: 0;\n  transform-origin: top;\n  animation: rollin 0.5s ease forwards;\n  animation-delay: 0.1s;\n}\n\n.one-match-3 {\n  opacity: 0;\n  transform-origin: top;\n  animation: rollin 0.5s ease forwards;\n  animation-delay: 0.15s;\n}\n\n.one-match-4 {\n  opacity: 0;\n  transform-origin: top;\n  animation: rollin 0.5s ease forwards;\n  animation-delay: 0.2s;\n}\n\n.one-match-5 {\n  opacity: 0;\n  transform-origin: top;\n  animation: rollin 0.5s ease forwards;\n  animation-delay: 0.25s;\n}\n\n.one-match-6 {\n  opacity: 0;\n  transform-origin: top;\n  animation: rollin 0.5s ease forwards;\n  animation-delay: 0.3s;\n}\n\n@keyframes rollin {\n  0% {transform: rotateX(90deg); opacity: 0}\n  100% {transform: rotateX(0deg); opacity: 1}\n}\n\n.full-ticket-number {\n  font-family: 'Montserrat', cursive;\n  font-weight: bold;\n  letter-spacing: 1px;\n  margin-bottom: 25px;\n  text-align: center;\n}\n\n.ticket-match-table {\n  font-family: \"Montserrat\", cursive;\n  font-size: 0.7em;\n  margin: 15px 10px;\n  padding: 0;\n  cursor: pointer;\n  position: relative;\n  z-index: 4;\n}\n\n.ticket-match-table:hover {\n  box-shadow: 0 0 5px #999;\n}\n\n.ticket-match-table:active {\n  box-shadow: 0 0 1px #999;\n}\n\n.ticket-match-table-name {\n  text-align: left;\n  padding: 0;\n  margin: 5px 0 0 5px;\n}\n\n.ticket-match-table-numbers {\n  text-align: right;\n  padding: 0;\n  margin: 0 5px 5px 0;\n}\n\n.ticket-match-table-numbers span {\n  display: inline-block;\n  width: 25px;\n  text-align: center;\n}\n\n.match-flash {\n  animation: matchFlash 0.7s forwards;\n}\n\n@keyframes matchFlash {\n  0% {background-color: DarkGoldenRod; color: DarkGoldenRod;}\n  100% {background-color: inherit; color: black;}\n}\n", ""]);
+	exports.push([module.id, ".wall-game-controller-container {\n  position: fixed;\n  z-index: 2;\n  top: 15vh;\n  left: 3%;\n  width: 15%;\n  background-color: beige;\n  box-shadow: 0 0 50px gold;\n}\n\n.wall-game-controller-text-container {\n  font-size: 0.8em;\n  color: green;\n  font-family: \"Montserrat\", cursive;\n  margin: 10px;\n}\n\n.wall-game-controller-button-container {\n  margin: 20px;\n  text-align: center;\n}\n\n.game-button {\n  font-size: 1.4em;\n}\n\n.wall-game-controller-title-container {\n  text-align: center;\n  margin: 10px;\n}\n\n.wall-game-controller-title {\n  color: green;\n  font-family: 'Bangers',cursive;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 262 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(213)();
@@ -26510,13 +24535,13 @@
 
 
 	// module
-	exports.push([module.id, ".game-main-selector-container {\n  position: fixed;\n  top: 22vh;\n  width: 743px;\n  height: 407px;\n  left: 468px;\n  border-radius: 3px;\n  z-index: -3;\n  animation: gameMainSelectorAppear 0.7s ease-out forwards;\n  animation-delay: 0.7s;\n  opacity: 0;\n}\n\n@media screen and (max-width: 1366px) {\n    .game-main-selector-container {\n        left: 468px;\n    }\n}\n\n@media screen and (max-width: 1250px) {\n    .game-main-selector-container {\n        left: 438px;\n    }\n}\n\n@media screen and (max-width: 1200px) {\n    .game-main-selector-container {\n        left: 395px;\n    }\n}\n\n@media screen and (max-width: 1160px) {\n    .game-main-selector-container {\n        left: 360px;\n    }\n}\n\n@media screen and (max-width: 1120px) {\n    .game-main-selector-container {\n        left: 330px;\n    }\n}\n\n@media screen and (max-width: 1080px) {\n    .game-main-selector-container {\n        left: 300px;\n    }\n}\n\n@media screen and (max-width: 1040px) {\n    .game-main-selector-container {\n        left: 280px;\n    }\n}\n\n@media screen and (max-width: 1004px) {\n    .game-main-selector-container {\n        left: 261px;\n    }\n}\n\n@keyframes gameMainSelectorAppear {\n  0% {transform: translateX(200%); opacity: 0; z-index: -3;}\n  100% {transform: translateX(0%); opacity: 1; z-index: 3;}\n}\n\n.game-main-selector-container::after {\n  content: \"\";\n  background-color: beige;\n  opacity: 0.35;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  position: absolute;\n}\n\n.main-selector-disappear {\n  z-index: 3;\n  opacity: 1;\n  animation-delay: 0s;\n  animation: mainSelectorDisappear 0.7s;\n}\n\n@keyframes mainSelectorDisappear {\n  0% {opacity: 1}\n  100% {opacity: 0}\n}\n\n.main-selector-text {\n  margin: 25px 25px;\n  background-color: beige;\n  border-radius: 2px;\n  position: relative;\n  z-index: 4;\n  margin-bottom: 0;\n}\n\n.game-main-selector-title-container {\n  text-align: left;\n}\n\n.game-main-selector-title {\n  color: green;\n  font-family: 'Bangers', cursive;\n  letter-spacing: 2px;\n  padding: 10px;\n  padding-bottom: 0;\n  margin: 0;\n}\n\n.game-main-selector-tutorial-container {\n  text-align: left;\n  margin: 0;\n  padding: 10px 40px;\n  padding-bottom: 20px;\n}\n\n.game-main-selector-tutorial {\n  font-family: \"Montserrat\", cursive;\n  font-size: 0.7em;\n  margin: 3px;\n}\n\n.game-main-selector-choices-container {\n  display: flex;\n  position: relative;\n  z-index: 4;\n}\n\n.game-main-selector-choice {\n  width: 33%;\n  text-align: center;\n}\n\n.main-selector-choice-container {\n  margin: 25px 25px;\n  background-color: beige;\n  border-radius: 2px;\n  padding-top: 5px;\n  padding-bottom: 10px;\n}\n\n.game-main-selector-choice-title {\n  font-family: 'Bangers', cursive;\n  letter-spacing: 2px;\n  margin-bottom: 7px;\n}\n\n.game-main-selector-choice-details-container {\n  margin: 5px 10px;\n}\n\n.game-main-selector-choice-detail {\n  font-family: 'Montserrat', cursive;\n  margin: 3px;\n  padding: 0;\n  text-align: left;\n}\n\n.float-right {\n  float: right;\n}\n\n.game-main-selector-choice-button-container {\n  margin: 15px;\n}\n\n#disabled {\n  cursor: not-allowed;\n}\n", ""]);
+	exports.push([module.id, ".wall-info-controller-container {\n  position: fixed;\n  left: 68%;\n  width: 30%;\n  top: 60vh;\n  z-index: 2;\n  background-color: beige;\n}\n\n.wall-info-controller-text-container {\n  margin: 20px;\n  text-align: justify;\n}\n\n.wall-info-controller-text {\n  font-family: 'Montserrat', cursive;\n  font-size: 0.7em;\n}\n\n.wall-info-controller-button-container {\n  text-align: center;\n  margin: 20px;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 263 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(213)();
@@ -26524,13 +24549,13 @@
 
 
 	// module
-	exports.push([module.id, ".game-offer-container {\n  position: fixed;\n  top: 22vh;\n  height: 407px;\n  left: 468px;\n  width: 743px;\n  border-radius: 3px;\n  z-index: -3;\n  animation: gameOfferAppear 0.7s ease-out forwards;\n  opacity: 0;\n  display: flex;\n}\n\n@media screen and (max-width: 1366px) {\n    .game-offer-container {\n        left: 468px;\n    }\n}\n\n@media screen and (max-width: 1250px) {\n    .game-offer-container {\n        left: 438px;\n    }\n}\n\n@media screen and (max-width: 1200px) {\n    .game-offer-container {\n        left: 395px;\n    }\n}\n\n@media screen and (max-width: 1160px) {\n    .game-offer-container {\n        left: 360px;\n    }\n}\n\n@media screen and (max-width: 1120px) {\n    .game-offer-container{\n        left: 330px;\n    }\n}\n\n@media screen and (max-width: 1080px) {\n    .game-offer-container {\n        left: 300px;\n    }\n}\n\n@media screen and (max-width: 1040px) {\n    .game-offer-container {\n        left: 280px;\n    }\n}\n\n@media screen and (max-width: 1004px) {\n    .game-offer-container {\n        left: 261px;\n    }\n}\n\n@keyframes gameOfferAppear {\n  0% {transform: translateX(200%); opacity: 0; z-index: -3;}\n  100% {transform: translateX(0%); opacity: 1; z-index: 3;}\n}\n\n.game-offer-container::after {\n  content: \"\";\n  background-color: beige;\n  opacity: 0.35;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  position: absolute;\n}\n\n.game-offer-details-container {\n  width: 50%;\n  position: relative;\n  z-index: 4;\n  margin: 30px;\n  background-color: beige;\n  border-radius: 3px;\n}\n\n.game-offer-category-container {\n  width: 50%;\n  margin: 40px 0;\n  position: relative;\n  z-index: 4;\n}\n\n.offer-title-container {\n  margin: 30px 20px;\n  text-align: center;\n}\n\n.offer-title {\n  font-family: 'Bangers', cursive;\n  letter-spacing: 3px;\n  color: green;\n}\n\n.offer-intro-container {\n  margin: 10px 40px;\n  text-align: justify;;\n  height: 120px;\n}\n\n.offer-intro {\n  font-family: 'Montserrat', cursive;\n}\n\n.offer-deadline-container {\n  margin: 10px 50px;\n  text-align: center;\n}\n\n.offer-deadline {\n  font-family: 'Montserrat', cursive;\n}\n\n.offer-controller {\n  text-align: center;\n  margin-top: 25px;\n}\n\n.offer-button {\n  margin: 10px;\n  width: 75px;\n}\n\n.category-button {\n  width: 60%;\n  margin: 10px 0;\n  margin-left: 20%;\n}\n\n#select-ticket {\n  margin-top: 35px;\n  font-size: 1.4em;\n  letter-spacing: 3px;\n}\n\n.active-button {\n  background-color: green;\n}\n\n.offer-error-place {\n  height: 20px;\n  width: 100%;\n  text-align: center;\n  color: red;\n  font-family: 'Montserrat', cursive;\n}\n\n.offer-error {\n  animation: offerErrorAppear 2s forwards;\n}\n\n@keyframes offerErrorAppear {\n  0% {opacity: 0;}\n  100% {opacity: 1;}\n}\n\n.disabled-button {\n  cursor: not-allowed;\n}\n", ""]);
+	exports.push([module.id, ".wall-license-container {\n  text-align: center;\n  position: fixed;\n  top: 83vh;\n  left: 3%;\n  width: 15%;\n  font-size: 0.5em;\n  font-family: \"Montserrat\", cursive;\n  background-color: beige;\n  z-index: 2;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 264 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(213)();
@@ -26538,13 +24563,13 @@
 
 
 	// module
-	exports.push([module.id, ".game-generator-container {\n  position: fixed;\n  top: 22vh;\n  height: 407px;\n  width: 743px;\n  left: 468px;\n  border-radius: 3px;\n  z-index: -3;\n  animation: gameGeneratorAppear 0.7s ease-out forwards;\n  opacity: 0;\n}\n\n@media screen and (max-width: 1366px) {\n    .game-generator-container {\n        left: 468px;\n    }\n}\n\n@media screen and (max-width: 1250px) {\n    .game-generator-container {\n        left: 438px;\n    }\n}\n\n@media screen and (max-width: 1200px) {\n    .game-generator-container {\n        left: 395px;\n    }\n}\n\n@media screen and (max-width: 1160px) {\n    .game-generator-container {\n        left: 360px;\n    }\n}\n\n@media screen and (max-width: 1120px) {\n    .game-generator-container{\n        left: 330px;\n    }\n}\n\n@media screen and (max-width: 1080px) {\n    .game-generator-container {\n        left: 300px;\n    }\n}\n\n@media screen and (max-width: 1040px) {\n    .game-generator-container {\n        left: 280px;\n    }\n}\n\n@media screen and (max-width: 1004px) {\n    .game-generator-container {\n        left: 261px;\n    }\n}\n\n.game-generator-container::after {\n  content: \"\";\n  background-color: beige;\n  opacity: 0.35;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  position: absolute;\n}\n\n@keyframes gameGeneratorAppear {\n  0% {transform: translateX(200%); opacity: 0; z-index: -3;}\n  100% {transform: translateX(0%); opacity: 1; z-index: 3;}\n}\n\n.generator-match-info-container {\n  width: 40%;\n  height: 310px;\n  text-align: center;\n  position: relative;\n  z-index: 4;\n}\n\n.generator-match-info {\n  margin: 20px;\n  width: 80%;\n  margin-left: 10%;\n  font-family: \"Montserrat\", cursive;\n  position: relative;\n  background-color: gold;\n  border: 1px solid #999;\n  border-radius: 3px;\n  height: 360px;\n  color: black;\n  animation: matchInfoAppear 0.7s forwards;\n}\n\n@keyframes matchInfoAppear {\n  0% {color: gold;}\n  100% {color: black;}\n}\n\n.generator-match-info::after {\n  content: \"\";\n  background: url(\"/static/wood.jpg\");\n  opacity: 0.25;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  position: absolute;\n}\n\n.generator-playground-container {\n  width: 60%;\n  position: relative;\n  z-index: 4;\n  text-align: center;\n}\n\n.generator-bars {\n  margin: 20px;\n  width: 80%;\n  margin-left: 10%;\n  font-family: \"Montserrat\", cursive;\n  position: relative;\n  border-radius: 3px;\n  height: 270px;\n  background-color: #5cb85c;\n  border: 1px solid #999;\n  border-radius: 3px;\n}\n\n.generator-bars::after {\n  content: \"\";\n  background: url(\"/static/wood.jpg\");\n  opacity: 0.35;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  position: absolute;\n}\n\n.bar-percent {\n  color: black;\n  font-weight: bold;\n  height: 30px;\n  font-size: 30px;\n  padding: 0;\n  margin: 0;\n  opacity: 0.7;\n}\n\n.generator-flex {\n  display: flex;\n}\n\n.full-bar {\n  width: 28%;\n}\n\n#bar-1 {\n  margin-left: 5%;\n}\n\n#bar-X {\n  margin-left: 3%;\n}\n\n#bar-2 {\n  margin-left: 3%;\n}\n\n.bar-container {\n  width: 80%;\n  margin-left: 10%;\n  height: 150px;\n  background-color: DarkGoldenRod;\n  border: 2px solid DarkGoldenRod;\n  border-radius: 3px;\n  animation: barAppear 0.4s forwards;\n  position: relative;\n  z-index: 5;\n}\n\n@keyframes barAppear {\n  0% {transform: rotateY(90deg); opacity: 0;}\n  100% {transform: rotateY(0deg); opacity: 1;}\n}\n\n.bar-container-placeholder {\n  width: 80%;\n  margin-left: 10%;\n  height: 150px;\n  border: 2px solid green;\n  border-radius: 3px;\n  opacity: 0;\n  position: relative;\n  z-index: 5;\n}\n\n.bar-fill {\n  width: 100%;\n  height: 100%;\n  background-color: gold;\n}\n\n.generator-title {\n  color: gold;\n  position: relative;\n  z-index: 5;\n}\n\n.choice-button {\n  width: 75px;\n  margin-top: 10px;\n  margin-bottom: 20px;\n  position: relative;\n  z-index: 5;\n  background-color: gold;\n  border-color: DarkGoldenRod;\n  color: black;\n}\n\n.upper-flex {\n  display: flex;\n}\n\n.generator-controller {\n  position: relative;\n  z-index: 4;\n  width: 100%;\n}\n\n.generator-info-container {\n  margin: 10px 5%;\n  width: 90%;\n}\n\n.generator-percent-button {\n  width: 100%;\n  background-color: transparent;\n  border: 0;\n  color: black;\n  font-family: \"Montserrat\", cursive;\n  height: 30px;\n  cursor: pointer;\n  font-size: 0.6em;\n  opacity: 0.5;\n  border-radius: 3px;\n}\n\n.generator-preview-button {\n  position: relative;\n  z-index: 8;\n  padding: 0;\n  background-color: transparent;\n  border: 0px;\n  cursor: pointer;\n  font-family: \"Bangers\", cursive;\n  letter-spacing: 2px;\n  font-size: 1.1em;\n  animation: matchInfoAppear 0.7s forwards;\n}\n\n.generator-preview-button:focus {\n  outline:0;\n}\n\n.generator-preview-button:hover {\n  text-decoration: underline;\n}\n\n.generator-percent-button:hover {\n  opacity: 1;\n  font-weight: bold;\n}\n\n.generator-percent-button:focus {\n  outline:0;\n}\n\n.generator-percent-button:active {\n  font-weight: bold;\n}\n\n.generator-match-button-container {\n  width: 100%;\n  margin-top: 45px;\n}\n\n.generator-match-button {\n  position: relative;\n  z-index: 10;\n  margin: 10px 5%;\n  width: 40%;\n  font-size: 1.5em;\n  padding: 2px;\n  background-color: transparent;\n  border: 0px;\n  cursor: pointer;\n  box-shadow: 0 0 10px #999;\n}\n\n.generator-match-button:focus {\n  outline:0;\n}\n\n.generator-match-button:hover {\n  box-shadow: 0 0 5px #999;\n}\n\n.generator-match-button:active {\n  box-shadow: 0 0 1px #999;\n}\n\n.generator-confirm-button-container {\n  width: 100%;\n}\n\n.generator-confirm-button {\n  margin: 20px;\n  margin-left: 10%;\n  width: 80%;\n  font-size: 1.5em;\n}\n\n.generator-odds {\n  display: inline-block;\n  width: 70px;\n  text-align: center;\n  font-family: \"Montserrat\", cursive;\n  font-weight: bold;\n  margin-top: 20px;\n  margin-bottom: 10px;\n}\n\n.material-icons.md-20 {\n  font-size: 20px;\n}\n\n.active-choice {\n  background-color: DarkGoldenRod;\n}\n", ""]);
+	exports.push([module.id, ".wall-navbar {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  background-color: beige;\n  z-index: 2;\n  display: flex;\n}\n\n.wall-navbar-logo {\n  margin: 10px;\n  padding: 10px;\n  font-family: 'Bangers', cursive;\n  color: gold;\n  font-size: 2em;\n}\n\n#bet {\n  color: green;\n}\n\n.wall-navbar-button-container {\n  margin: 20px;\n  margin-left: 10%;\n}\n\n.navbar-button {\n  margin: 0 7px;\n  width: 75px;\n}\n\n.navbar-user-details-container {\n  border: 1px solid green;\n  border-radius: 3px;\n  text-align: center;\n  margin: 20px;\n  margin-left: 11%;\n  background-color: gold;\n  width: 325px;\n}\n\n.navbar-user-details {\n  font-family: 'Montserrat', cursive;\n  font-size: 0.8em;\n  margin: 10px;\n}\n\n.navbar-user-detail {\n  margin: 10px;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 265 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(213)();
@@ -26552,13 +24577,13 @@
 
 
 	// module
-	exports.push([module.id, ".confirm-new-title-container {\n  margin: 5px;\n  text-align: center;\n}\n\n.confirm-new-title {\n  font-family: 'Bangers', cursive;\n  color: green;\n  letter-spacing: 2px;\n}\n\n.confirm-new-text-container {\n  margin: 5px 10px;\n  text-align: left;\n}\n\n.confirm-new-text {\n  font-family: 'Montserrat', cursive;\n  color: green;\n}\n\n.confirm-new-controller-container {\n  text-align: right;\n}\n\n.confirm-new-button {\n  margin: 5px;\n  width: 50px;\n}\n", ""]);
+	exports.push([module.id, "", ""]);
 
 	// exports
 
 
 /***/ },
-/* 266 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(213)();
@@ -26566,13 +24591,13 @@
 
 
 	// module
-	exports.push([module.id, ".confirm-reset-title-container {\n  margin: 5px;\n  text-align: center;\n}\n\n.confirm-reset-title {\n  font-family: 'Bangers', cursive;\n  color: green;\n  letter-spacing: 2px;\n}\n\n.confirm-reset-text-container {\n  margin: 5px 10px;\n  text-align: left;\n}\n\n.confirm-reset-text {\n  font-family: 'Montserrat', cursive;\n  color: green;\n}\n\n.confirm-reset-controller-container {\n  text-align: right;\n}\n\n.confirm-reset-button {\n  margin: 5px;\n  width: 50px;\n}\n", ""]);
+	exports.push([module.id, ".wall-ticket-controller-container {\n  background-color: beige;\n  z-index: 2;\n  position: fixed;\n  left: 3%;\n  width: 15%;\n  top: 50vh;\n}\n\n.wall-ticket-controller-text-container {\n  font-size: 0.8em;\n  color: green;\n  font-family: \"Montserrat\", cursive;\n  margin: 10px;\n}\n\n.wall-ticket-controller-text-container p {\n  margin: 4px;\n}\n\n.wall-ticket-controller-button-container {\n  margin: 20px;\n  text-align: center;\n}\n\n.wall-ticket-controller-title-container {\n  text-align: center;\n  margin: 10px;\n}\n\n.wall-ticket-controller-title {\n  color: green;\n  font-family: 'Bangers',cursive;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 267 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(213)();
@@ -26580,13 +24605,13 @@
 
 
 	// module
-	exports.push([module.id, ".game-confirm-container {\n  position: fixed;\n  top: 22vh;\n  width: 743px;\n  height: 407px;\n  left: 468px;\n  border-radius: 3px;\n  z-index: -3;\n  animation: gameGeneratorAppear 0.7s ease-out forwards;\n  opacity: 0;\n}\n\n@media screen and (max-width: 1366px) {\n    .game-confirm-container {\n        left: 468px;\n    }\n}\n\n@media screen and (max-width: 1250px) {\n    .game-confirm-container {\n        left: 438px;\n    }\n}\n\n@media screen and (max-width: 1200px) {\n    .game-confirm-container {\n        left: 395px;\n    }\n}\n\n@media screen and (max-width: 1160px) {\n    .game-confirm-container {\n        left: 360px;\n    }\n}\n\n@media screen and (max-width: 1120px) {\n    .game-confirm-container{\n        left: 330px;\n    }\n}\n\n@media screen and (max-width: 1080px) {\n    .game-confirm-container {\n        left: 300px;\n    }\n}\n\n@media screen and (max-width: 1040px) {\n    .game-confirm-container {\n        left: 280px;\n    }\n}\n\n@media screen and (max-width: 1004px) {\n    .game-confirm-container {\n        left: 261px;\n    }\n}\n\n.game-confirm-container::after {\n  content: \"\";\n  background-color: beige;\n  opacity: 0.35;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  position: absolute;\n}\n\n@keyframes gameGeneratorAppear {\n  0% {transform: translateX(200%); opacity: 0; z-index: -3;}\n  100% {transform: translateX(0%); opacity: 1; z-index: 3;}\n}\n\n.game-confirm-full-explanation {\n  position: relative;\n  z-index: 4;\n  background-color: beige;\n  border-radius: 5px;\n  font-size: 0.8em;\n  margin: 30px;\n  margin-bottom: 15px;\n  padding-top: 20px;\n}\n\n#explanation-quote {\n  margin: 10px;\n  color: green;\n  font-weight: bold;\n}\n\n.confirm-title-container {\n  text-align: center;\n}\n\n.finalize-title {\n  margin: 0;\n  padding: 0;\n  font-family: 'Bangers', cursive;\n  letter-spacing: 2px;\n  color: black;\n}\n\n.confirm-explanation-container {\n  display: flex;\n}\n\n.full-table {\n  width: 50%;\n  font-family: 'Montserrat', cursive;\n  text-align: center;\n  margin-bottom: 20px;\n}\n\n.confirm-controller-container {\n  position: relative;\n  z-index: 4;\n  text-align: center;\n}\n\n.confirm-controller-button {\n  width: 175px;\n  margin: 10px;\n  margin-top: 0;\n  font-size: 1.2em;\n  letter-spacing: 1px;\n}\n\n.full-table table {\n  border: 1px solid black;\n  border-radius: 3px;\n  margin: 5px;\n  width: 80%;\n  margin-left: 10%;\n  background-color: gold;\n}\n\n.confirm-amount {\n  font-weight: bold;\n  color: green;\n}\n\n.confirm-table-title {\n  font-family: \"Bangers\", cursive;\n  letter-spacing: 3px;\n}\n\n.confirm-bet-size {\n  color: green;\n}\n", ""]);
+	exports.push([module.id, ".wall-controller-container {\n  position: fixed;\n  z-index: 2;\n  top: 15vh;\n  left: 20%;\n  background-color: beige;\n  opacity: 0.7;\n}\n\n.wall-controller-button-container {\n  text-align: center;\n  margin: 20px;\n}\n\n.search-button {\n  margin: 0 7px;\n  width: 100px;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 268 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(213)();
@@ -26594,376 +24619,10 @@
 
 
 	// module
-	exports.push([module.id, ".game-success-container {\n  position: fixed;\n  top: 22vh;\n  width: 743px;\n  height: 407px;\n  left: 468px;\n  border-radius: 3px;\n  z-index: -3;\n  animation: gameGeneratorAppear 0.7s ease-out forwards;\n  opacity: 0;\n}\n\n@media screen and (max-width: 1366px) {\n    .game-success-container {\n        left: 468px;\n    }\n}\n\n@media screen and (max-width: 1250px) {\n    .game-success-container {\n        left: 438px;\n    }\n}\n\n@media screen and (max-width: 1200px) {\n    .game-success-container {\n        left: 395px;\n    }\n}\n\n@media screen and (max-width: 1160px) {\n    .game-success-container {\n        left: 360px;\n    }\n}\n\n@media screen and (max-width: 1120px) {\n    .game-success-container{\n        left: 330px;\n    }\n}\n\n@media screen and (max-width: 1080px) {\n    .game-success-container {\n        left: 300px;\n    }\n}\n\n@media screen and (max-width: 1040px) {\n    .game-success-container {\n        left: 280px;\n    }\n}\n\n@media screen and (max-width: 1004px) {\n    .game-success-container {\n        left: 261px;\n    }\n}\n\n.game-success-container::after {\n  content: \"\";\n  background-color: beige;\n  opacity: 0.35;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  position: absolute;\n}\n\n@keyframes gameGeneratorAppear {\n  0% {transform: translateX(200%); opacity: 0; z-index: -3;}\n  100% {transform: translateX(0%); opacity: 1; z-index: 3;}\n}\n\n.game-success-details {\n  text-align: center;\n  margin: 40px 80px;\n  background-color: beige;\n  color: green;\n  position: relative;\n  z-index: 4;\n  padding: 40px;\n  padding-bottom: 60px;\n  border-radius: 5px;\n}\n\n.game-success-title {\n  font-family: 'Bangers', cursive;\n  letter-spacing: 2px;\n  margin: 0;\n  padding: 0;\n  margin-bottom: 15px;\n}\n\n.game-success-text {\n  font-family: 'Montserrat', cursive;\n  margin: 5px 0;\n  padding: 0;\n}\n\n.game-success-controller {\n  text-align: center;\n  position: relative;\n  z-index: 4;\n}\n\n.success-button {\n  font-size: 1.2em;\n}\n", ""]);
+	exports.push([module.id, ".logout-modal-background {\n  position: fixed;\n  z-index: 10;\n  background-color: green;\n  opacity: 0.8;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  animation: loginModalBackgroundAppear 0.4s ease forwards;\n}\n\n@keyframes loginModalBackgroundAppear {\n  0% {opacity: 0}\n  100% {opacity: 0.8}\n}\n\n.logout-modal-background-disappear {\n  animation: loginModalBackgroundDisappear 0.4s ease forwards;\n}\n\n@keyframes logoutModalBackgroundDisappear {\n  0% {opacity: 0.8}\n  100% {opacity: 0}\n}\n\n.logout-modal {\n  position: absolute;\n  top: 15vh;\n  left: 30%;\n  width: 40%;\n  background-color: beige;\n  border-radius: 3px;\n  z-index: 11;\n  animation: logoutModalDrop 0.4s ease forwards;\n}\n\n@keyframes logoutModalDrop {\n  0% {transform: translateY(-100vh); opacity: 0}\n  70% {transform: translateY(30vh)}\n  100% {transform: translateY(15vh); opacity: 1}\n}\n\n.logout-modal-flyaway {\n  animation: logoutModalFlyaway 0.4s ease forwards;\n}\n\n@keyframes logoutModalFlyaway {\n  0% {transform: translateY(15vh)}\n  30% {transform: translateY(30vh)}\n  100% {transform: translateY(-100vh)}\n}\n\n.logout-modal-title-container {\n  text-align: center;\n  margin: 20px;\n}\n\n.logout-modal-title {\n  font-family: 'Bangers', cursive;\n  color: green;\n}\n\n.logout-modal-text-container {\n  text-align: justify;\n  margin: 20px;\n}\n\n.logout-modal-text {\n  font-family: 'Montserrat', cursive;\n  color: green;\n}\n\n.logout-modal-button-container {\n  text-align: right;\n  margin: 20px;\n}\n\n.logout-button {\n  margin: 0 5px;\n  width: 50px;\n}\n", ""]);
 
 	// exports
 
-
-/***/ },
-/* 269 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(213)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".game-tutorial-container {\n  position: fixed;\n  top: 22vh;\n  height: 407px;\n  left: 468px;\n  width: 743px;\n  border-radius: 3px;\n  z-index: -3;\n  animation: gameOfferAppear 0.7s ease-out forwards;\n  opacity: 0;\n}\n\n@media screen and (max-width: 1366px) {\n    .game-tutorial-container {\n        left: 468px;\n    }\n}\n\n@media screen and (max-width: 1250px) {\n    .game-tutorial-container {\n        left: 438px;\n    }\n}\n\n@media screen and (max-width: 1200px) {\n    .game-tutorial-container {\n        left: 395px;\n    }\n}\n\n@media screen and (max-width: 1160px) {\n    .game-tutorial-container {\n        left: 360px;\n    }\n}\n\n@media screen and (max-width: 1120px) {\n    .game-tutorial-container{\n        left: 330px;\n    }\n}\n\n@media screen and (max-width: 1080px) {\n    .game-tutorial-container {\n        left: 300px;\n    }\n}\n\n@media screen and (max-width: 1040px) {\n    .game-tutorial-container {\n        left: 280px;\n    }\n}\n\n@media screen and (max-width: 1004px) {\n    .game-tutorial-container {\n        left: 261px;\n    }\n}\n\n@keyframes gameOfferAppear {\n  0% {transform: translateX(200%); opacity: 0; z-index: -3;}\n  100% {transform: translateX(0%); opacity: 1; z-index: 3;}\n}\n\n.game-tutorial-container::after {\n  content: \"\";\n  background-color: beige;\n  opacity: 0.35;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  position: absolute;\n}\n\n.step-flex {\n  display: flex;\n  height: 27px;\n  padding: 2px;\n  position: relative;\n  z-index: 4;\n  width: 100%;\n}\n\n.step-text-container {\n  width: 70%;\n  margin: 0;\n  padding: 3px;\n  background-color: beige;\n  transform-origin: top;\n  animation: stepTextAppear 0.4s forwards;\n  border-radius: 5px;\n}\n\n@keyframes stepTextAppear {\n  0% {transform: rotateX(90deg); opacity: 0}\n  100% {transform: rotateX(0deg); opacity: 1}\n}\n\n.step-text {\n  margin: 3px 0;\n  padding: 0;\n  font-family: 'Montserrat', cursive;\n  color: green;\n}\n\n.step-controller {\n  width: 30%;\n  margin: 0;\n  padding: 0;\n}\n\n.step-button {\n  width: 90%;\n  margin: 3px 0;\n  padding: 3px;\n  margin-left: 5%;\n  animation: stepButtonAppear 1s forwards;\n  animation-delay: 1.5s;\n  position: relative;\n  z-index: -5;\n  opacity: 0;\n}\n\n@keyframes stepButtonAppear {\n  0% {opacity: 0; z-index: -5;}\n  100% {opacity: 1; z-index: 5;}\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 270 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(213)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".tutorial-modal-title-container {\n  margin: 10px;\n}\n\n.tutorial-modal-title {\n  font-family: 'Bangers', cursive;\n  color: green;\n  letter-spacing: 3px;\n}\n\n.tutorial-modal-close-button {\n  float: right;\n  margin: 10px;\n  background-color: transparent;\n  color: black;\n  font-family: 'Bangers', cursive;\n  font-size: 0.7em;\n  border: 0px;\n  cursor: pointer;\n}\n\n.tutorial-modal-close-button:focus {\n  outline:0;\n}\n\n.tutorial-modal-content {\n  margin: 20px;\n}\n\n.tutorial-modal-row {\n  display: flex;\n  font-size: 0.75em;\n}\n\n.tutorial-modal-small-box {\n  width: 33.33%;\n  padding: 5px 20px;\n  border-radius: 5px;\n  box-shadow: 0 0 10px #999;\n  margin: 5px;\n}\n\n.tutorial-modal-small-box  h1{\n  text-align: left;\n}\n\n.tutorial-modal-small-box  h2{\n  text-align: center;\n}\n\n::-webkit-scrollbar {\n    display: none;\n}\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 271 */,
-/* 272 */,
-/* 273 */,
-/* 274 */,
-/* 275 */,
-/* 276 */,
-/* 277 */,
-/* 278 */,
-/* 279 */,
-/* 280 */,
-/* 281 */,
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */,
-/* 286 */,
-/* 287 */,
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */,
-/* 297 */,
-/* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */,
-/* 302 */,
-/* 303 */,
-/* 304 */,
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _sherwood_modal = __webpack_require__(255);
-
-	var _sherwood_modal2 = _interopRequireDefault(_sherwood_modal);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var TutorialModal = function (_Modal) {
-	  _inherits(TutorialModal, _Modal);
-
-	  function TutorialModal() {
-	    _classCallCheck(this, TutorialModal);
-
-	    return _possibleConstructorReturn(this, (TutorialModal.__proto__ || Object.getPrototypeOf(TutorialModal)).apply(this, arguments));
-	  }
-
-	  _createClass(TutorialModal, [{
-	    key: 'setStyle',
-	    value: function setStyle() {
-	      return {
-	        width: "90%",
-	        left: "5%",
-	        top: "-5vh"
-	      };
-	    }
-	  }, {
-	    key: 'content',
-	    value: function content(props) {
-	      var _this2 = this;
-
-	      var active = { backgroundColor: "#5cb85c", fontWeight: "bold", cursor: "pointer" };
-	      return _react2.default.createElement(
-	        'div',
-	        { className: "tutorial-modal-content" },
-	        _react2.default.createElement(
-	          'div',
-	          { className: "tutorial-modal-title-container" },
-	          _react2.default.createElement(
-	            'h1',
-	            { className: "tutorial-modal-title" },
-	            'Tutorial - learn the game in 6 steps',
-	            _react2.default.createElement(
-	              'button',
-	              { onClick: function onClick() {
-	                  return _this2.close();
-	                }, className: "tutorial-modal-close-button" },
-	              'X'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: "tutorial-modal-row" },
-	          _react2.default.createElement(
-	            'div',
-	            { className: "tutorial-modal-small-box", style: props.state == "first" ? active : null },
-	            _react2.default.createElement(
-	              'h1',
-	              null,
-	              'Choose a category ',
-	              _react2.default.createElement(
-	                'span',
-	                { style: { float: "right" } },
-	                '1'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'You can play pro mode (1$, 10$ or 100$) - the maximum payoff is 2X your stake'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'You can play lotto mode (1$, 10$ or 100$, maximum payoff is 100x (risky!))'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'You can play with game money (Sherwood coin), here, again, the payoff is 2X'
-	            ),
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              'Hit Show me the tickets'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: "tutorial-modal-small-box", style: props.state == "second" ? active : null },
-	            _react2.default.createElement(
-	              'h1',
-	              null,
-	              'Choose a ticket ',
-	              _react2.default.createElement(
-	                'span',
-	                { style: { float: "right" } },
-	                '2'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'In the middle, you can see the ticket\'s title and a short intro. You can browse the tickets here'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'On the left side, you can see the related matches. You will bet on all of them.'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'On the right side, you can choose how much money you are willing to risk'
-	            ),
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              'Hit Select ticket to continue'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: "tutorial-modal-small-box", style: props.state == "third" ? active : null },
-	            _react2.default.createElement(
-	              'h1',
-	              null,
-	              'Bet on a match ',
-	              _react2.default.createElement(
-	                'span',
-	                { style: { float: "right" } },
-	                '3'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'When you saw a match (for example: Barca - Valencia), you used to say: "Barca will win"'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'Or to put it an other way: "I am 100% sure Barca will win" - but probably, you had some second thoughts'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'Now you CAN say: "I am 60 percent sure Barca will win... I give 30% for draw too, and 10% to Valencia"'
-	            ),
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              'Use the odds generator'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: "tutorial-modal-row" },
-	          _react2.default.createElement(
-	            'div',
-	            { className: "tutorial-modal-small-box", style: props.state == "fourth" ? active : null },
-	            _react2.default.createElement(
-	              'h1',
-	              null,
-	              'Fill the ticket ',
-	              _react2.default.createElement(
-	                'span',
-	                { style: { float: "right" } },
-	                '4'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'Set the points for all the matches. You will get your points based on them.'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'Let\'s see the previous example: if Barca won, you get 60 points for that match.'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'Obviously, if they don\'t, you will get 30, or 10 (if it\'s a draw, or an away win).'
-	            ),
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              'Hit Continue to finalize ticket'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: "tutorial-modal-small-box", style: props.state == "fifth" ? active : null },
-	            _react2.default.createElement(
-	              'h1',
-	              null,
-	              'How will you win? ',
-	              _react2.default.createElement(
-	                'span',
-	                { style: { float: "right" } },
-	                '5'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'For every match, you will get some points (explained in the previous step).'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'You will play with those who played the same ticket with the same category.'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'Your points will be multiplied by each other - you will be ranked based on that.'
-	            ),
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              'Check the table of payoffs.'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: "tutorial-modal-small-box", style: props.state == "fifth" ? active : null },
-	            _react2.default.createElement(
-	              'h1',
-	              null,
-	              'How much will you win? ',
-	              _react2.default.createElement(
-	                'span',
-	                { style: { float: "right" } },
-	                '6'
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'Instead of the lotto like approach of bookmakers, we provide you a poker like approach.'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'If you are in the better half, you win - based on how much player you defeated.'
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              'You can calculate with it - if you '
-	            ),
-	            _react2.default.createElement(
-	              'h2',
-	              null,
-	              'Hit Confirm and play'
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return TutorialModal;
-	}(_sherwood_modal2.default);
-
-	exports.default = TutorialModal;
 
 /***/ }
 /******/ ]);

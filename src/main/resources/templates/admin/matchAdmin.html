@@ -85,8 +85,16 @@
                         <tbody>
                         <tr>
                             <td><input id="editId" style="width: 50px" name="ID"/></td>
-                            <td><input id="editHomeTeam" style="width: 100px" name="homeTeam"/></td>
-                            <td><input id="editAwayTeam" style="width: 100px" name="awayTeam"/></td>
+                            <td>
+                                <select name="homeTeam" id="editHomeTeam">
+                                    <option th:each="team, iterStat : ${teams}"  th:text="${team.getShortName()}" th:value="${team.getShortName()}">Team</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="awayTeam" id="editAwayTeam">
+                                    <option th:each="team, iterStat : ${teams}"  th:text="${team.getShortName()}" th:value="${team.getShortName()}">Team</option>
+                                </select>
+                            </td>
                             <td><input id="editVenue" style="width: 100px" name="venue"/></td>
                             <td><input id="editLeague" style="width: 100px" name="league"/></td>
                             <td><input id="editRound" style="width: 50px" name="round"/></td>

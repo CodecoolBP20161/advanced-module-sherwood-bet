@@ -2,6 +2,7 @@ package com.codecool.sherwoodbet.controller.admin;
 
 import com.codecool.sherwoodbet.model.database.User;
 import com.codecool.sherwoodbet.repository.UserRepository;
+import com.codecool.sherwoodbet.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,9 @@ public class UserAdminController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping("/users")
     public String collectUsers(Model model) {
         model.addAttribute("users", userRepository.findAll());
@@ -37,8 +41,8 @@ public class UserAdminController {
                           @RequestParam(value = "password") String password,
                           @RequestParam(value = "email") String email) {
 
-        User user = new User(name, password, email);
-        userRepository.save(user);
+
+        userService.saveUser(name, password, email);
         return "redirect:/admin/users";
     }
 

@@ -1,8 +1,6 @@
 package com.codecool.sherwoodbet.controller.admin;
 
-import com.codecool.sherwoodbet.model.database.Team;
 import com.codecool.sherwoodbet.model.database.Ticket;
-import com.codecool.sherwoodbet.repository.TeamRepository;
 import com.codecool.sherwoodbet.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +34,6 @@ public class TicketAdminController {
                           @RequestParam(value = "title") String title,
                           @RequestParam(value = "description") String description) throws ParseException {
 
-        System.out.println("adddoljaaa");
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy/hh/mm");
         Date date = format.parse(deadLine);
         Ticket ticket = new Ticket(description, date, title);
@@ -53,13 +50,16 @@ public class TicketAdminController {
 
     @RequestMapping("/ticket/edit")
     public String editUser(@RequestParam(value = "id") String ID,
-                           @RequestParam(value = "deadline") String deadLine,
+                           @RequestParam(value = "deadline") String deadline,
                            @RequestParam(value = "title") String title,
                            @RequestParam(value = "description") String description) throws ParseException {
 
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.S");
+        Date date = format.parse(deadline);
         Ticket ticket = ticketRepository.findOne(Long.valueOf(ID));
         ticket.setTitle(title);
         ticket.setDescription(description);
+        ticket.setDeadline(date);
         ticketRepository.save(ticket);
         return "redirect:/admin/tickets";
     }

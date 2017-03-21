@@ -1,151 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-    <meta charset="UTF-8"></meta>
-    <title>Title</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Sacramento" rel="stylesheet"></link>
-
-    <!--TODO use this when in .js configured properly csrf token-->
-    <!--<meta name="_csrf" content="${_csrf.token}"/>-->
-    <!--&lt;!&ndash; default header name is X-CSRF-TOKEN &ndash;&gt;-->
-    <!--<meta name="_csrf_header" content="${_csrf.headerName}"/>-->
-
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
-    <link rel="stylesheet" href="/resources/demos/style.css"/>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+    <head th:replace="fragments/imports :: imports"></head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Bets</title>
 </head>
-
 <body>
-
-<a href="/admin/users" class="btn btn-default">Users</a>
-<a href="/admin/teams" class="btn btn-default">Teams</a>
-<a href="/admin/matches" class="btn btn-default">Matches</a>
-<a href="/admin/tickets" class="btn btn-default">Tickets</a>
-<a href="/admin/bets" class="btn btn-default">Bets</a>
-
+<div th:replace="fragments/buttons :: buttons"></div>
+<h1 style="text-align: center">Bets</h1>
 
 <table class="table table-stripped floatedTable">
     <thead>
-    <tr>
-        <th>ID</th>
-        <th>Away</th>
-        <th>Draw</th>
-        <th>Home</th>
-        <th>Match ID</th>
-        <th>Ticket ID</th>
-    </tr>
+        <tr>
+            <th>ID</th>
+            <th>Away</th>
+            <th>Draw</th>
+            <th>Home</th>
+            <th>Match ID</th>
+            <th>Ticket ID</th>
+        </tr>
     </thead>
     <tbody>
-    <tr th:each="bet, iterStat : ${bets}">
-        <td th:text="${bet.getID()}">ID</td>
-        <td th:text="${bet.getAway()}">Away</td>
-        <td th:text="${bet.getDraw()}">Draw</td>
-        <td th:text="${bet.getHome()}">Home</td>
-        <td th:text="${bet.getMatch().getID()}">Match ID</td>
-        <td th:text="${bet.getUserTicket().getID()}">Ticket ID</td>
-
-        <!--<td>&lt;!&ndash; Button trigger modal &ndash;&gt;-->
-            <!--<button type="button" th:id="'editstart-' + ${ticket.getID()}" class="btn btn-info" data-toggle="modal" data-target="#myModal">Edit</button>-->
-        <!--</td>-->
-        <!--<td><a href="#" class="btn btn-danger" th:href="'/admin/ticket/delete/' + ${ticket.getID()}">Delete</a></td>-->
-    </tr>
+        <tr th:each="bet, iterStat : ${bets}">
+            <td th:text="${bet.getID()}">ID</td>
+            <td th:text="${bet.getAway()}">Away</td>
+            <td th:text="${bet.getDraw()}">Draw</td>
+            <td th:text="${bet.getHome()}">Home</td>
+            <td th:text="${bet.getMatch().getID()}">Match ID</td>
+            <td th:text="${bet.getUserTicket().getID()}">Ticket ID</td>
+        </tr>
     </tbody>
 </table>
-
-<!--<a href="#" class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#myModal2">Add a new element</a>-->
-
-
-
-<!--&lt;!&ndash; Modal &ndash;&gt;-->
-<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
-    <!--<div class="modal-dialog modal-lg" role="document">-->
-        <!--<div class="modal-content">-->
-            <!--<form th:action="'/admin/ticket/edit'" method="post">-->
-                <!--<div class="modal-header">-->
-                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-                    <!--<h4 class="modal-title" id="myModalLabel">Modal title</h4>-->
-                <!--</div>-->
-                <!--<div class="modal-body">-->
-                    <!--<table>-->
-                        <!--<thead>-->
-                        <!--<tr>-->
-                            <!--<th>ID</th>-->
-                            <!--<th>Deadline</th>-->
-                            <!--<th>Description</th>-->
-                            <!--<th>Title</th>-->
-                        <!--</tr>-->
-                        <!--</thead>-->
-                        <!--<tbody>-->
-                        <!--<tr>-->
-                            <!--<td><input id="editId" style="width: 140px" name="id"/></td>-->
-                            <!--<td><input id="editDeadline" style="width: 140px" name="deadline"/></td>-->
-                            <!--<td><input id="editDescription" style="width: 140px" name="description"/></td>-->
-                            <!--<td><input id="editTitle" style="width: 140px" name="title"/></td>-->
-                        <!--</tr>-->
-                        <!--</tbody>-->
-                    <!--</table>-->
-                <!--</div>-->
-                <!--<div class="modal-footer">-->
-                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                    <!--<button type="submit" class="btn btn-primary">Save changes</button>-->
-                <!--</div>-->
-            <!--</form>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-
-<!--&lt;!&ndash; Modal2 &ndash;&gt;-->
-<!--<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
-    <!--<div class="modal-dialog modal-md" role="document">-->
-        <!--<div class="modal-content">-->
-            <!--<form th:action="'/admin/ticket/add'" method="post">-->
-                <!--<div class="modal-header">-->
-                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-                    <!--<h4 class="modal-title" id="myModalLabel2">New</h4>-->
-                <!--</div>-->
-                <!--<div class="modal-body">-->
-                    <!--<table>-->
-                        <!--<thead>-->
-                        <!--<tr>-->
-                            <!--<th>Deadline</th>-->
-                            <!--<th>Description</th>-->
-                            <!--<th>Title</th>-->
-                        <!--</tr>-->
-                        <!--</thead>-->
-                        <!--<tbody>-->
-                        <!--<tr>-->
-                            <!--<td><input style="width: 140px" id="datepicker" placeholder="yyyy/mm/dd/hh/mm" name="deadline"/></td>-->
-                            <!--<td><input style="width: 140px" placeholder="Description" name="description"/></td>-->
-                            <!--<td><input style="width: 140px" placeholder="Title" name="title"/></td>-->
-
-                        <!--</tr>-->
-                        <!--</tbody>-->
-                    <!--</table>-->
-                <!--</div>-->
-                <!--<div class="modal-footer">-->
-                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                    <!--<button type="submit"  class="btn btn-primary">Save changes</button>-->
-                <!--</div>-->
-            <!--</form>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-
-<!--<script th:src="@{/admin/bet.js}"></script>-->
-
-
 </body>
 </html>

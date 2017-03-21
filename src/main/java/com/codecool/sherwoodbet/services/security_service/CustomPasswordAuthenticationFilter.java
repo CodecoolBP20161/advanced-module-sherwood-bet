@@ -25,7 +25,6 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
             new MySimpleUrlAuthenticationSuccessHandler();
 
     public CustomPasswordAuthenticationFilter(){
-        super();
         setAuthenticationSuccessHandler(mySimpleUrlAuthenticationSuccessHandler);
     }
 
@@ -36,13 +35,12 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
             BufferedReader reader = request.getReader();
             String line;
             line = reader.readLine();
-            System.out.println(" 1 " + line);
 
             ObjectMapper mapper = new ObjectMapper();
-            Login authReq = mapper.readValue(line, Login.class);
+            Login user = mapper.readValue(line, Login.class);
 
             UsernamePasswordAuthenticationToken token =
-                    new UsernamePasswordAuthenticationToken(authReq.getUsername(), authReq.getPassword());
+                    new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
             logger.info("token is authenticated: " + token.isAuthenticated());
             return token;
 

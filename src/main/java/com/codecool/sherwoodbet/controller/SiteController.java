@@ -19,7 +19,7 @@ public class SiteController {
         if (cookie == null) {
             return "index";
         } else {
-            return "index2";
+            return "wall";
         }
     }
 }

@@ -53,7 +53,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
 
     // TODO: 2017.03.13. checking isUser or isAdmin 
     private String determineTargetUrl(Authentication authentication) {
-        boolean isUser = true;
+        boolean isUser = false;
         boolean isAdmin = false;
         Collection<? extends GrantedAuthority> authorities
                 = authentication.getAuthorities();
@@ -68,13 +68,14 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
             }
         }
 
-        if (isUser) {
-            return "/welcome";
-        } else if (isAdmin) {
-            return "/admin";
-        } else {
-            throw new IllegalStateException();
-        }
+        return "/welcome";
+//        if (isUser) {
+//            return "/welcome";
+//        } else if (isAdmin) {
+//            return "/admin";
+//        } else {
+//            throw new IllegalStateException();
+//        }
     }
 
     private void clearAuthenticationAttributes(HttpServletRequest request) {

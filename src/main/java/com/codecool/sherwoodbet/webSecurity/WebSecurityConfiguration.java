@@ -1,6 +1,7 @@
-package com.codecool.sherwoodbet.webSecutiry;
+package com.codecool.sherwoodbet.webSecurity;
 
 import com.codecool.sherwoodbet.services.security_service.CustomPasswordAuthenticationFilter;
+import com.codecool.sherwoodbet.services.security_service.MySimpleUrlAuthenticationFailureHandler;
 import com.codecool.sherwoodbet.services.security_service.MySimpleUrlAuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -37,7 +38,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/signup", "/login", "/welcome", "/bet/**", "/game").permitAll().anyRequest()
+                .antMatchers("/", "/signup", "/notsuccesful", "/login", "/welcome", "/bet/**", "/game").permitAll().anyRequest()
                 .authenticated()
                 .and()
                 .addFilterBefore(new CustomPasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
@@ -53,8 +54,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public SimpleUrlAuthenticationFailureHandler myFailureHandler(){
-        return new SimpleUrlAuthenticationFailureHandler();
+    public SimpleUrlAuthenticationFailureHandler myFailureHandler() {
+        return new MySimpleUrlAuthenticationFailureHandler();
     }
 
     @Bean

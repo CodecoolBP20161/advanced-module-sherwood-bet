@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <head th:replace="fragments/imports :: imports"></head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Users</title>
+</head>
+<body>
+<div th:replace="fragments/buttons :: buttons"></div>
+<h1 style="text-align: center">Users</h1>
+<table class="table table-stripped floatedTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user, iterStat : ${users}">
+                <td th:id="'currentUserId-' + ${user.getID()}" th:text="${user.getID()}">ID</td>
+                <td th:id="'currentUserName-' + ${user.getID()}" th:text="${user.getName()}">Name</td>
+                <td th:id="'currentUserPassword-' + ${user.getID()}" th:text="${user.getPassword()}">Password</td>
+                <td th:id="'currentUserEmail-' + ${user.getID()}" th:text="${user.getEmail()}">Email</td>
+                <td><!-- Edit button trigger modal -->
+                    <button type="button" th:id="'editstart-' + ${user.getID()}" class="btn btn-info" data-toggle="modal" data-target="#editModal">Edit</button>
+                </td>
+                <td>
+                    <a class="btn btn-danger" th:href="'/admin/user/delete/' + ${user.getID()}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+</table>
+
+<!-- New element button trigger modal -->
+<a class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#newElementModal">Add a new user</a>
+
+<!-- editModal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form th:action="'/admin/user/edit'" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Password</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input id="editId" style="width: 140px" name="ID"/></td>
+                                <td><input id="editName" style="width: 140px" name="name"/></td>
+                                <td><input id="editPassword" style="width: 140px" name="password"/></td>
+                                <td><input id="editEmail" style="width: 140px" name="email"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- newElementModal -->
+<div class="modal fade" id="newElementModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <form th:action="'/admin/user/add'" method="post">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel2">New</h4>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Password</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input style="width: 140px" placeholder="Name" name="name"/></td>
+                                <td><input style="width: 140px" placeholder="Password" name="password"/></td>
+                                <td><input style="width: 140px" placeholder="Email" name="email"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit"  class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/admin/alluser.js}"></script>
+
+</body>
+</html>

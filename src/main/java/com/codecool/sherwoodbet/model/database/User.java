@@ -1,6 +1,7 @@
 package com.codecool.sherwoodbet.model.database;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 /**
  * Created by patrik on 2017.02.02..
@@ -11,6 +12,7 @@ import javax.persistence.*;
 public class User {
 
     private Long ID;
+    @Column(unique = true)
     private String name;
     private String password;
 
@@ -59,6 +61,15 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public ArrayList<String> collectFields(){
+        ArrayList<String> listOfFields = new ArrayList();
+        listOfFields.add("ID");
+        listOfFields.add("Name");
+        listOfFields.add("Password");
+        listOfFields.add("Email");
+        return listOfFields;
     }
 
 }

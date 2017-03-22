@@ -26,7 +26,7 @@ public class LoginController {
         return response;
     }
 
-    @RequestMapping("/notsuccesful")
+    @RequestMapping("/notsuccessful")
     @ResponseBody
     public Map failure() {
         Map response = new HashMap<String, Boolean>();

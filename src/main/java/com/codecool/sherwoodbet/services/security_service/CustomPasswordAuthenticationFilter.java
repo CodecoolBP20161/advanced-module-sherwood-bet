@@ -27,16 +27,13 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
     private MySimpleUrlAuthenticationSuccessHandler mySimpleUrlAuthenticationSuccessHandler =
             new MySimpleUrlAuthenticationSuccessHandler();
 
+    private MySimpleUrlAuthenticationFailureHandler mySimpleUrlAuthenticationFailureHandler =
+            new MySimpleUrlAuthenticationFailureHandler();
 
     public CustomPasswordAuthenticationFilter(){
         setAuthenticationSuccessHandler(mySimpleUrlAuthenticationSuccessHandler);
-        setAuthenticationFailureHandler(myFailureHandler());
+        setAuthenticationFailureHandler(mySimpleUrlAuthenticationFailureHandler);
     }
-
-    public SimpleUrlAuthenticationFailureHandler myFailureHandler() {
-        return new MySimpleUrlAuthenticationFailureHandler();
-    }
-
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -45,12 +42,14 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
             BufferedReader reader = request.getReader();
             String line;
             line = reader.readLine();
+            System.out.println(line);
 
             ObjectMapper mapper = new ObjectMapper();
             Login user = mapper.readValue(line, Login.class);
 
             UsernamePasswordAuthenticationToken token =
                     new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+
             logger.info("token is authenticated: " + token.isAuthenticated());
             return token;
 
@@ -61,6 +60,7 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("iit");
         return null;
     }
 }

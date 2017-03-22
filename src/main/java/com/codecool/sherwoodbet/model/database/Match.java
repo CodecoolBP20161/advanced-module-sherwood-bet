@@ -107,7 +107,7 @@ public class Match {
         this.awayTeam = awayTeam;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "match")
+    @OneToMany(mappedBy = "match")
     public Set<Bet> getMatches() {
         return matches;
     }

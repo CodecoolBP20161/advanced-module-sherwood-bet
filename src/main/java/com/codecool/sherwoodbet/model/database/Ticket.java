@@ -73,7 +73,7 @@ public class Ticket {
         this.playable = playable;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userTicket")
+    @OneToMany(mappedBy = "userTicket")
     public Set<Bet> getUserTicket() {
         return userTicket;
     }

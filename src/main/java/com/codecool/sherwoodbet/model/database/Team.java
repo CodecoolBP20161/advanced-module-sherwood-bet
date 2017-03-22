@@ -64,7 +64,7 @@ public class Team {
         this.stadium = stadium;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "homeTeam")
+    @OneToMany(mappedBy = "homeTeam")
     public Set<Match> getHomeMatches() {
         return homeMatches;
     }
@@ -73,7 +73,7 @@ public class Team {
         this.homeMatches = matches;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "awayTeam")
+    @OneToMany(mappedBy = "awayTeam")
     public Set<Match> getAwayMatches() {
         return awayMatches;
     }

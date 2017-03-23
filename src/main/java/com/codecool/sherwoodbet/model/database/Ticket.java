@@ -2,6 +2,7 @@ package com.codecool.sherwoodbet.model.database;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -29,6 +30,7 @@ public class Ticket {
         this.description = description;
         this.deadline = deadline;
         this.title = title;
+        this.matches = new HashSet<>();
     }
 
     @Id
@@ -89,7 +91,8 @@ public class Ticket {
         return matches;
     }
 
-    public void setMatches(Set<Match> matches) {
-        this.matches = matches;
+//    thats way it fails
+    public void setMatches(Match match) {
+        this.matches.add(match);
     }
 }

@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 /**
  * Created by patrik on 2017.02.01..
  */
@@ -22,5 +25,16 @@ public class SiteController {
         } else {
             return "index2";
         }
+    }
+
+
+    @RequestMapping("/game")
+    public String game() {
+        return "game";
+    }
+
+    @RequestMapping("/admin")
+    public String admin() {
+        return "admin/admin";
     }
 }

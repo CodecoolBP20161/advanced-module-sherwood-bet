@@ -1,15 +1,14 @@
 package com.codecool.sherwoodbet.services.email_service.Service;
 
-import java.util.Date;
-import java.util.Properties;
-import java.util.ResourceBundle;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.Date;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
 /**
  * Created by csyk on 2017.02.10..
@@ -17,14 +16,13 @@ import javax.mail.internet.MimeMessage;
 public class APIService {
 
     private static final Logger logger = LoggerFactory.getLogger(APIService.class);
-
+    private static APIService INSTANCE;
     private ResourceBundle rb = ResourceBundle.getBundle("emaildata"); // emaildata.properties
     private final String FROM  = rb.getString("address");
     private final String password = rb.getString("password");
 
-    private static APIService INSTANCE;
-
-    private APIService(){};
+    private APIService() {
+    }
 
     public static APIService getInstance(){
         if (INSTANCE == null){

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <head th:replace="fragments/imports :: imports"></head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Bets</title>
+</head>
+<body>
+<div th:replace="fragments/buttons :: buttons"></div>
+<h1 style="text-align: center">Bets</h1>
+
+<table class="table table-stripped floatedTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Away</th>
+            <th>Draw</th>
+            <th>Home</th>
+            <th>Match ID</th>
+            <th>Ticket ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="bet, iterStat : ${bets}">
+            <td th:text="${bet.getID()}">ID</td>
+            <td th:text="${bet.getAway()}">Away</td>
+            <td th:text="${bet.getDraw()}">Draw</td>
+            <td th:text="${bet.getHome()}">Home</td>
+            <td th:text="${bet.getMatch().getID()}">Match ID</td>
+            <td th:text="${bet.getUserTicket().getID()}">Ticket ID</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

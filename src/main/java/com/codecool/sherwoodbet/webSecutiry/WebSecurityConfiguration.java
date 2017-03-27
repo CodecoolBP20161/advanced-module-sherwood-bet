@@ -18,7 +18,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 /**
  * Created by patrik on 2017.02.03..
  */
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -34,11 +33,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     /*override the configure method and permit all user to see the login and registration page
     and to log out.*/
     //TODO delete csrf disable when in .js configured properly csrf token
-    // TODO: 2017.03.13. create myFailureHandler
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/signup", "/login", "/welcome").permitAll().anyRequest()
+                .antMatchers("/", "/signup", "/bet/**", "/game","/admin/**", "/removefromDB/**").permitAll().anyRequest()
                 .authenticated()
                 .and()
                 .addFilterBefore(new CustomPasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
@@ -64,6 +62,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     //enable every javascript resources at static
+//    enable every javascript resources at static
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/*.js");

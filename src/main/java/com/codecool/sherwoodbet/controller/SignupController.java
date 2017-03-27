@@ -20,7 +20,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
+<<<<<<< HEAD
  * Created by csyk on 2017.02.15..
+=======
+ * Created by csyk on 2017.02.21..
+>>>>>>> 18557e521b867b3a09222f718adf7aaba4b3db1d
  */
 @Controller
 public class SignupController {
@@ -41,7 +45,7 @@ public class SignupController {
 
     @RequestMapping("/signup")
     @ResponseBody
-    public Map signup(@RequestBody Signup signupData){
+    public Map signup(@RequestBody Signup signupData) {
         String email = signupData.getEmail();
         String userName = signupData.getUsername();
         String password = signupData.getPassword();
@@ -63,14 +67,14 @@ public class SignupController {
         return response;
     }
 
-    private List validation(String email, String userName, String password){
+    private List validation(String email, String userName, String password) {
         ArrayList<String> error = new ArrayList<>();
-        if(!(userValidate.checkEmail(email) && userValidate.isValidEmail(email))) {
+        if (!(userValidate.checkEmail(email) && userValidate.isValidEmail(email))) {
             error.add("email");
         }
-        if(!userValidate.checkUsername(userName)){
+        if (!userValidate.checkUsername(userName)) {
             error.add("username");
         }
-        return  error;
+        return error;
     }
 }

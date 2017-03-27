@@ -108,6 +108,7 @@
                         </thead>
                         <tbody>
                         <tr>
+                            <td><input id="editId2" style="width: 140px" name="id"/></td>
                             <td>
                                 <select name="match1" id="match1">
                                     <option th:each="match, iterStat : ${matches}"  th:text="${match.getHomeTeam().getShortName() + '-' + match.getAwayTeam().getShortName() + '/' + match.getLeague()}" th:value="${match.getID()}">Match1</option>

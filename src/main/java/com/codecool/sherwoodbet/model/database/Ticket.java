@@ -91,7 +91,6 @@ public class Ticket {
         return matches;
     }
 
-//    thats way it fails
     public void setMatches(Set<Match> match) {
         this.matches = match;
     }

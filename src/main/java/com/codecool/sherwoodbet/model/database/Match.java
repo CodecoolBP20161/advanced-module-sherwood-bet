@@ -25,7 +25,8 @@ public class Match {
     public Match() {
     }
 
-    public Match(Team homeTeam, Team awayTeam, String venue, String league, String round, String link, Date deadLine, String result) {
+    public Match(Team homeTeam, Team awayTeam, String venue, String league, String round, String link, Date deadLine,
+                 String result) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.venue = venue;

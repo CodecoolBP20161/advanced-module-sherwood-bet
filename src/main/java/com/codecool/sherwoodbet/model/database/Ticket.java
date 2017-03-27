@@ -92,7 +92,7 @@ public class Ticket {
     }
 
 //    thats way it fails
-    public void setMatches(Match match) {
-        this.matches.add(match);
+    public void setMatches(Set<Match> match) {
+        this.matches = match;
     }
 }

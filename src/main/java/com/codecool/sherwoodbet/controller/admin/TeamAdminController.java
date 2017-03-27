@@ -1,6 +1,7 @@
 package com.codecool.sherwoodbet.controller.admin;
 
 import com.codecool.sherwoodbet.model.database.Team;
+import com.codecool.sherwoodbet.repository.MatchRepository;
 import com.codecool.sherwoodbet.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,7 +48,6 @@ public class TeamAdminController {
                            @RequestParam(value = "stadium") String stadium,
                            @RequestParam(value = "shortName") String shortName,
                            @RequestParam(value = "name") String name){
-
         Team team = teamRepository.findOne(Long.valueOf(ID));
         team.setStadium(stadium);
         team.setShortName(shortName);

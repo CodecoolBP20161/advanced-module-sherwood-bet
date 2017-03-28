@@ -1,5 +1,8 @@
 package com.codecool.sherwoodbet.model.database;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -7,6 +10,8 @@ import java.util.Set;
 /**
  * Created by csyk on 2017.03.02..
  */
+//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
+
 @Entity
 @Table(name = "match")
 public class Match {
@@ -25,7 +30,8 @@ public class Match {
     public Match() {
     }
 
-    public Match(Team homeTeam, Team awayTeam, String venue, String league, String round, String link, Date deadLine, String result) {
+    public Match(Team homeTeam, Team awayTeam, String venue, String league, String round, String link, Date deadLine,
+                 String result) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.venue = venue;
@@ -114,7 +120,7 @@ public class Match {
         this.awayTeam = awayTeam;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "match")
+    @OneToMany(mappedBy = "match")
     public Set<Bet> getMatches() {
         return matches;
     }

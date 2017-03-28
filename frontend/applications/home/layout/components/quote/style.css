@@ -1,0 +1,21 @@
+.home-quote-container {
+  position: fixed;
+  top: 25vh;
+  left: 15%;
+  width: 30%;
+  color: white;
+  z-index: 2;
+}
+
+.home-quote-text {
+  margin: 20px;
+  text-align: justify;
+  font-family: 'Bangers', cursive;
+  font-size: 1.5em;
+}
+
+.home-quote-details {
+  text-align: right;
+  font-family: 'Bangers', cursive;
+  font-size: 1.4em;
+}

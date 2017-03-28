@@ -1,5 +1,8 @@
 package com.codecool.sherwoodbet.model.database;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -8,6 +11,7 @@ import java.util.Set;
 /**
  * Created by csyk on 2017.03.03..
  */
+//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 @Entity
 @Table(name = "ticket")
 public class Ticket {

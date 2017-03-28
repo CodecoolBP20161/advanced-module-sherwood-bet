@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/resources/demos/style.css"/>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 <body>
 <div th:replace="fragments/buttons :: buttons"></div>
@@ -94,51 +95,54 @@
                     <h4 class="modal-title" id="myModalLabel">Set Matches</h4>
                 </div>
                 <div class="modal-body">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>match 1</th>
-                            <th>match 2</th>
-                            <th>match 3</th>
-                            <th>match 4</th>
-                            <th>match 5</th>
-                            <th>match 6</th>
-                            <th>match 7</th>
-                        </tr>
-                        </thead>
+                    <table class="setTable">
                         <tbody>
                         <tr>
                             <td><input id="editId2" style="width: 140px" name="id"/></td>
+                        </tr>
+                        <tr>
                             <td>
                                 <select name="match1" id="match1">
                                     <option th:each="match, iterStat : ${matches}"  th:text="${match.getHomeTeam().getShortName() + '-' + match.getAwayTeam().getShortName() + '/' + match.getLeague()}" th:value="${match.getID()}">Match1</option>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <select name="match2" id="setMatch2">
                                     <option th:each="match, iterStat : ${matches}"  th:text="${match.getHomeTeam().getShortName() + '-' + match.getAwayTeam().getShortName() + '/' + match.getLeague()}" th:value="${match.getID()}">Match1</option>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <select name="match3" id="setMatch3">
                                     <option th:each="match, iterStat : ${matches}"  th:text="${match.getHomeTeam().getShortName() + '-' + match.getAwayTeam().getShortName() + '/' + match.getLeague()}" th:value="${match.getID()}">Match1</option>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <select name="match4" id="setMatch4">
                                     <option th:each="match, iterStat : ${matches}"  th:text="${match.getHomeTeam().getShortName() + '-' + match.getAwayTeam().getShortName() + '/' + match.getLeague()}" th:value="${match.getID()}">Match1</option>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <select name="match5" id="setMatch5">
                                     <option th:each="match, iterStat : ${matches}"  th:text="${match.getHomeTeam().getShortName() + '-' + match.getAwayTeam().getShortName() + '/' + match.getLeague()}" th:value="${match.getID()}">Match1</option>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <select name="match6" id="setMatch6">
                                     <option th:each="match, iterStat : ${matches}"  th:text="${match.getHomeTeam().getShortName() + '-' + match.getAwayTeam().getShortName() + '/' + match.getLeague()}" th:value="${match.getID()}">Match1</option>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
                             <td>
                                 <select name="match7" id="setMatch7">
                                     <option th:each="match, iterStat : ${matches}"  th:text="${match.getHomeTeam().getShortName() + '-' + match.getAwayTeam().getShortName() + '/' + match.getLeague()}" th:value="${match.getID()}">Match1</option>

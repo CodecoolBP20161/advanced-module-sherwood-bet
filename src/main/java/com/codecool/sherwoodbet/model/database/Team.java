@@ -1,11 +1,16 @@
 package com.codecool.sherwoodbet.model.database;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Set;
 
 /**
  * Created by csyk on 2017.03.02..
  */
+// it's avoid infinite recursion.........
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 @Entity
 @Table(name = "team")
 public class Team {

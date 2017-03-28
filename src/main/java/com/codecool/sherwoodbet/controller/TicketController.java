@@ -29,59 +29,12 @@ public class TicketController {
     private List<Map> oneTicketMatches = new ArrayList<>();
     private Map<String, Object> match = new HashMap<>();
 
-//    private void creatingDatas() {
-//        tickets.clear();
-//        ticket.clear();
-//        matches.clear();
-//        oneTicket.clear();
-//        oneTicketMatches.clear();
-//        match.clear();
-//        bet.clear();
-//
-//        matches.add("Békés - Tarhos");
-//        matches.add("Kamut - Murony");
-//        matches.add("Brutál MÁV - bárki");
-//
-//        ticket.put("title", "Demo");
-//        ticket.put("intro", "blabla");
-//        ticket.put("deadline", "tomorrow");
-//        ticket.put("matches", matches);
-//        ticket.put("ticket_id", 1);
-//
-//        oneTicket.put("title", "Demo");
-//        oneTicket.put("deadline", "tomorrow");
-//        oneTicket.put("ticket_id", "1");
-//        oneTicket.put("playable", "true");
-//        oneTicket.put("intro", "blabla");
-//        oneTicket.put("matches", oneTicketMatches);
-//       // oneTicketMatches.add(match);
-//
-//        match.put("id", 1);
-//        match.put("match", "Békés - Tarhos");
-//        match.put("venue", "Békés");
-//        match.put("tournament", "edző meccs");
-//        match.put("round_number", "1");
-//        match.put("more_info", "asdfjlklé");
-//        match.put("match_date", "today");
-//        match.put("bet", bet);
-//
-//        bet.put("home", 0);
-//        bet.put("draw", 0);
-//        bet.put("away", 0);
-//        bet.put("id", 1);
-//        bet.put("match", 1);
-//        bet.put("user_ticket", 1);
-//
-//        tickets.add(ticket);
-//    }
-
     @RequestMapping("/bet/api/playable_tickets")
     @ResponseBody
     public Map playableTickets() {
         List<Ticket> playableTickets = ticketRepository.findByPlayable(true);
         Map<String, List> response = new HashMap<>();
         tickets.clear();
-//        creatingDatas();
         for (Ticket oneTicket : playableTickets) {
             Map<String, Object> ticket = new HashMap<>();
             ticket.put("title", oneTicket.getTitle());
@@ -106,14 +59,12 @@ public class TicketController {
     @RequestMapping("/bet/api/get_ticket")
     @ResponseBody
     public Map getTicket(@RequestParam Long ticket) {
-//        creatingDatas();
         oneTicket.clear();
         Ticket ticketdb = ticketRepository.findOne(ticket);
         oneTicket.put("intro", ticketdb.getDescription());
         oneTicket.put("title", ticketdb.getTitle());
         oneTicket.put("deadline", ticketdb.getDeadline());
         oneTicket.put("ticket_id", ticketdb.getID());
-       // System.out.println(oneTicketMatches);
         oneTicket.put("playable", ticketdb.isPlayable());
 
         oneTicketMatches.clear();
@@ -142,7 +93,6 @@ public class TicketController {
             oneTicketMatches.add(match);
         }
         oneTicket.put("matches", oneTicketMatches);
-
 
         return oneTicket;
     }

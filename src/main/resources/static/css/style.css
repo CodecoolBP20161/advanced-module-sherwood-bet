@@ -1,0 +1,8 @@
+.setTable tr{
+    padding: 10px;
+}
+
+body{
+    background-color: red;
+    color: deeppink;
+}

@@ -1,0 +1,44 @@
+.home-login-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: beige;
+  z-index: 2;
+  display: flex;
+}
+
+.home-login-logo {
+  margin: 10px;
+  padding: 10px;
+  font-family: 'Bangers', cursive;
+  color: gold;
+  font-size: 2em;
+}
+
+#bet {
+  color: green;
+}
+
+.home-login-input-container {
+  margin-left: 35%;
+  display: flex;
+}
+
+.home-login-input {
+  margin: 20px 10px;
+}
+
+.home-login-button {
+  margin: 20px 10px;
+}
+
+.home-login-error-container {
+  width: 120px;
+  margin: 10px;
+}
+
+.home-login-error {
+  color: red;
+  font-family: 'Bangers', cursive;
+  text-align: right;
+}

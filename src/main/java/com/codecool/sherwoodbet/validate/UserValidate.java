@@ -1,12 +1,13 @@
 package com.codecool.sherwoodbet.validate;
 
 import com.codecool.sherwoodbet.controller.SiteController;
-import com.codecool.sherwoodbet.model.User;
+import com.codecool.sherwoodbet.model.database.User;
 import com.codecool.sherwoodbet.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
@@ -14,7 +15,6 @@ import javax.mail.internet.InternetAddress;
 /**
  * Created by patrik on 2017.02.03..
  */
-
 @Component
 public class UserValidate {
 

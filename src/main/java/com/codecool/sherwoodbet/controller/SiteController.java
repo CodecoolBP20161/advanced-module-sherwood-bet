@@ -19,4 +19,11 @@ public class SiteController {
     public String game() {
         return "game";
     }
+
+    @RequestMapping("/admin")
+    public String admin() {
+        return "admin/admin";
+    }
+
+
 }

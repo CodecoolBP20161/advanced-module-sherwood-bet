@@ -47,6 +47,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilterBefore(new CustomPasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
+                .failureHandler(myFailureHandler())
                 .and()
                 .addFilterBefore(new CustomLoginPageGeneratingFilter(), DefaultLoginPageGeneratingFilter.class)
                 .logout()

@@ -30,7 +30,7 @@ public class TicketController {
     private Map<String, Object> match = new HashMap<>();
     private Map<String, Integer> bet = new HashMap<>();
 
-    private void creatingDatas() {
+    public void creatingDatas() {
         tickets.clear();
         ticket.clear();
         matches.clear();

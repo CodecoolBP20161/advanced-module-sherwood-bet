@@ -1,7 +1,9 @@
 package com.codecool.sherwoodbet.controller;
 
+import com.codecool.sherwoodbet.model.database.Bet;
 import com.codecool.sherwoodbet.model.database.Match;
 import com.codecool.sherwoodbet.model.database.Ticket;
+import com.codecool.sherwoodbet.repository.BetRepository;
 import com.codecool.sherwoodbet.repository.MatchRepository;
 import com.codecool.sherwoodbet.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import java.util.*;
 @Controller
 public class TicketController {
 
+    @Autowired
+    BetRepository betRepository;
     @Autowired
     TicketRepository ticketRepository;
     @Autowired
@@ -127,15 +131,19 @@ public class TicketController {
             match.put("tournament", oneMatch.getLeague());
             match.put("match_date", oneMatch.getDeadLine());
 
+//            Bet bettodb = new Bet();    this will be needed sooon!!!
+//            betRepository.save(bettodb);
+
+
             Map<String, Integer> bet = new HashMap<>();
             bet.put("home", 0);
             bet.put("draw", 0);
             bet.put("away", 0);
-            Random r = new Random();
-            int n = r.nextInt(500) + 1;
-            bet.put("id", n);
 
-            bet.put("match", 1);
+//            bet.put("id", Math.toIntExact(bettodb.getID()));    sooon!!
+            bet.put("id", 1);
+
+            bet.put("match", Math.toIntExact(oneMatch.getID()));  //new
             bet.put("user_ticket", 1);
 
             match.put("bet", bet);

@@ -18,7 +18,6 @@ import java.util.Collection;
 /**
  * Created by csyk on 2017.02.23..
  */
-// TODO: 2017.02.24. should it use to redirect different users to different pages
 
 public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -31,15 +30,15 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
                                         HttpServletResponse response, Authentication authentication)
             throws IOException {
 
-        handle(request, response, authentication);
+        handle(request, response);
         clearAuthenticationAttributes(request);
     }
 
     private void handle(HttpServletRequest request,
-                        HttpServletResponse response, Authentication authentication)
+                        HttpServletResponse response)
             throws IOException {
 
-        String targetUrl = determineTargetUrl(authentication);
+        String targetUrl = "/welcome";
 
         if (response.isCommitted()) {
             logger.debug(
@@ -49,33 +48,6 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         }
 
         redirectStrategy.sendRedirect(request, response, targetUrl);
-    }
-
-    // TODO: 2017.03.13. checking isUser or isAdmin 
-    private String determineTargetUrl(Authentication authentication) {
-        boolean isUser = false;
-        boolean isAdmin = false;
-        Collection<? extends GrantedAuthority> authorities
-                = authentication.getAuthorities();
-        System.out.println(authorities);
-        for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("user")) {
-                isUser = true;
-                break;
-            } else if (grantedAuthority.getAuthority().equals("admin")) {
-                isAdmin = true;
-                break;
-            }
-        }
-
-        return "/welcome";
-//        if (isUser) {
-//            return "/welcome";
-//        } else if (isAdmin) {
-//            return "/admin";
-//        } else {
-//            throw new IllegalStateException();
-//        }
     }
 
     private void clearAuthenticationAttributes(HttpServletRequest request) {

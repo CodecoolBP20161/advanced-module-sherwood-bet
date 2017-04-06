@@ -25,7 +25,7 @@ public class UserService {
     PasswordHashing passwordHashing;
 
     public void saveUser(String username, String rawPassword, String email){
-        Role userRole = roleRepository.findByName("user");
+        Role userRole = roleRepository.findByName("ROLE_USER");
 
         String hashedPassword = passwordHashing.getHash(rawPassword);
 

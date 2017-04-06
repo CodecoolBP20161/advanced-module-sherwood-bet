@@ -17,6 +17,7 @@ import java.io.IOException;
 /**
  * Created by danielbalogh on 3/21/17.
  */
+// TODO: 2017.04.06. not working yet
 @Component
 public class MySimpleUrlAuthenticationFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
@@ -42,7 +43,6 @@ public class MySimpleUrlAuthenticationFailureHandler extends SimpleUrlAuthentica
                             + targetUrl);
             return;
         }
-        System.out.println("hahaa");
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 

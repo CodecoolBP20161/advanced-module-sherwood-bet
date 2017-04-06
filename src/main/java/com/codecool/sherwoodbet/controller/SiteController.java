@@ -1,25 +1,25 @@
 package com.codecool.sherwoodbet.controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by patrik on 2017.02.01..
  */
+
+// TODO: 2017.04.06. when we clicked more times with bad datas,
+// TODO: get anonymus user(login_successful=true), but fortunately redirect to welcome root
 @Controller
 public class SiteController {
 
-    // TODO: check cookies authentication
     @RequestMapping("/")
-    public String index(HttpServletRequest request) {
-        Cookie[] cookie = request.getCookies();
-        if (cookie == null) {
-            return "index";
-        } else {
+    public String index(Authentication authentication) {
+
+        if (authentication != null && authentication.isAuthenticated() == true) {
             return "wall";
+        } else {
+            return "index";
         }
     }
 }

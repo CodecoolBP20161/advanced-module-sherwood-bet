@@ -4,12 +4,9 @@ import com.codecool.sherwoodbet.model.Login;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +17,6 @@ import java.io.IOException;
 /**
  * Created by csyk on 2017.02.20..
  */
-// TODO: 2017.02.24. should add SimpleGrantedAuthority user's role as a parameter outside from this class
 
 public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -42,7 +38,6 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
             BufferedReader reader = request.getReader();
             String line;
             line = reader.readLine();
-            System.out.println(line);
 
             ObjectMapper mapper = new ObjectMapper();
             Login user = mapper.readValue(line, Login.class);
@@ -60,7 +55,6 @@ public class CustomPasswordAuthenticationFilter extends UsernamePasswordAuthenti
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("iit");
         return null;
     }
 }

@@ -1,9 +1,7 @@
 package com.codecool.sherwoodbet.model.database;
 
-import com.codecool.sherwoodbet.model.database.Role;
-
 import javax.persistence.*;
-import java.util.Set;
+import java.util.ArrayList;
 
 /**
  * Created by patrik on 2017.02.02..
@@ -11,7 +9,9 @@ import java.util.Set;
 @Entity
 @Table(name="users")
 public class User {
+
     private Long ID;
+    @Column(unique = true)
     private String name;
     private String password;
     private Role role;
@@ -34,28 +34,28 @@ public class User {
         return ID;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
     public void setID(Long ID) {
         this.ID = ID;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
@@ -68,5 +68,12 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }public ArrayList<String> collectFields(){
+        ArrayList<String> listOfFields = new ArrayList();
+        listOfFields.add("ID");
+        listOfFields.add("Name");
+        listOfFields.add("Password");
+        listOfFields.add("Email");
+        return listOfFields;
     }
 }

@@ -18,5 +18,6 @@ document.body.addEventListener("click", function(){
         document.getElementById("editDeadline").value = document.getElementById("currentTicketDeadline-" + id).innerHTML;
         document.getElementById("editDescription").value = document.getElementById("currentTicketDescription-" + id).innerHTML;
         document.getElementById("editTitle").value = document.getElementById("currentTicketTitle-" + id).innerHTML;
+        document.getElementById("editPlayable").value = document.getElementById("currentTicketPlayable-" + id).innerHTML;
     }
 })

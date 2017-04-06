@@ -14,6 +14,7 @@ document.body.addEventListener("click", function(){
     var isEditStart = targetId.split("-")[0] == "editstart";
     if (isEditStart == true) {
         document.getElementById("editId").value = document.getElementById("currentTicketId-" + id).innerHTML;
+        document.getElementById("editId2").value = document.getElementById("currentTicketId-" + id).innerHTML;
         document.getElementById("editDeadline").value = document.getElementById("currentTicketDeadline-" + id).innerHTML;
         document.getElementById("editDescription").value = document.getElementById("currentTicketDescription-" + id).innerHTML;
         document.getElementById("editTitle").value = document.getElementById("currentTicketTitle-" + id).innerHTML;

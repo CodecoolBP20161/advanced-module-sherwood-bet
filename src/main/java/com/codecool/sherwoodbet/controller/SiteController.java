@@ -28,5 +28,11 @@ public class SiteController {
         return "admin/admin";
     }
 
+    @RequestMapping("/bet")
+    public String game() {
+        return "game";
+    }
+
+
 
 }

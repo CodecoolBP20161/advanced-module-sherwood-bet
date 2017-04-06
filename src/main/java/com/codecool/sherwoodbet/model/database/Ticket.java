@@ -1,12 +1,17 @@
 package com.codecool.sherwoodbet.model.database;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by csyk on 2017.03.03..
  */
+//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class)
 @Entity
 @Table(name = "ticket")
 public class Ticket {
@@ -29,6 +34,7 @@ public class Ticket {
         this.description = description;
         this.deadline = deadline;
         this.title = title;
+        this.matches = new HashSet<>();
     }
 
     @Id
@@ -73,7 +79,7 @@ public class Ticket {
         this.playable = playable;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userTicket")
+    @OneToMany(mappedBy = "userTicket")
     public Set<Bet> getUserTicket() {
         return userTicket;
     }
@@ -89,7 +95,7 @@ public class Ticket {
         return matches;
     }
 
-    public void setMatches(Set<Match> matches) {
-        this.matches = matches;
+    public void setMatches(Set<Match> match) {
+        this.matches = match;
     }
 }

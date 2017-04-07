@@ -86,7 +86,7 @@ public class TicketController {
             int n = r.nextInt(500) + 1;
             bet.put("id", n);
 
-            bet.put("match", 1);
+            bet.put("match", Math.toIntExact(oneMatch.getID()));
             bet.put("user_ticket", 1);
 
             match.put("bet", bet);

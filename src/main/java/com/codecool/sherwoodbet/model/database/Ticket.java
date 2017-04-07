@@ -22,6 +22,7 @@ public class Ticket {
     private boolean playable;
     private Set<Bet> userTicket;
     private Set<Match> matches;
+    private Set<UserTicket> userTickets;
 
 
     @Column(unique = true)
@@ -97,5 +98,14 @@ public class Ticket {
 
     public void setMatches(Set<Match> match) {
         this.matches = match;
+    }
+
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="ticket")
+    public Set<UserTicket> getUserTickets() {
+        return userTickets;
+    }
+
+    public void setUserTickets(Set<UserTicket> userTickets) {
+        this.userTickets = userTickets;
     }
 }

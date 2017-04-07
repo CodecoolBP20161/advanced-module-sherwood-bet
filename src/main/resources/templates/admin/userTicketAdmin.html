@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <head th:replace="fragments/imports :: imports"></head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>User Tickets</title>
+</head>
+<body>
+<div th:replace="fragments/buttons :: buttons"></div>
+<h1 style="text-align: center">User Tickets</h1>
+
+<table class="table table-stripped floatedTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Category</th>
+        <th>Mode</th>
+        <th>Paid</th>
+        <th>Pay off</th>
+        <th>Rank</th>
+        <th>Result</th>
+        <th>Status</th>
+        <th>Ticket ID</th>
+        <th>User ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="userTicket, iterStat : ${userTickets}">
+        <td th:text="${userTicket.getID()}">ID</td>
+        <td th:text="${userTicket.getCategory()}">Category</td>
+        <td th:text="${userTicket.getMode()}">Mode</td>
+        <td th:text="${userTicket.getPaid()}">Paid</td>
+        <td th:text="${userTicket.getPayoff()}">Pay off</td>
+        <td th:text="${userTicket.getRank}">Rank</td>
+        <td th:text="${userTicket.getResult}">Result</td>
+        <td th:text="${userTicket.getStatus}">Status</td>
+        <td th:text="${userTicket.getTicket().getID()}">Ticket ID</td>
+        <td th:text="${userTicket.getUser().getID()}">User ID</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

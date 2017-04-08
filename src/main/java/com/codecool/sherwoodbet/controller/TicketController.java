@@ -1,10 +1,9 @@
 package com.codecool.sherwoodbet.controller;
 
-import com.codecool.sherwoodbet.model.database.Match;
-import com.codecool.sherwoodbet.model.database.Ticket;
-import com.codecool.sherwoodbet.repository.MatchRepository;
-import com.codecool.sherwoodbet.repository.TicketRepository;
+import com.codecool.sherwoodbet.model.database.*;
+import com.codecool.sherwoodbet.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +17,12 @@ import java.util.*;
 @Controller
 public class TicketController {
 
+    @Autowired
+    BetRepository betRepository;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    UserTicketRepository userTicketRepository;
     @Autowired
     TicketRepository ticketRepository;
     @Autowired
@@ -58,7 +63,7 @@ public class TicketController {
 
     @RequestMapping("/bet/api/get_ticket")
     @ResponseBody
-    public Map getTicket(@RequestParam Long ticket) {
+    public Map getTicket(@RequestParam Long ticket, Authentication authentication) {
         oneTicket.clear();
         Ticket ticketdb = ticketRepository.findOne(ticket);
         oneTicket.put("intro", ticketdb.getDescription());
@@ -68,7 +73,26 @@ public class TicketController {
         oneTicket.put("playable", ticketdb.isPlayable());
 
         oneTicketMatches.clear();
+
+        String userName = authentication.getName();
+        User authUser = userRepository.findByName(userName);
+
+
+        String mode = "valami";
+        Integer category = 25;
+        String status = "akarmi";
+        Integer result = 0;
+        Integer rank = 1;
+        Boolean paid = true;
+        Float playoff = 1f;
+        UserTicket userTicket = new UserTicket(authUser, ticketdb, mode,category,status,result,rank,paid,playoff);
+        userTicketRepository.save(userTicket);
+
+
+
         for (Match oneMatch : ticketdb.getMatches()) {
+            Bet actualBet = new Bet(ticketdb, oneMatch);
+            betRepository.save(actualBet);
             Map<String, Object> match = new HashMap<>();
             match.put("venue", oneMatch.getVenue());
             match.put("round_number", oneMatch.getRound());
@@ -79,15 +103,12 @@ public class TicketController {
             match.put("match_date", oneMatch.getDeadLine());
 
             Map<String, Integer> bet = new HashMap<>();
-            bet.put("home", 0);
-            bet.put("draw", 0);
-            bet.put("away", 0);
-            Random r = new Random();
-            int n = r.nextInt(500) + 1;
-            bet.put("id", n);
-
+            bet.put("home", actualBet.getHome());
+            bet.put("draw", actualBet.getDraw());
+            bet.put("away", actualBet.getAway());
+            bet.put("id", Math.toIntExact(actualBet.getID()));
             bet.put("match", Math.toIntExact(oneMatch.getID()));
-            bet.put("user_ticket", 1);
+            bet.put("user_ticket", Math.toIntExact(userTicket.getID()));
 
             match.put("bet", bet);
             oneTicketMatches.add(match);

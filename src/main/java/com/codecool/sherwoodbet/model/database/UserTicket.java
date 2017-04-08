@@ -21,6 +21,26 @@ public class UserTicket {
     private Boolean paid;
     private Float payoff;
 
+    public UserTicket() {
+    }
+
+    public UserTicket(User user, Ticket ticket, String mode, Integer category, String status, Integer result, Integer rank, Boolean paid, Float payoff) {
+        this.user = user;
+        this.ticket = ticket;
+        this.mode = mode;
+        this.category = category;
+        this.status = status;
+        this.result = result;
+        this.rank = rank;
+        this.paid = paid;
+        this.payoff = payoff;
+    }
+
+    public UserTicket(User user, Ticket ticket) {
+        this.user = user;
+        this.ticket = ticket;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getID() {

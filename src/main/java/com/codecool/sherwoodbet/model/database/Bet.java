@@ -22,6 +22,14 @@ public class Bet {
         home = 0;
     }
 
+    public Bet(Ticket userTicket, Match match) {
+        this.userTicket = userTicket;
+        this.match = match;
+        away = 0;
+        draw = 0;
+        home = 0;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getID() {

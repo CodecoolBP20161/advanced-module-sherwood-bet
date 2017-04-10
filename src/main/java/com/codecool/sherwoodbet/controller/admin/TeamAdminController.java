@@ -1,9 +1,9 @@
 package com.codecool.sherwoodbet.controller.admin;
 
 import com.codecool.sherwoodbet.model.database.Team;
-import com.codecool.sherwoodbet.repository.MatchRepository;
 import com.codecool.sherwoodbet.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,8 +39,13 @@ public class TeamAdminController {
 
     @RequestMapping("/team/delete/{values_id}")
     public String removeFromDB(@PathVariable Integer values_id){
-        teamRepository.delete(Long.valueOf(values_id));
-        return "redirect:/admin/teams";
+        try {
+            teamRepository.delete(Long.valueOf(values_id));
+            return "redirect:/admin/teams";
+        } catch (DataAccessException e) {
+            System.out.println("ss" + e);
+            return "redirect:/admin/teams";
+        }
     }
 
     @RequestMapping("/team/edit")

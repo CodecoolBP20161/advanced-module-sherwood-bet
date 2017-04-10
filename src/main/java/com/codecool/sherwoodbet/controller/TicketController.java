@@ -22,19 +22,13 @@ public class TicketController {
     TicketRepository ticketRepository;
     @Autowired
     MatchRepository matchRepository;
-    private List<Map> tickets = new ArrayList<>();
-    private Map<String, Object> ticket = new HashMap<>();
-    private List<String> matches = new ArrayList<>();
-    private Map<String, Object> oneTicket = new HashMap<>();
-    private List<Map> oneTicketMatches = new ArrayList<>();
-    private Map<String, Object> match = new HashMap<>();
 
     @RequestMapping("/bet/api/playable_tickets")
     @ResponseBody
     public Map playableTickets() {
         List<Ticket> playableTickets = ticketRepository.findByPlayable(true);
         Map<String, List> response = new HashMap<>();
-        tickets.clear();
+        List<Map> tickets = new ArrayList<>();
         for (Ticket oneTicket : playableTickets) {
             Map<String, Object> ticket = new HashMap<>();
             ticket.put("title", oneTicket.getTitle());
@@ -59,7 +53,7 @@ public class TicketController {
     @RequestMapping("/bet/api/get_ticket")
     @ResponseBody
     public Map getTicket(@RequestParam Long ticket) {
-        oneTicket.clear();
+        Map<String, Object> oneTicket = new HashMap<>();
         Ticket ticketdb = ticketRepository.findOne(ticket);
         oneTicket.put("intro", ticketdb.getDescription());
         oneTicket.put("title", ticketdb.getTitle());
@@ -67,7 +61,7 @@ public class TicketController {
         oneTicket.put("ticket_id", ticketdb.getID());
         oneTicket.put("playable", ticketdb.isPlayable());
 
-        oneTicketMatches.clear();
+        List<Map> oneTicketMatches = new ArrayList<>();
         for (Match oneMatch : ticketdb.getMatches()) {
             Map<String, Object> match = new HashMap<>();
             match.put("venue", oneMatch.getVenue());

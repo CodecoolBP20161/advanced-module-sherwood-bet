@@ -1,6 +1,7 @@
 package com.codecool.sherwoodbet.model.database;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by patrik on 2017.04.07..
@@ -20,6 +21,8 @@ public class UserTicket {
     private Integer rank;
     private Boolean paid;
     private Float payoff;
+    private Set<Bet> bets;
+
 
     public UserTicket() {
     }
@@ -126,5 +129,14 @@ public class UserTicket {
 
     public void setPayoff(Float payoff) {
         this.payoff = payoff;
+    }
+
+    @OneToMany(mappedBy = "userTicket")
+    public Set<Bet> getBets() {
+        return bets;
+    }
+
+    public void setBets(Set<Bet> bets) {
+        this.bets = bets;
     }
 }

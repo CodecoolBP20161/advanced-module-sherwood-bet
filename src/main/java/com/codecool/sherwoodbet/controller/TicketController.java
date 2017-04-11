@@ -63,7 +63,10 @@ public class TicketController {
 
     @RequestMapping("/bet/api/get_ticket")
     @ResponseBody
-    public Map getTicket(@RequestParam Long ticket, Authentication authentication) {
+    public Map getTicket(@RequestParam Long ticket,
+                         @RequestParam String mode,
+                         @RequestParam Integer category,
+                         Authentication authentication) {
         oneTicket.clear();
         Ticket ticketdb = ticketRepository.findOne(ticket);
         oneTicket.put("intro", ticketdb.getDescription());
@@ -77,22 +80,42 @@ public class TicketController {
         String userName = authentication.getName();
         User authUser = userRepository.findByName(userName);
 
+     //   System.out.println(userTicketRepository.findByMultipleFilter(mode,category,ticket));
+        System.out.println(userTicketRepository.multipleFilteringForPlay(mode, category, userName, ticket));
 
-        String mode = "valami";
-        Integer category = 25;
-        String status = "akarmi";
+
+        String status = "created";
         Integer result = 0;
         Integer rank = 1;
         Boolean paid = true;
         Float playoff = 1f;
-        UserTicket userTicket = new UserTicket(authUser, ticketdb, mode,category,status,result,rank,paid,playoff);
-        userTicketRepository.save(userTicket);
+
+        UserTicket userTicket;
+        UserTicket currentUS = userTicketRepository.multipleFilteringForPlay(mode, category, userName, ticket);
 
 
+
+        if(currentUS == null){
+            userTicket = new UserTicket(authUser, ticketdb, mode,category,status,result,rank,paid,playoff);
+            userTicketRepository.save(userTicket);
+        }
+        else{
+            userTicket = currentUS;
+        }
 
         for (Match oneMatch : ticketdb.getMatches()) {
-            Bet actualBet = new Bet(ticketdb, oneMatch);
-            betRepository.save(actualBet);
+
+            Bet actualBet;
+            Bet currentBet = betRepository.multipleFilteringForPlay(oneMatch.getID(), userTicket.getID());
+
+            if(currentBet == null){
+                actualBet = new Bet(userTicket, oneMatch);
+                betRepository.save(actualBet);
+            }
+            else{
+                actualBet = currentBet;
+            }
+
             Map<String, Object> match = new HashMap<>();
             match.put("venue", oneMatch.getVenue());
             match.put("round_number", oneMatch.getRound());

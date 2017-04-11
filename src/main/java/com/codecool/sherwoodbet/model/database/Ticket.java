@@ -20,7 +20,6 @@ public class Ticket {
     private String description;
     private Date deadline;
     private boolean playable;
-    private Set<Bet> userTicket;
     private Set<Match> matches;
     private Set<UserTicket> userTickets;
 
@@ -78,15 +77,6 @@ public class Ticket {
 
     public void setPlayable(boolean playable) {
         this.playable = playable;
-    }
-
-    @OneToMany(mappedBy = "userTicket")
-    public Set<Bet> getUserTicket() {
-        return userTicket;
-    }
-
-    public void setUserTicket(Set<Bet> userTicket) {
-        this.userTicket = userTicket;
     }
 
     @ManyToMany

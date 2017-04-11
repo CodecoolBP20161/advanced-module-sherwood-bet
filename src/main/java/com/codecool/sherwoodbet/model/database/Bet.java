@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Bet {
 
     private Long ID;
-    private Ticket userTicket;
+    private UserTicket userTicket;
     private int away;
     private int draw;
     private int home;
@@ -22,7 +22,7 @@ public class Bet {
         home = 0;
     }
 
-    public Bet(Ticket userTicket, Match match) {
+    public Bet(UserTicket userTicket, Match match) {
         this.userTicket = userTicket;
         this.match = match;
         away = 0;
@@ -66,11 +66,11 @@ public class Bet {
 
     @ManyToOne
     @JoinColumn(name = "user_ticket")
-    public Ticket getUserTicket() {
+    public UserTicket getUserTicket() {
         return userTicket;
     }
 
-    public void setUserTicket(Ticket userTicket) {
+    public void setUserTicket(UserTicket userTicket) {
         this.userTicket = userTicket;
     }
 

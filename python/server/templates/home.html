@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SherwoodBET</title>
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Sacramento" rel="stylesheet">
+</head>
+<body>
+
+  {% csrf_token %}
+
+  <div id="app"></div>
+
+  {% load static %}
+  <script src="{% static 'apps/home.js' %}"></script>
+
+</body>
+</html>

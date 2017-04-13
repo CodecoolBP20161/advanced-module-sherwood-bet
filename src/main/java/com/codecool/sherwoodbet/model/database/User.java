@@ -2,6 +2,7 @@ package com.codecool.sherwoodbet.model.database;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * Created by patrik on 2017.02.02..
@@ -15,6 +16,7 @@ public class User {
     private String name;
     private String password;
     private Role role;
+    private Set<UserTicket> userTickets;
 
     @Column(unique = true)
     private String email;
@@ -68,12 +70,25 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
-    }public ArrayList<String> collectFields(){
+    }
+
+    public ArrayList<String> collectFields(){
         ArrayList<String> listOfFields = new ArrayList();
         listOfFields.add("ID");
         listOfFields.add("Name");
         listOfFields.add("Password");
         listOfFields.add("Email");
         return listOfFields;
+    }
+
+
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+    public Set<UserTicket> getUserTickets() {
+        return userTickets;
+    }
+
+
+    public void setUserTickets(Set<UserTicket> userTickets) {
+        this.userTickets = userTickets;
     }
 }

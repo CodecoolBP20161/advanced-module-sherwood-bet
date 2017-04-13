@@ -22,7 +22,7 @@ body {
   right: 0;
   content: "";
   position: absolute;
-  background: url("/static/forest.jpg");
+  background: url("/static/images/forest.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }

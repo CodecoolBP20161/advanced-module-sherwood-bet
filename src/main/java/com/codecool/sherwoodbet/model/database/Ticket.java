@@ -20,8 +20,8 @@ public class Ticket {
     private String description;
     private Date deadline;
     private boolean playable;
-    private Set<Bet> userTicket;
     private Set<Match> matches;
+    private Set<UserTicket> userTickets;
 
 
     @Column(unique = true)
@@ -79,15 +79,6 @@ public class Ticket {
         this.playable = playable;
     }
 
-    @OneToMany(mappedBy = "userTicket")
-    public Set<Bet> getUserTicket() {
-        return userTicket;
-    }
-
-    public void setUserTicket(Set<Bet> userTicket) {
-        this.userTicket = userTicket;
-    }
-
     @ManyToMany
     @JoinTable(name = "match_of_ticket", joinColumns = {@JoinColumn(name = "ticket_id")},
             inverseJoinColumns = {@JoinColumn(name = "match_id")})
@@ -97,5 +88,14 @@ public class Ticket {
 
     public void setMatches(Set<Match> match) {
         this.matches = match;
+    }
+
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="ticket")
+    public Set<UserTicket> getUserTickets() {
+        return userTickets;
+    }
+
+    public void setUserTickets(Set<UserTicket> userTickets) {
+        this.userTickets = userTickets;
     }
 }

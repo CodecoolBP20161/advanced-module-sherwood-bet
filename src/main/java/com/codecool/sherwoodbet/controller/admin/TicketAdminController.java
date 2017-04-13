@@ -60,7 +60,7 @@ public class TicketAdminController {
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy/hh/mm");
         Date date = format.parse(deadLine);
         Ticket ticket = new Ticket(description, date, title);
-        ticket.setPlayable(true);
+        ticket.setPlayable(false);
         ticketRepository.save(ticket);
         return "redirect:/admin/tickets";
     }
@@ -75,6 +75,7 @@ public class TicketAdminController {
     public String editUser(@RequestParam(value = "id") String ID,
                            @RequestParam(value = "deadline") String deadline,
                            @RequestParam(value = "title") String title,
+                           @RequestParam(value = "playable") String playable,
                            @RequestParam(value = "description") String description) throws ParseException {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.S");
@@ -83,6 +84,7 @@ public class TicketAdminController {
         ticket.setTitle(title);
         ticket.setDescription(description);
         ticket.setDeadline(date);
+        ticket.setPlayable(Boolean.parseBoolean(playable));
         ticketRepository.save(ticket);
         return "redirect:/admin/tickets";
     }
